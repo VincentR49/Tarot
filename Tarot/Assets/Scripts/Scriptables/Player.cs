@@ -1,13 +1,20 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="Scriptable Objects/Player")]
-public class Player : ScriptableObject
+public abstract class Player : ScriptableObject
 {
 	public String name = "Player";
 	public int score = 0;
-	public Hand hand;
+	private Hand hand;
+	private ScoringPile scoringPile;
 	
+	public void PrepareForNewHand()
+	{
+		hand = new Hand();
+		scoringPile = new ScoringPile();
+	}
+
+	public abstract bool IsHuman();
 	// can save other stats
 	// game won / lost etc / nombre de prise, niveau des prises...
 }

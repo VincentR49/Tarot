@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Player : ScriptableObject
 {
-	public String name = "Player";
+	public new String name = "Player";
 	public int score = 0;
 	private Hand hand;
 	private ScoringPile scoringPile;
@@ -14,7 +14,6 @@ public abstract class Player : ScriptableObject
 		scoringPile = new ScoringPile();
 	}
 
-	public abstract bool IsHuman();
 	// can save other stats
 	// game won / lost etc / nombre de prise, niveau des prises...
 }

@@ -2,15 +2,13 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-// Gestion d'une partie
-// Player 1 dans la liste est le joueur courant
+
+[RequireComponent(typeof(PlayersGenerator))]
 public class GameManager : MonoBehaviour
 {
 	// Library variables (fixed scriptable objects)
 	[Tooltip("Reference to the full standard deck")]
 	public Deck standardDeck;
-	[Tooltip("Reference to the full pool of players")]
-	public PlayerList playerFullList;
 	
 	// Runtime variables
 	[Tooltip("Reference to the current players")]
@@ -19,16 +17,27 @@ public class GameManager : MonoBehaviour
 	public Deck deck;
 	[Tooltip("Reference to the current game dog")]
 	public Dog dog;
-	
-	private int nPlayer = 3;
+
+	public IntVariable nPlayer;
 	private Player dealer;
 	private Player taker;
-	
-	
-	public void NewGame(int nPlayer)
+
+    private PlayersGenerator playersGenerator;
+
+    private void Awake()
+    {
+        playersGenerator = GetComponent<PlayersGenerator>();
+    }
+
+    private void Start()
+    {
+        NewGame(nPlayer.Value);
+    }
+
+
+    public void NewGame(int nPlayer)
 	{
-		this.nPlayer = nPlayer;
-		PreparePlayers();
+        playersGenerator.Generate(nPlayer); ;
 	}
 	
 	
@@ -50,29 +59,9 @@ public class GameManager : MonoBehaviour
 		deck = Instantiate(standardDeck);
 		deck.Shuffle();
 	}
-	
-	
-	private void PreparePlayers()
-	{
-		// Player 0 is always the NonAI player
-		// If only AI players, take the first one
-		players.Clear();
-		Player humanPlayer = null;
-		foreach (Player p in players)
-		{
-			if (p.IsHuman())
-			{
-				humanPlayer = p;
-				break;
-			}
-		}
-		if (humanPlayer != null)
-		{
-			players.Add(humanPlayer);
-		}
-	}
-	
-	
+
+
+	// TODO faire un DealManager
 	public void Deal()
 	{
 		if (deck.Items.Count != standardDeck.Items.Count)

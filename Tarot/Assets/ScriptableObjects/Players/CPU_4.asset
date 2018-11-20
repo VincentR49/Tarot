@@ -8,9 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50f8c58e75b5494f9f8cef83a2adab8, type: 3}
-  m_Name: PlayerAI_3
+  m_Script: {fileID: 11500000, guid: 6049624e3a5c8b74689ec92f309a231d, type: 3}
+  m_Name: CPU_4
   m_EditorClassIdentifier: 
-  name: Player
+  name: CPU4
   score: 0
-  hand: {fileID: 0}

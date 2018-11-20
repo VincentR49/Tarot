@@ -8,9 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50f8c58e75b5494f9f8cef83a2adab8, type: 3}
-  m_Name: PlayerAI_1
+  m_Script: {fileID: 11500000, guid: dc52579125d09e0448e8c1c029152eaa, type: 3}
+  m_Name: NPlayer
   m_EditorClassIdentifier: 
-  name: Player
-  score: 0
-  hand: {fileID: 0}
+  Value: 3

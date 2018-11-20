@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Hand : CardList
 {
-	public void Sort()
+	public new void Sort()
 	{
 		// sort in revserse order (strongest card on the left)
-		Items.Sort((a,b) => -1 * a.CompareTo(b));
+		Sort((a,b) => -1 * a.CompareTo(b));
 	}
 }

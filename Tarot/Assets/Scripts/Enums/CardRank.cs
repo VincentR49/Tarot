@@ -27,8 +27,8 @@ public enum CardRank
 	Nineteen,
 	Twenty,
 	TwentyOne,
-	Jack,
-	Knight,
-	Queen,
-	King
+	Valet,
+	Cavalier,
+	Dame,
+	Roi
 }

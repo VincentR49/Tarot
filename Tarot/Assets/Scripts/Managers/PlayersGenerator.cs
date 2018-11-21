@@ -12,13 +12,12 @@ public class PlayersGenerator : MonoBehaviour {
     [Tooltip("Reference to the current players")]
     public PlayerList players;
 
-    private int nPlayer;
+    public IntVariable nPlayer;
 	
 
-    public void Generate(int nPlayer)
+    public void Generate()
     {
-		Debug.Log("Player generation: " + nPlayer);
-		this.nPlayer = nPlayer;
+        Debug.Log("Player generation: " + nPlayer.Value);
         players.Clear();
         GeneratePlayers();
 		PreparePlayersForNewGame();
@@ -27,33 +26,33 @@ public class PlayersGenerator : MonoBehaviour {
 	
 	private void GeneratePlayers()
 	{
-		if (playersBank.Count < nPlayer)
-		{
-			Debug.Log("Not enought pre-set players in the current bank to start the game");
-			return;
-		}
 		// le human player est ajouté en premier
-		HumanPlayer hPlayer = playersBank.GetFirstHumanPlayer();
+		Player hPlayer = playersBank.GetFirstHumanPlayer();
 		if (hPlayer != null)
 		{
-			players.Add(p);
-			Debug.Log("Add human Player " + p.name);
+			players.Add(hPlayer);
+			Debug.Log("Add human Player " + hPlayer.name);
 		}
-		while (players.Count < nPlayer)
+		
+		foreach (Player p in playersBank.Items)
 		{
-			foreach (Player p in playersBank.Items)
-			{
-				// A voir si on les ajoute aléatoirement pour la suite ...
-				players.Add(p); // n'ajoute pas les doublons (voir Add)
-				Debug.Log("Add cpu Player " + p.name);
-			}
+			// A voir si on les ajoute aléatoirement pour la suite ...
+            if (players.Count >= nPlayer.Value)
+            {
+                break;
+            }
+            if (!players.Items.Contains(p))
+            {
+                players.Add(p);
+                Debug.Log("Add cpu Player " + p.name);
+            }
 		}
 	}
 	
 	// Initialisation des différents joueurs
 	private void PreparePlayersForNewGame()
 	{
-		foreach (Player p in players)
+		foreach (Player p in players.Items)
 		{
 			p.PrepareForNewGame();
 		}

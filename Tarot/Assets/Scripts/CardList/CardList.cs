@@ -11,7 +11,7 @@ public abstract class CardList : List<Card>
 		StringBuilder sb = new StringBuilder();
 		foreach (Card card in this)
 		{
-			sb.AppendLine(card.ToString());
+            sb.AppendLine(card.ToString());
 		}
 		return sb.ToString();
 	}

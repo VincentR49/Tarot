@@ -7,10 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(PlayersGenerator))]
 public class GameManager : MonoBehaviour
 {
-	public IntVariable nPlayer;
     private PlayersGenerator playersGenerator;
 	private DealManager dealManager;
-	
+    public IntVariable nPlayer;
+
     private void Awake()
     {
         playersGenerator = GetComponent<PlayersGenerator>();
@@ -19,16 +19,25 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        NewGame(nPlayer.Value);
+        NewGame();
     }
 
-
     public void NewGame(int nPlayer)
+    {
+        this.nPlayer.Value = nPlayer;
+        NewGame();
+    }
+
+    public void NewGame()
 	{
-		Debug.Log("Start new Game with " + nPlayer + " players");
-        playersGenerator.Generate(nPlayer);
+        if (nPlayer.Value < 3 || nPlayer.Value > 5)
+        {
+            Debug.Log("Wrong Players number: should be 3, 4 or 5");
+            return;
+        }
+        playersGenerator.Generate();
 		dealManager.SelectRandomDealer();
-		dealManager.Deal();
+		dealManager.DealCards();
 		// Gestion du chien (dogManager ?)
 		
 		// Début du jeu

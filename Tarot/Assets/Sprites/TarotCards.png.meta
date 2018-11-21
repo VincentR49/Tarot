@@ -2,85 +2,85 @@ fileFormatVersion: 2
 guid: 9615155e43169754b994c7df6d9f7730
 TextureImporter:
   fileIDToRecycleName:
-    21300000: TarotCards_0
-    21300002: TarotCards_1
-    21300004: TarotCards_2
-    21300006: TarotCards_3
-    21300008: TarotCards_4
-    21300010: TarotCards_5
-    21300012: TarotCards_6
-    21300014: TarotCards_7
-    21300016: TarotCards_8
-    21300018: TarotCards_9
-    21300020: TarotCards_10
-    21300022: TarotCards_11
-    21300024: TarotCards_12
-    21300026: TarotCards_13
-    21300028: TarotCards_14
-    21300030: TarotCards_15
-    21300032: TarotCards_16
-    21300034: TarotCards_17
-    21300036: TarotCards_18
-    21300038: TarotCards_19
-    21300040: TarotCards_20
-    21300042: TarotCards_21
+    21300000: T1
+    21300002: T2
+    21300004: T3
+    21300006: T4
+    21300008: T5
+    21300010: T6
+    21300012: T7
+    21300014: T8
+    21300016: T9
+    21300018: T10
+    21300020: T11
+    21300022: T12
+    21300024: T13
+    21300026: T14
+    21300028: T15
+    21300030: T16
+    21300032: T17
+    21300034: T18
+    21300036: T19
+    21300038: T20
+    21300040: T21
+    21300042: Excuse
     21300044: TarotCards_22
-    21300046: TarotCards_23
-    21300048: TarotCards_24
-    21300050: TarotCards_25
-    21300052: TarotCards_26
-    21300054: TarotCards_27
-    21300056: TarotCards_28
-    21300058: TarotCards_29
-    21300060: TarotCards_30
-    21300062: TarotCards_31
-    21300064: TarotCards_32
-    21300066: TarotCards_33
-    21300068: TarotCards_34
-    21300070: TarotCards_35
-    21300072: TarotCards_36
-    21300074: TarotCards_37
-    21300076: TarotCards_38
-    21300078: TarotCards_39
-    21300080: TarotCards_40
-    21300082: TarotCards_41
-    21300084: TarotCards_42
-    21300086: TarotCards_43
-    21300088: TarotCards_44
-    21300090: TarotCards_45
-    21300092: TarotCards_46
-    21300094: TarotCards_47
-    21300096: TarotCards_48
-    21300098: TarotCards_49
-    21300100: TarotCards_50
-    21300102: TarotCards_51
-    21300104: TarotCards_52
-    21300106: TarotCards_53
-    21300108: TarotCards_54
-    21300110: TarotCards_55
-    21300112: TarotCards_56
-    21300114: TarotCards_57
-    21300116: TarotCards_58
-    21300118: TarotCards_59
-    21300120: TarotCards_60
-    21300122: TarotCards_61
-    21300124: TarotCards_62
-    21300126: TarotCards_63
-    21300128: TarotCards_64
-    21300130: TarotCards_65
-    21300132: TarotCards_66
-    21300134: TarotCards_67
-    21300136: TarotCards_68
-    21300138: TarotCards_69
-    21300140: TarotCards_70
-    21300142: TarotCards_71
-    21300144: TarotCards_72
-    21300146: TarotCards_73
-    21300148: TarotCards_74
-    21300150: TarotCards_75
-    21300152: TarotCards_76
-    21300154: TarotCards_77
-    21300156: TarotCards_78
+    21300046: S1
+    21300048: S2
+    21300050: S3
+    21300052: S4
+    21300054: S5
+    21300056: S6
+    21300058: S7
+    21300060: S8
+    21300062: S9
+    21300064: S10
+    21300066: SV
+    21300068: SC
+    21300070: SD
+    21300072: SR
+    21300074: H1
+    21300076: H2
+    21300078: H3
+    21300080: H4
+    21300082: H5
+    21300084: H6
+    21300086: H7
+    21300088: H8
+    21300090: H9
+    21300092: H10
+    21300094: HV
+    21300096: HC
+    21300098: HD
+    21300100: HR
+    21300102: D1
+    21300104: D2
+    21300106: D3
+    21300108: D4
+    21300110: D5
+    21300112: D6
+    21300114: D7
+    21300116: D8
+    21300118: D9
+    21300120: D10
+    21300122: DV
+    21300124: DC
+    21300126: DD
+    21300128: DR
+    21300130: C1
+    21300132: C2
+    21300134: C3
+    21300136: C4
+    21300138: C5
+    21300140: C6
+    21300142: C7
+    21300144: C8
+    21300146: C9
+    21300148: C10
+    21300150: CV
+    21300152: CC
+    21300154: CD
+    21300156: CR
     21300158: TarotCards_79
     21300160: TarotCards_80
     21300162: TarotCards_81
@@ -178,1661 +178,1561 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TarotCards_0
+      name: T1
       rect:
         serializedVersion: 2
         x: 0
-        y: 6800
-        width: 740
-        height: 1360
+        y: 3400
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e63f463e80107584ca6721b3f957dc19
+      spriteID: 0f7d09633e0e6b54dbf930c7421c250e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_1
+      name: T2
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 3400
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774db49f74bef9f4ba58f45392e039fa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T3
       rect:
         serializedVersion: 2
         x: 740
-        y: 6800
-        width: 740
-        height: 1360
+        y: 3400
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d02f2849f908f24a85f8c7c04750164
+      spriteID: 23fbdb3652d55ef49bfb8842fc423fb6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_2
+      name: T4
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 3400
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c1384de8da6424f925deb3553b5f5c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T5
       rect:
         serializedVersion: 2
         x: 1480
-        y: 6800
-        width: 740
-        height: 1360
+        y: 3400
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f702296cf69431443b3eba989db19e78
+      spriteID: 7ebe95d61d131834ca5f123b98c8dd3d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_3
+      name: T6
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 3400
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 003985311e2aa5242a7bc11d7ae6fd7a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T7
       rect:
         serializedVersion: 2
         x: 2220
-        y: 6800
-        width: 740
-        height: 1360
+        y: 3400
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b39044e0c88caf43a803051706a8b80
+      spriteID: 05d38fdbea77c974fb78e9290286fd37
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_4
+      name: T8
+      rect:
+        serializedVersion: 2
+        x: 2590
+        y: 3400
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a4c38edb5dfbe74ebf2cd069257ca72
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T9
       rect:
         serializedVersion: 2
         x: 2960
-        y: 6800
-        width: 740
-        height: 1360
+        y: 3400
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1303f5179b0298c458a57a05cd682932
+      spriteID: e82fe837d90e97541bff97954972f12f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_5
+      name: T10
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 3400
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3796ab134a4670347b8d7bedfb6e9910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T11
       rect:
         serializedVersion: 2
         x: 3700
-        y: 6800
-        width: 740
-        height: 1360
+        y: 3400
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7df662fb976128b459c7ace339fa3c58
+      spriteID: 703fb63bc03d1464885e45a7f3d4bd4b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_6
+      name: T12
+      rect:
+        serializedVersion: 2
+        x: 4070
+        y: 3400
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7553f12f481816a4693e79ee665b6ef7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T13
       rect:
         serializedVersion: 2
         x: 4440
-        y: 6800
-        width: 740
-        height: 1360
+        y: 3400
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dc8f4149cadc1b4aa14a3151f9e95bc
+      spriteID: 6e6ed6a2dc28fc041a4e4cf2415b6661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_7
+      name: T14
       rect:
         serializedVersion: 2
-        x: 5180
-        y: 6800
-        width: 740
-        height: 1360
+        x: 4810
+        y: 3400
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5302f4ccccff87a4191fe0b98d96e44f
+      spriteID: a0998c9894baeb546af5cefd91a94cb0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_8
-      rect:
-        serializedVersion: 2
-        x: 5920
-        y: 6800
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63745ada645ea2647b343b3c8b07f5c2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_9
-      rect:
-        serializedVersion: 2
-        x: 6660
-        y: 6800
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8439e8c8bc9f2444e83ba005ebc8a1b0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_10
-      rect:
-        serializedVersion: 2
-        x: 7400
-        y: 6800
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 055f0b60af8147a498a9799e66b7bbe0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_11
-      rect:
-        serializedVersion: 2
-        x: 8140
-        y: 6800
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e5652d04e8be10c40893d732ede059ba
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_12
-      rect:
-        serializedVersion: 2
-        x: 8880
-        y: 6800
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d85cbd83204119944a7c8d09ae6cb89c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_13
-      rect:
-        serializedVersion: 2
-        x: 9620
-        y: 6800
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b91bcdbf02ae24040b14d5f5625f0d73
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_14
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9aa03fdea54daff4fb4a516a2a2f6cd7
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_15
-      rect:
-        serializedVersion: 2
-        x: 740
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a3aaa1f0c56ac348919027a00c5e429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_16
-      rect:
-        serializedVersion: 2
-        x: 1480
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 816ad7338092deb49869f11a9ac94f2e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_17
-      rect:
-        serializedVersion: 2
-        x: 2220
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 51b6c60ba18137649b2f836b28ec6264
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_18
-      rect:
-        serializedVersion: 2
-        x: 2960
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3f811af315f15240860d1652ddeef14
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_19
-      rect:
-        serializedVersion: 2
-        x: 3700
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7afe6773fb463d449bd95e725dc9a33c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_20
-      rect:
-        serializedVersion: 2
-        x: 4440
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d32e07a0bfe72f4ead7b30d8267228a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_21
-      rect:
-        serializedVersion: 2
-        x: 5180
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2efb172a86488c049bf330764d71cffd
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_22
-      rect:
-        serializedVersion: 2
-        x: 5920
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c179d63d5ab8abe499dd1dc1bef2bdd3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_23
-      rect:
-        serializedVersion: 2
-        x: 6660
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a68e1924cd9b15d46a88ec12d37d2005
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_24
-      rect:
-        serializedVersion: 2
-        x: 7400
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9dea5edf26044784ba776a12ed6dfa70
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_25
-      rect:
-        serializedVersion: 2
-        x: 8140
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bfde78ddd93f5e449bf06d2c546016c8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_26
-      rect:
-        serializedVersion: 2
-        x: 8880
-        y: 5440
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3f0e9d0999615f49ab7fcbd2ca3853b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_27
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 629205687e14a9541953768c0b31b448
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_28
-      rect:
-        serializedVersion: 2
-        x: 740
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80ee66c653ecd8842814637fc0372c77
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_29
-      rect:
-        serializedVersion: 2
-        x: 1480
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8363f01aaeb3a92439d57ae44390b07f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_30
-      rect:
-        serializedVersion: 2
-        x: 2220
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88e4919eba70dba4cbf13085f89f8371
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_31
-      rect:
-        serializedVersion: 2
-        x: 2960
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ab2f357eb0cf7e44b6bc57e083d708e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_32
-      rect:
-        serializedVersion: 2
-        x: 3700
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a7f6302e317adc048af19260c8669e23
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_33
-      rect:
-        serializedVersion: 2
-        x: 4440
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b9795477d0ed4b4786294aaef8ff8b4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_34
-      rect:
-        serializedVersion: 2
-        x: 5180
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 10e4c3c14f43cf64d8b7df950f4c14c2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_35
-      rect:
-        serializedVersion: 2
-        x: 5920
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a6d072d252da7d4faabb5912e5b605e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_36
-      rect:
-        serializedVersion: 2
-        x: 6660
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d3ee54478029d0c41b40a10ff49f3640
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_37
-      rect:
-        serializedVersion: 2
-        x: 7400
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 833ded6b454a25d4897f7b46ab7eaf6c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_38
-      rect:
-        serializedVersion: 2
-        x: 8140
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60b90ffce0174194db1e9a2e24a88dc9
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_39
-      rect:
-        serializedVersion: 2
-        x: 8880
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9828acffa68c1874f9b868cab8d7eed9
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_40
-      rect:
-        serializedVersion: 2
-        x: 9620
-        y: 4080
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f76241c273735a444b4a2ac98761ddde
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_41
+      name: T15
       rect:
         serializedVersion: 2
         x: 0
         y: 2720
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f94dea904ff623f428732d1d7131bc0e
+      spriteID: 64c8557ced2c7074d869a8a4b2190de8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_42
+      name: T16
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 2720
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce2de9c27a0fed744a330b96524d4463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T17
       rect:
         serializedVersion: 2
         x: 740
         y: 2720
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90b360030d6c1c943be5a684ff3e05ff
+      spriteID: 4e469d8e8ab76be4698c298d5caed228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_43
+      name: T18
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 2720
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d2dd5e1146d07b44a7f1aa45f0970e0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T19
       rect:
         serializedVersion: 2
         x: 1480
         y: 2720
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fdcaaa7ffe778843939d697f18f8034
+      spriteID: 4143296202ad03e49a35344c72501544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_44
+      name: T20
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 2720
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25f7e805e6fe852488ce8902888fcef8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T21
       rect:
         serializedVersion: 2
         x: 2220
         y: 2720
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 902d4304bdeff784d98c6ce7c4433c70
+      spriteID: a53b5778f47c1204b99bdc206f77b182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_45
+      name: Excuse
+      rect:
+        serializedVersion: 2
+        x: 2590
+        y: 2720
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b563c932a35746242bbc17bd38bcfedb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2040
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be3167ec283b9e54dbd68b6118d7a2e3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S2
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 2040
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c5ba28b0c00bd4282795ab0ddd5843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S3
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 2040
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71793bdbdb69f33458467c08f186b9ef
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S4
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 2040
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5c59325b24e23241b90a48127a44400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S5
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 2040
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dfdee072438ed846839c0bf3ff5b285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S6
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 2040
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd987288aa5e1604894a830a642df4be
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S7
+      rect:
+        serializedVersion: 2
+        x: 2220
+        y: 2040
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17ac3224c6cf2c74a84d544d6a8cf0b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S8
+      rect:
+        serializedVersion: 2
+        x: 2590
+        y: 2040
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ac49b5342d52344b044bd71f9c7f7a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S9
       rect:
         serializedVersion: 2
         x: 2960
-        y: 2720
-        width: 740
-        height: 1360
+        y: 2040
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02dad8e33e73a4442b073c2dc147103f
+      spriteID: b05be208bb454084fbda14e98396009b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_46
+      name: S10
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 2040
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bf129fa901f83b44ad4b2cd7eb3b571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV
       rect:
         serializedVersion: 2
         x: 3700
-        y: 2720
-        width: 740
-        height: 1360
+        y: 2040
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58d952ee2bf18634b95b239c0f5535fe
+      spriteID: ba85cda04e1c6ec4593929d6ac3ab425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_47
+      name: SC
+      rect:
+        serializedVersion: 2
+        x: 4070
+        y: 2040
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca0a21c51245be64d90fd3f82a39bc0d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SD
       rect:
         serializedVersion: 2
         x: 4440
-        y: 2720
-        width: 740
-        height: 1360
+        y: 2040
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58fb106cabd93a347b5835d6ae965391
+      spriteID: f229bdc6569f4ec4cb34dbe0610c4f1e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_48
+      name: SR
       rect:
         serializedVersion: 2
-        x: 5180
-        y: 2720
-        width: 740
-        height: 1360
+        x: 4810
+        y: 2040
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd3b36d4d2b3d074ca3cd4a0866a2cd6
+      spriteID: fa5210153db6d574680f64496ed71f1a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_49
-      rect:
-        serializedVersion: 2
-        x: 5920
-        y: 2720
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65eba58867888b940a4356387a5290d3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_50
-      rect:
-        serializedVersion: 2
-        x: 6660
-        y: 2720
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3aee3eb1f43704e4aa00c4a195ad104a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_51
-      rect:
-        serializedVersion: 2
-        x: 7400
-        y: 2720
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d608077b66dd7fc4e9d5f9f98a955902
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_52
-      rect:
-        serializedVersion: 2
-        x: 8140
-        y: 2720
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0bc911744e40fce439916844459b2d35
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_53
-      rect:
-        serializedVersion: 2
-        x: 8880
-        y: 2720
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d902f0aa301f0a46a4c0cb62f7d8273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_54
-      rect:
-        serializedVersion: 2
-        x: 9620
-        y: 2720
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39919026e2afdac4f8078d8893982569
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_55
+      name: H1
       rect:
         serializedVersion: 2
         x: 0
         y: 1360
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 695e3d2de0f049044a5d742cd7bf8d89
+      spriteID: cf3516f72d674c04280f153293f3ccd9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_56
+      name: H2
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 1360
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3057c86ffcda85a4ba87ca63250e650d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: H3
       rect:
         serializedVersion: 2
         x: 740
         y: 1360
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b20fac09fd8d8824ab6f503a8a6904a8
+      spriteID: 24f872e414cbefa45a7807caf1bb31e0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_57
+      name: H4
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 1360
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e349effcb537012438301b7756e1a699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: H5
       rect:
         serializedVersion: 2
         x: 1480
         y: 1360
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5156552359ccf6d42bea6151951a7581
+      spriteID: 8e773d0d2002ce040b72e26e1327988d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_58
+      name: H6
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1360
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec37cb44337b1dc43b42b41cefa8a4ff
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: H7
       rect:
         serializedVersion: 2
         x: 2220
         y: 1360
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bf512ded8baef14b8b3314db8328da6
+      spriteID: 7229485506c236d48a116bb37394fce1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_59
+      name: H8
+      rect:
+        serializedVersion: 2
+        x: 2590
+        y: 1360
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1fe0b06451edc942904490612e6f132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: H9
       rect:
         serializedVersion: 2
         x: 2960
         y: 1360
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcbbc8d5c6817ff46af48d9a4d03c25b
+      spriteID: a6b51f698b7909b49886f76ced69786e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_60
+      name: H10
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 1360
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a69f477ce9b4bf4eb87fb8f6cc54e7e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HV
       rect:
         serializedVersion: 2
         x: 3700
         y: 1360
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9f5efc7a113a9246a5cac88cb397979
+      spriteID: 00a308b4de1814f4c957c4cd53ac775c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_61
+      name: HC
+      rect:
+        serializedVersion: 2
+        x: 4070
+        y: 1360
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 579a7f39b92ef264588566a751e888b4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HD
       rect:
         serializedVersion: 2
         x: 4440
         y: 1360
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9a442988706ff94a9adac233ed9bc9a
+      spriteID: c9d8e33828285ba4ca900ea378512c0f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_62
+      name: HR
       rect:
         serializedVersion: 2
-        x: 5180
+        x: 4810
         y: 1360
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 457b810cc3faaa74c81c92f68d949f46
+      spriteID: 8ad13ef0dad596a4ab3068dd9bec1cfe
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_63
+      name: D1
       rect:
         serializedVersion: 2
-        x: 5920
-        y: 1360
-        width: 740
-        height: 1360
+        x: 0
+        y: 680
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 304f0cb9e0d987141a8d170afb536070
+      spriteID: 857cd77cb07bc77408bae0b157f01bcb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_64
+      name: D2
       rect:
         serializedVersion: 2
-        x: 6660
-        y: 1360
-        width: 740
-        height: 1360
+        x: 370
+        y: 680
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 155aee9fc3e80e241bc57385a61b6acd
+      spriteID: b030df7c40d8fa643a03018b4ef223fe
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_65
+      name: D3
       rect:
         serializedVersion: 2
-        x: 7400
-        y: 1360
-        width: 740
-        height: 1360
+        x: 740
+        y: 680
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71dd91dfc5b56684cb06fa728f23d8e9
+      spriteID: 61c1044bdad5fd94d9db93a9503d696b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_66
+      name: D4
       rect:
         serializedVersion: 2
-        x: 8140
-        y: 1360
-        width: 740
-        height: 1360
+        x: 1110
+        y: 680
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba01b6e9d5779cd48892679198343e5f
+      spriteID: 4531ddcb0b3728d41ad0bcf5346671bf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_67
+      name: D5
       rect:
         serializedVersion: 2
-        x: 8880
-        y: 1360
-        width: 740
-        height: 1360
+        x: 1480
+        y: 680
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd2ed5bcf310fde419b3871a146bb04e
+      spriteID: cc8ac8a59cd1c2240843a3f4674523f0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_68
+      name: D6
       rect:
         serializedVersion: 2
-        x: 9620
-        y: 1360
-        width: 740
-        height: 1360
+        x: 1850
+        y: 680
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23238dbc9a7a15643922b209beac7e31
+      spriteID: 4166977bc4d12a34fb54b1108e762dd1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_69
+      name: D7
+      rect:
+        serializedVersion: 2
+        x: 2220
+        y: 680
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 693eded6868d6b443913528075301e57
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: D8
+      rect:
+        serializedVersion: 2
+        x: 2590
+        y: 680
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d946138ebcaba428ba7efe01c79ba9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: D9
+      rect:
+        serializedVersion: 2
+        x: 2960
+        y: 680
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e778533ba7bd84fa18e0342a49bca0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: D10
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 680
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd125ebb7de86df45a352e2bb419a7f8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DV
+      rect:
+        serializedVersion: 2
+        x: 3700
+        y: 680
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0b5f765df9ddd48ba4fe28ac814c01
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DC
+      rect:
+        serializedVersion: 2
+        x: 4070
+        y: 680
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ee2e85aeb3856542bc69b71ba86c1fb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD
+      rect:
+        serializedVersion: 2
+        x: 4440
+        y: 680
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65b3409e31a75645a9fe7e1b65a21c7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DR
+      rect:
+        serializedVersion: 2
+        x: 4810
+        y: 680
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1020df8665908194bbf9e8fb06a967f9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 562450b614403bc48aa19eca1d1df58a
+      spriteID: 2c7bb7382b8421540b219fa043b5684b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_70
+      name: C2
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 0
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4234eba001bc648a40181245e0529b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C3
       rect:
         serializedVersion: 2
         x: 740
         y: 0
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30884292639e3934bae77eddfb214c7d
+      spriteID: 6cc7a86c7aa7f03488ed52fb00476e93
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_71
+      name: C4
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 0
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c108e2479a0c1e6449001f47cd1b8139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C5
       rect:
         serializedVersion: 2
         x: 1480
         y: 0
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afa6d96301cbda04992631f20b3b18bc
+      spriteID: 13fa37a690a55f7449d24a0468088db6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_72
+      name: C6
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 0
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e729e6dc4b5dc4eb1642d9644fd3e5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C7
       rect:
         serializedVersion: 2
         x: 2220
         y: 0
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4c33cd8b2ff71e4caa3923b93978237
+      spriteID: af69eb8912346e14ea2eafb5b6c35b93
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_73
+      name: C8
+      rect:
+        serializedVersion: 2
+        x: 2590
+        y: 0
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fc415c43527fd144a418d518e1e6cac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C9
       rect:
         serializedVersion: 2
         x: 2960
         y: 0
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fa88cf4be767a64089fbdde709efd11
+      spriteID: 011d5919b74be6b4eb83123b398157a4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_74
+      name: C10
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 0
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a3ef112a16ff8d4eb95acb744194795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CV
       rect:
         serializedVersion: 2
         x: 3700
         y: 0
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d278a895d4c1ac648989d6684c822eb5
+      spriteID: ebe2dbafce4fac642b3cbed26518c232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_75
+      name: CC
+      rect:
+        serializedVersion: 2
+        x: 4070
+        y: 0
+        width: 370
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a56e805e66093419e79d4da6dfe343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CD
       rect:
         serializedVersion: 2
         x: 4440
         y: 0
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdd2a95d6ab3c3a46830317727d1ac64
+      spriteID: 82451ceb6d221f843a43e81aa55edc07
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TarotCards_76
+      name: CR
       rect:
         serializedVersion: 2
-        x: 5180
+        x: 4810
         y: 0
-        width: 740
-        height: 1360
+        width: 370
+        height: 680
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06951558cb208154fb5161bc78336158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_77
-      rect:
-        serializedVersion: 2
-        x: 5920
-        y: 0
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b002b8afc5bc19943aee89a6ecc025d3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_78
-      rect:
-        serializedVersion: 2
-        x: 6660
-        y: 0
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3826bf6e339d87043b4edccfda94d08b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_79
-      rect:
-        serializedVersion: 2
-        x: 7400
-        y: 0
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 209ea13c0020d3d4f9da2dc626763059
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_80
-      rect:
-        serializedVersion: 2
-        x: 8140
-        y: 0
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b5e3c8f2725c77409b8dd79a0caa7a2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_81
-      rect:
-        serializedVersion: 2
-        x: 8880
-        y: 0
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19c3b346c3132e046837e014749bc448
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TarotCards_82
-      rect:
-        serializedVersion: 2
-        x: 9620
-        y: 0
-        width: 740
-        height: 1360
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c5f8d7cc30ea33240bbad00399742814
+      spriteID: 25c8252a70b9ac341bddb0f5338ac650
       vertices: []
       indices: 
       edges: []

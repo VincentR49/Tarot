@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 
-public abstract class Player : ScriptableObject
+[CreateAssetMenu(menuName = "Scriptable Objects/Player Generic")]
+public class Player : ScriptableObject
 {
 	public new String name = "Player";
 	public int score = 0;

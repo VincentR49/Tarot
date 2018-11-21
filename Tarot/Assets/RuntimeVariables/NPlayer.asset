@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc52579125d09e0448e8c1c029152eaa, type: 3}
   m_Name: NPlayer
   m_EditorClassIdentifier: 
-  Value: 3
+  Value: 4

@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Dog : CardList
+[CreateAssetMenu(menuName = "Scriptable Objects/Dog")]
+public class Dog : RunTimeCardList
 {
 
 }

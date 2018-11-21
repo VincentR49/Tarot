@@ -26,7 +26,7 @@ public class Deck : RuntimeStack<Card>
 		}
 	}
 
-    public Card Deal()
+    public Card Take()
 	{
 		if (Items.Count == 0) return null;
 		return Pop();

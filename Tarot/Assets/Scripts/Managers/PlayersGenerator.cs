@@ -17,6 +17,7 @@ public class PlayersGenerator : MonoBehaviour {
 
     public void Generate(int nPlayer)
     {
+		Debug.Log("Player generation: " + nPlayer);
 		this.nPlayer = nPlayer;
         players.Clear();
         GeneratePlayers();
@@ -36,6 +37,7 @@ public class PlayersGenerator : MonoBehaviour {
 		if (hPlayer != null)
 		{
 			players.Add(p);
+			Debug.Log("Add human Player " + p.name);
 		}
 		while (players.Count < nPlayer)
 		{
@@ -43,6 +45,7 @@ public class PlayersGenerator : MonoBehaviour {
 			{
 				// A voir si on les ajoute aléatoirement pour la suite ...
 				players.Add(p); // n'ajoute pas les doublons (voir Add)
+				Debug.Log("Add cpu Player " + p.name);
 			}
 		}
 	}

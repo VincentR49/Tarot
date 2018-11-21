@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class RuntimeStack<T> : ScriptableObject
 {
     public List<T> Items = new List<T>();
-
+	public int Count => Items.Count;
 	
     public void Push(T t)
     {

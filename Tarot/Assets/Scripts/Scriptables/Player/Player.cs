@@ -22,7 +22,10 @@ public abstract class Player : ScriptableObject
 		hand = new Hand();
 		scoringPile = new ScoringPile();
 	}
-
+	
+	
+	public Hand GetHand() => hand;
+	
 	// can save other stats
 	// game won / lost etc / nombre de prise, niveau des prises...
 }

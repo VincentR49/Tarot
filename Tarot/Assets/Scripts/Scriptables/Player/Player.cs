@@ -8,6 +8,15 @@ public abstract class Player : ScriptableObject
 	private Hand hand;
 	private ScoringPile scoringPile;
 	
+	// think about some stats
+	
+	public void PrepareForNewGame()
+	{
+		score = 0;
+		PrepareForNewHand();
+	}
+	
+	
 	public void PrepareForNewHand()
 	{
 		hand = new Hand();

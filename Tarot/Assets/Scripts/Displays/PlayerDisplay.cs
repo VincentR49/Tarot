@@ -11,11 +11,11 @@ public class PlayerDisplay : MonoBehaviour {
 
 	void Start ()
     {
-        UpdateContent();
+        RefreshContent();
     }
 	
 
-    private void UpdateContent()
+    public void RefreshContent()
     {
         playerText.text = player.name;
     }
@@ -24,7 +24,6 @@ public class PlayerDisplay : MonoBehaviour {
     public void SetPlayer(Player player)
     {
         this.player = player;
-        UpdateContent();
+        RefreshContent();
     }
-
 }

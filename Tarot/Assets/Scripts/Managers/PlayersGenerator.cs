@@ -2,65 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Met à jour la liste des joueurs
+// Réinitialise les scores des joueurs
 public class PlayersGenerator : MonoBehaviour {
 
-    [Tooltip("Reference to the full pool of players")]
-    public PlayerList playerFullList;
+    [Tooltip("Reference to the full bank of players")]
+    public PlayerList playersBank;
     
     [Tooltip("Reference to the current players")]
     public PlayerList players;
 
-    public GameObject mainBoard;
-    private List<GameObject> cpuBoards;
-
     private int nPlayer;
-
-    private void Start()
-    {
-        
-    }
-
+	
 
     public void Generate(int nPlayer)
     {
+		this.nPlayer = nPlayer;
         players.Clear();
-        this.nPlayer = nPlayer;
-        Player humanPlayer = null;
-        foreach (Player p in playerFullList.Items)
-        {
-            if (p is HumanPlayer)
-            {
-                humanPlayer = p;
-                players.Add(humanPlayer);
-                break;
-            }
-        }
-       
-        while (players.Items.Count < nPlayer)
-        {
-            foreach (Player p in playerFullList.Items)
-            {
-                players.Add(p); // n'ajoute pas les doublons
-            }
-        }
-        UpdateBoards();
+        GeneratePlayers();
+		PreparePlayersForNewGame();
     }
-
-
-    private void UpdateBoards()
-    {
-        Debug.Log("UpdateBoards");
-        if (nPlayer <= 0)
-        {
-            Debug.Log("No players");
-            return;
-        }
-    }
-
-
-    static Vector2 GetBoardPosition(int playerIndex, int nPlayer)
-    {
-        return new Vector2(0, 0);
-    }
-
+	
+	
+	private void GeneratePlayers()
+	{
+		if (playersBank.Count < nPlayer)
+		{
+			Debug.Log("Not enought pre-set players in the current bank to start the game");
+			return;
+		}
+		// le human player est ajouté en premier
+		HumanPlayer hPlayer = playersBank.GetFirstHumanPlayer();
+		if (hPlayer != null)
+		{
+			players.Add(p);
+		}
+		while (players.Count < nPlayer)
+		{
+			foreach (Player p in playersBank.Items)
+			{
+				// A voir si on les ajoute aléatoirement pour la suite ...
+				players.Add(p); // n'ajoute pas les doublons (voir Add)
+			}
+		}
+	}
+	
+	// Initialisation des différents joueurs
+	private void PreparePlayersForNewGame()
+	{
+		foreach (Player p in players)
+		{
+			p.PrepareForNewGame();
+		}
+	}
 }

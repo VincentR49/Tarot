@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class RuntimeList<T> : ScriptableObject
 {
     public List<T> Items = new List<T>();
-
+	public int Count => Items.Count;
 	
     public void Add(T t)
     {

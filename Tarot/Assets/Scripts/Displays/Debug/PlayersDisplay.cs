@@ -26,12 +26,25 @@ public class PlayersDisplay : MonoBehaviour {
     private static string GetString(Player player)
     {
         StringBuilder sb = new StringBuilder();
-        if (player != null && player.Hand != null)
+        if (player != null)
         {
-            sb.AppendLine(player.name + ":");
-			sb.AppendLine("Bid :" + player.CurrentBid);
-            sb.AppendLine("(" + player.Hand.Count + " cards)");
-            sb.AppendLine(player.Hand.ToString());
+            string suffix = "";
+            if (player.IsDealer)
+            {
+                suffix += " (D)";
+            }
+            if (player.IsTaker)
+            {
+                suffix += " (T)";
+            }
+            sb.AppendLine(player.name + suffix);
+            sb.AppendLine("Bid :" + player.CurrentBid);
+
+            if (player.Hand != null)
+            {
+                sb.AppendLine("(" + player.Hand.Count + " cards)");
+                sb.AppendLine(player.Hand.ToString());
+            }
         }
         return sb.ToString();
     }

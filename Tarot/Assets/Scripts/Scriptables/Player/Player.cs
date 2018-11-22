@@ -37,8 +37,13 @@ public class Player : ScriptableObject
 		Hand.Sort((a,b) => -1 * a.CompareTo(b));
 	}
 	
-	public void SetBid (Bid bid)
+	public void SetBid(Bid bid)
 	{
 		this.bid = bid;
 	}
+
+    public void SetBid(int bid)
+    {
+        SetBid((Bid) bid);
+    }
 }

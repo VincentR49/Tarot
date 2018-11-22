@@ -6,10 +6,12 @@ using UnityEngine;
 public class BidManager : ProcessManager 
 {
 	public PlayerList players;
+    [Tooltip("Event raised when the human player has to bid")]
+    public float limitAnswerTimeSec = 5;
 	private Bid maxBid = Bid.None;
 	private Player bidder = null;
+    private float timeSinceBidBegin = 0f;
 
-	
 	private void Update()
 	{
 		if (status == ProcessState.Running)
@@ -19,10 +21,14 @@ public class BidManager : ProcessManager
 				CpuPlayer cpu = (CpuPlayer) bidder;
 				cpu.MakeABid(maxBid);
 			}	
-			else
-			{
-				bidder.SetBid(Bid.Garde); // temporaire
-			}
+            else
+            {
+                timeSinceBidBegin += Time.deltaTime;
+                if (timeSinceBidBegin > limitAnswerTimeSec)
+                {
+                    bidder.SetBid (Bid.Pass);
+                }
+            }
 			Bid currentBid = bidder.CurrentBid;
 			if (currentBid != Bid.None)
 			{	
@@ -36,8 +42,8 @@ public class BidManager : ProcessManager
 				}
 				else
 				{
-					bidder = players.GetNext(bidder); 
-				}
+                    SelectBidder (players.GetNext(bidder));
+                }
 			}
 		}
 	}
@@ -49,12 +55,7 @@ public class BidManager : ProcessManager
 		ResetBids();
 		maxBid = Bid.None;	
 		Player dealer = players.GetDealer();
-		if (dealer == null)
-		{
-			Debug.Log("No dealer has been choosen. Bidding canceled");
-			return;
-		}	
-		bidder = players.GetNext(dealer);
+        SelectBidder (players.GetNext(dealer));
 	}
 	
 	
@@ -62,9 +63,18 @@ public class BidManager : ProcessManager
 	{
 		if (maxBid >= Bid.Prise)
 		{
-			bidder.IsTaker = true;
+			foreach (Player p in players.Items)
+            {
+                if (p.CurrentBid == maxBid)
+                {
+                    p.IsTaker = true;
+                    Debug.Log("Player " + p.name + " is taker.");
+                    break;
+                }
+            }
 		}
-		base.FinishProcess();
+        Debug.Log("Bidding finished.");
+        base.FinishProcess();
 	}
 	
 	
@@ -87,4 +97,11 @@ public class BidManager : ProcessManager
 		}
 		return true;
 	}
+
+
+    private void SelectBidder(Player newBidder)
+    {
+        bidder = newBidder;
+        timeSinceBidBegin = 0f;
+    }
 }

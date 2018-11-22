@@ -2,11 +2,12 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Player Generic")]
-public class Player : ScriptableObject
+public abstract class Player : ScriptableObject
 {
 	public new String name = "Player";
 	public int score = 0;
-	private Hand hand;
+	public bool IsDealer { get; set; )
+	public Hand Hand { get; }
 	private ScoringPile scoringPile;
 	
 	// think about some stats
@@ -20,12 +21,10 @@ public class Player : ScriptableObject
 	
 	public void PrepareForNewHand()
 	{
-		hand = new Hand();
-		scoringPile = new ScoringPile();
+		hand = Instanciate(Hand);
+		scoringPile = Instanciate(ScoringPile);
+		IsDealer = false;
 	}
-	
-	
-	public Hand GetHand() => hand;
 	
 	// can save other stats
 	// game won / lost etc / nombre de prise, niveau des prises...

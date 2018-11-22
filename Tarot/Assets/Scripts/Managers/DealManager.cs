@@ -9,12 +9,10 @@ public class DealManager : MonoBehaviour
 	public Deck standardDeck;
     [Tooltip("Reference to the full standard deck")]
     public PlayerList players;
-    [Tooltip("Reference to the global dealer")]
-    public Player dealer;
 	[Tooltip("Reference to the global dog")]
 	public Dog dog;
 	private Deck deck;
-	
+	private Player dealer;
 	
 	private void PrepareDeck()
 	{
@@ -62,7 +60,7 @@ public class DealManager : MonoBehaviour
 	{
 		System.Random rnd = new System.Random();
 		int dealerIndex = rnd.Next(0, players.Count-1);
-		dealer = players.Items[dealerIndex];
+		SelectNewDealer (players.Items[dealerIndex]);
 		Debug.Log("The dealer was chosen randomly: " + dealer.name);
 	}
 	
@@ -70,7 +68,7 @@ public class DealManager : MonoBehaviour
 	// We get the next player in the list
 	public void SelectNextDealer()
 	{
-		dealer = players.GetNext(dealer);
+		SelectNewDealer (players.GetNext(dealer));
 		Debug.Log("The next dealer is: " + dealer.name);
 	}
 	
@@ -100,7 +98,7 @@ public class DealManager : MonoBehaviour
 		}
 		else
 		{
-			player.GetHand().Add(card);
+			player.Hand.Add(card);
 			return true;
 		}
 	}
@@ -136,5 +134,15 @@ public class DealManager : MonoBehaviour
 	{
 		int nDeal = (nDeck - nDog) / nCard;
 		return Utils.GetRandomUniqueIndexes(nDog, 2, nDeal-2);
+	}
+	
+	
+	private void SelectNewDealer(Player player)
+	{
+		if (dealer != null)
+		{
+			dealer.IsDealer = false;
+		}
+		player.IsDealer = true;
 	}
 }

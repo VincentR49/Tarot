@@ -29,6 +29,7 @@ public class PlayersDisplay : MonoBehaviour {
         if (player != null && player.Hand != null)
         {
             sb.AppendLine(player.name + ":");
+			sb.AppendLine("Bid :" + player.CurrentBid);
             sb.AppendLine("(" + player.Hand.Count + " cards)");
             sb.AppendLine(player.Hand.ToString());
         }

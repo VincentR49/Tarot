@@ -48,4 +48,14 @@ public class PlayerList : RuntimeList<Player>
 		}
 		return null;
 	}
+	
+	
+	public Player GetTaker()
+	{
+		foreach (Player p in Items)
+		{
+			if (p.IsTaker) return p;
+		}
+		return null;
+	}
 }

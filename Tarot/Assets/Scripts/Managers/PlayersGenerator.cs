@@ -4,23 +4,23 @@ using UnityEngine;
 
 // Met à jour la liste des joueurs
 // Réinitialise les scores des joueurs
-public class PlayersGenerator : MonoBehaviour {
-
+public class PlayersGenerator : ProcessManager 
+{
     [Tooltip("Reference to the full bank of players")]
     public PlayerList playersBank;
-    
     [Tooltip("Reference to the current players")]
     public PlayerList players;
-
     public IntVariable nPlayer;
 	
 
-    public void Generate()
+    public override void StartProcess()
     {
         Debug.Log("Player generation: " + nPlayer.Value);
+		base.StartProcess();
         players.Clear();
         GeneratePlayers();
 		PreparePlayersForNewGame();
+		FinishProcess();
     }
 	
 	

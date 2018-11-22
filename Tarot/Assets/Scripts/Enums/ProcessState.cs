@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Bidding
+public enum ProcessState
 {
-	Pass,
-	Prise,
-	Garde,
-	GardeSans,
-	GardeContre
+	NotStarted,
+	Running,
+	Finished,
 }

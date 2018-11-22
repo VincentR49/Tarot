@@ -90,7 +90,7 @@ public class DealManager : ProcessManager
 	
 	private void SortPlayersHand()
 	{
-		foreach (Player p in players.Item)
+		foreach (Player p in players.Items)
 		{
 			p.SortHand();
 		}
@@ -122,7 +122,7 @@ public class DealManager : ProcessManager
 	}
 	
 	
-	private bool GiveCardsTo(Player player, int nCard)
+	private void GiveCardsTo(Player player, int nCard)
 	{
 		for (int i = 0; i < nCard; i++)
 		{

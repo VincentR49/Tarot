@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayersGenerator))]
@@ -19,18 +20,21 @@ public class GameManager : MonoBehaviour
         ProcessManager playersGenerator = GetComponent<PlayersGenerator>();
 		ProcessManager dealManager = GetComponent<DealManager>();
 		ProcessManager bidManager = GetComponent<BidManager>();
-		
-		// Dictionary of process
-		gameProcesses = new Dictionary<GamePhase,Process>();
-		gameProcesses.Add (GamePhase.PlayerPreparation, playersGenerator);
-		gameProcesses.Add (GamePhase.Dealing, dealManager);
-		gameProcesses.Add (GamePhase.Bidding, bidManager);
+
+        // Dictionary of process
+        gameProcesses = new Dictionary<GamePhase, ProcessManager>
+        {
+            { GamePhase.PlayerPreparation, playersGenerator },
+            { GamePhase.Dealing, dealManager },
+            { GamePhase.Bidding, bidManager }
+        };
     }
 
 	
     private void Start()
     {
-        //NewGame();
+        ChangeGamePhase(GamePhase.None);
+        NewGame();
     }
 
 	
@@ -66,8 +70,7 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log("Change Game Phase: " + newPhase);
 		gamePhase.Value = newPhase;
-		currentProcess = gamePhaseProcess[newPhase];
-		if (currentProcess != null)
+		if (gameProcesses.TryGetValue(newPhase, out currentProcess))
 		{
 			currentProcess.StartProcess();
 		}
@@ -82,7 +85,7 @@ public class GameManager : MonoBehaviour
 			case GamePhase.PlayerPreparation: return GamePhase.Dealing;
 			case GamePhase.Dealing: return GamePhase.Bidding;
 			case GamePhase.Bidding:
-				if (players.IsTaker() == null)
+				if (players.GetTaker() == null)
 				{
 					return GamePhase.Dealing;
 				}

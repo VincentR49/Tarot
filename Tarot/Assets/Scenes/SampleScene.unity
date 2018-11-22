@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 17098300}
   - component: {fileID: 17098301}
   - component: {fileID: 17098302}
+  - component: {fileID: 17098303}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -156,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nPlayer: {fileID: 11400000, guid: 9fcc094926cb7554f88c1f69b5b34618, type: 2}
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  gamePhase: {fileID: 11400000, guid: 3a0585a0842f6c7479044f410e04968c, type: 2}
 --- !u!114 &17098301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +186,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardDeck: {fileID: 11400000, guid: 81029d16279834f49b1670cedfd6c6f1, type: 2}
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
-  dealer: {fileID: 11400000, guid: 5ba072a363f3ec94fa518b75c1d2675b, type: 2}
   dog: {fileID: 11400000, guid: e006c267139ea3740821db1f7caeafb2, type: 2}
+--- !u!114 &17098303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17098298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86a19f1da19fbd408dfc98a310b327d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
 --- !u!1 &56369971
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,17 +5,17 @@ using UnityEngine;
 // Classe générique pour la gestion des process du jeu
 public abstract class ProcessManager : MonoBehaviour 
 {
-	private ProcessState status = ProcessState.NotStarted;
+	protected ProcessState status = ProcessState.NotStarted;
 	public ProcessState GetStatus() => status;
-	public void StartProcess()
+	public virtual void StartProcess()
 	{
 		status = ProcessState.Running;
 	}
-	public void FinishProcess()
+	public virtual void FinishProcess()
 	{
 		status = ProcessState.Finished;
 	}
-	public void InitProcess()
+	public virtual void InitProcess()
 	{
 		status = ProcessState.NotStarted;
 	}

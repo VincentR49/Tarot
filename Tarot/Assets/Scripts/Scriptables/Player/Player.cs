@@ -9,9 +9,9 @@ public class Player : ScriptableObject
 	
 	// Properties
 	public bool IsDealer { get; set; }
-	public bool IsTaker { get; get; }
-	public CardList Hand { get; }
-	public CardList ScoringPile { get; }
+	public bool IsTaker { get; set; }
+	public CardList Hand { get; set; }
+	public CardList ScoringPile { get; set; }
 	public Bid CurrentBid => bid;
 	private Bid bid = Bid.None;
 	
@@ -24,8 +24,8 @@ public class Player : ScriptableObject
 	
 	public void PrepareForNewHand()
 	{
-		hand = new CardList();
-		scoringPile = new CardList();
+		Hand = new CardList();
+		ScoringPile = new CardList();
 		IsDealer = false;
 		IsTaker = false;
 	}

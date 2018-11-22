@@ -16,7 +16,7 @@ public class BidManager : ProcessManager
 		{
 			if (bidder is CpuPlayer)
 			{
-				CpuPlayer cpu = (CpuPlayer) currentBider;
+				CpuPlayer cpu = (CpuPlayer) bidder;
 				cpu.MakeABid(maxBid);
 			}	
 			else
@@ -58,9 +58,9 @@ public class BidManager : ProcessManager
 	}
 	
 	
-	private override void FinishProcess()
+	public override void FinishProcess()
 	{
-		if (maxBid >= Bid.Petite)
+		if (maxBid >= Bid.Prise)
 		{
 			bidder.IsTaker = true;
 		}
@@ -70,7 +70,7 @@ public class BidManager : ProcessManager
 	
 	private void ResetBids()
 	{
-		foreach (Player p in players.Item)
+		foreach (Player p in players.Items)
 		{
 			p.SetBid(Bid.None);
 			p.IsTaker = false;
@@ -80,10 +80,10 @@ public class BidManager : ProcessManager
 	
 	private bool IsBiddingFinished()
 	{
-		if (maxBid == GardeContre) return true;
-		foreach (Players p in players)
+		if (maxBid == Bid.GardeContre) return true;
+		foreach (Player p in players.Items)
 		{
-			if (p.CurrentBidding == Bid.None) return false;
+			if (p.CurrentBid == Bid.None) return false;
 		}
 		return true;
 	}

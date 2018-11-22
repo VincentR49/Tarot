@@ -21,8 +21,8 @@ public abstract class Player : ScriptableObject
 	
 	public void PrepareForNewHand()
 	{
-		hand = Instanciate(Hand);
-		scoringPile = Instanciate(ScoringPile);
+		hand = new Hand();
+		scoringPile = new ScoringPile();
 		IsDealer = false;
 	}
 	

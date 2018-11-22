@@ -38,4 +38,14 @@ public class PlayerList : RuntimeList<Player>
 			return (index >= Count) ? Items[0] : Items[index];
 		}
 	}
+	
+	// Return null if no dealer has been found
+	public Player GetDealer()
+	{
+		foreach (Player p in Items)
+		{
+			if (p.IsDealer) return p;
+		}
+		return null;
+	}
 }

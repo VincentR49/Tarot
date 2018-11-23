@@ -46,7 +46,7 @@ public class Player : ScriptableObject
 	
 	public void SetBid(Bid bid, Bid minBid)
 	{
-		if (bid <= minBid)
+		if (bid <= minBid && bid > Bid.Pass)
 		{
 			Debug.Log("Cannot make bid inferior or egal to the min bid");
 			SetBid(Bid.Pass);
@@ -56,10 +56,4 @@ public class Player : ScriptableObject
 			SetBid(bid);
 		}
 	}
-	
-	
-    public void SetBid(int bid, int minBid)
-    {
-		SetBid((Bid) bid, (Bid) minBid);
-    }
 }

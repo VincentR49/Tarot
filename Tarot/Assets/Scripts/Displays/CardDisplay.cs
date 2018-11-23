@@ -19,12 +19,11 @@ public class CardDisplay : MonoBehaviour
 	
 	private void Start()
 	{
-		Debug.Log(card);
 		UpdateSprite();
 	}
 	
 	
-	private void UpdateSprite()
+	public void UpdateSprite()
 	{
 		if (flipped)
 		{

@@ -12,7 +12,8 @@ public class PlayersGenerator : ProcessManager
     [Tooltip("Reference to the current players")]
     public PlayerList players;
     public IntVariable nPlayer;
-	
+    public GameEvent playersCreatedEvent;
+
     public override void StartProcess()
     {
 		base.StartProcess();
@@ -21,9 +22,15 @@ public class PlayersGenerator : ProcessManager
 		PreparePlayersForNewGame();
 		FinishProcess();
     }
-	
-	
-	private void GeneratePlayers()
+
+
+    public override void FinishProcess()
+    {
+        playersCreatedEvent.Raise();
+        base.FinishProcess();
+    }
+
+    private void GeneratePlayers()
 	{
 		// le human player est ajouté en premier
 		Player hPlayer = playersBank.GetFirstHumanPlayer();

@@ -39,12 +39,13 @@ public class PlayersDisplay : MonoBehaviour {
             }
             sb.AppendLine(player.name + suffix);
             sb.AppendLine("Bid :" + player.CurrentBid);
-
+            /*
             if (player.Hand != null)
             {
                 sb.AppendLine("(" + player.Hand.Count + " cards)");
                 sb.AppendLine(player.Hand.ToString());
             }
+            */
         }
         return sb.ToString();
     }

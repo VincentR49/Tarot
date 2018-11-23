@@ -1,44 +1,66 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class BidButtonsDisplay : MonoBehaviour {
+public class BidButtonsDisplay : CanvasGroupDisplay
+{
+    public PlayerList players;
+    public Button passButton;
+    public Button priseButton;
+    public Button gardeButton;
+    public Button gardeSansButton;
+    public Button gardeContreButton;
 
-   
-    private CanvasGroup canvasGroup;
-    public GamePhaseVariable gamePhase;
-    bool visible;
-
-    private void Awake()
+    private new void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
+        base.Awake();
         Hide();
     }
 
-    private void Update()
+    private void Start()
     {
-        if (gamePhase.Value == GamePhase.Bidding)
-        {
-            if (!visible) Show();
-        }
-        else
-        {
-            if (visible) Hide();
-        }
+        passButton.onClick.AddListener(() => SetBid(Bid.Pass));
+        priseButton.onClick.AddListener(() => SetBid(Bid.Prise));
+        gardeButton.onClick.AddListener(() => SetBid(Bid.Garde));
+        gardeSansButton.onClick.AddListener(() => SetBid(Bid.GardeSans));
+        gardeContreButton.onClick.AddListener(() => SetBid(Bid.GardeContre));
     }
 
-    public void Hide()
+
+    private void SetBid(Bid bid)
     {
-        canvasGroup.alpha = 0f;
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.interactable = false;
-        visible = false;
+        Player player = players.GetFirstHumanPlayer();
+        player.SetBid(bid);
+        Hide();
     }
 
-    public void Show()
+
+    public override void Show()
     {
-        canvasGroup.alpha = 1f; 
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.interactable = true;
-        visible = true;
+        EnableButtons();
+        base.Show();
+    }
+
+    private void EnableButtons()
+    {
+        Bid maxBid = GetCurrentMaxBid();
+        passButton.interactable = true;
+        priseButton.interactable = maxBid < Bid.Prise;
+        gardeButton.interactable = maxBid < Bid.Garde;
+        gardeSansButton.interactable = maxBid < Bid.GardeSans;
+        gardeContreButton.interactable = maxBid < Bid.GardeContre;
+    }
+
+
+    private Bid GetCurrentMaxBid()
+    {
+        Bid maxBid = Bid.None;
+        foreach (Player p in players.Items)
+        {
+            if (p.CurrentBid > maxBid)
+            {
+                maxBid = p.CurrentBid;
+            }
+        }
+        return maxBid;
     }
 }

@@ -10,9 +10,12 @@ public class CpuPlayer : Player
 	public void MakeABid(Bid minBid)
 	{
 		// Intelligence artificielle à développer
+        /*
 		System.Random rnd = new System.Random();
 		Bid bid = (Bid) rnd.Next(2, (int)Bid.GardeContre);
 		SetBid(bid, minBid);
+        */
+        SetBid(Bid.Pass);
 	}
 	
 	public CardList ChooseCardsForDog(int nCard)

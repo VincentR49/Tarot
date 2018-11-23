@@ -26,4 +26,19 @@ public class CardList : List<Card>
 		}
 		return points;
 	}
+
+
+    public bool IsEqualTo(CardList other)
+    {
+        if (other == null) return false;
+        if (Count != other.Count) return false;
+        for (int i = 0; i < Count; i++)
+        {
+            if (!this[i].IsEqualTo(other[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }

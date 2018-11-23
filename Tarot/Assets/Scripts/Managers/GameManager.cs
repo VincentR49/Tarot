@@ -33,11 +33,16 @@ public class GameManager : MonoBehaviour
 	
     private void Start()
     {
-        ChangeGamePhase(GamePhase.None);
-        NewGame();
+        InitGame();
     }
 
 	
+
+    private void InitGame()
+    {
+        ChangeGamePhase(GamePhase.None);
+    }
+
 	private void Update()
 	{
 		if (currentProcess != null 
@@ -98,8 +103,8 @@ public class GameManager : MonoBehaviour
 					return GamePhase.DogShowing;
 				}
 			case GamePhase.DogShowing: return GamePhase.DogMaking;
-			case GamePhase.DogMaking: return GamePhase.Play;
-			case GamePhase.Play: return GamePhase.Scoring;
+			//case GamePhase.DogMaking: return GamePhase.Play;
+			//case GamePhase.Play: return GamePhase.Scoring;
 			default: return GamePhase.None;
 		}
 	}

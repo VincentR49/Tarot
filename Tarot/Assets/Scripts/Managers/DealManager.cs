@@ -6,6 +6,7 @@ using UnityEngine;
 // Séparer en dealingManager et dealerManager ?
 public class DealManager : ProcessManager
 {
+	public override string Name => "Dealing";
 	[Tooltip("Reference to the full standard deck")]
 	public Deck standardDeck;
     [Tooltip("Reference to the full standard deck")]
@@ -13,6 +14,10 @@ public class DealManager : ProcessManager
 	[Tooltip("Reference to the global dog")]
 	public Dog dog;
 	private Deck deck;
+	
+
+	private static int GetNumberOfCardsToDeal(int nPlayer) => (nPlayer <= 3) ? 4 : 3;
+	private static int GetNumberOfCardsInDog(int nPlayer) => (nPlayer <= 4) ? 6 : 3
 	
 	
 	public override void StartProcess()
@@ -44,6 +49,7 @@ public class DealManager : ProcessManager
 			newDealer = players.GetNext(lastDealer);
 		}
 		newDealer.IsDealer = true;
+		Debug.Log("Dealer selection: " + nearDealer.name);
 	}
 	
 	
@@ -80,7 +86,7 @@ public class DealManager : ProcessManager
             securityCount++;
             if (securityCount > 100)
             {
-                Debug.Log("An error occured during card dealing. Please make sure the number of card in the deck is correct.");
+                Debug.LogError("Please make sure the number of card in the deck is correct.");
 				return;
             }
 		}
@@ -117,7 +123,7 @@ public class DealManager : ProcessManager
 		}
 		else
 		{
-			Debug.Log("No card left to give to the player");
+			Debug.LogError("No card left to give to the player");
 		}
 	}
 	
@@ -129,10 +135,6 @@ public class DealManager : ProcessManager
 			GiveCardTo(player);
 		}
 	}
-	
-	
-	private static int GetNumberOfCardsToDeal(int nPlayer) => (nPlayer <= 3) ? 4 : 3;
-	private static int GetNumberOfCardsInDog(int nPlayer) => (nPlayer <= 4) ? 6 : 3;
 
 	
 	// Define when to put cards in Dog

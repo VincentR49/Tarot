@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlayersGenerator))]
 [RequireComponent(typeof(DealManager))]
 [RequireComponent(typeof(BidManager))]
+[RequireComponent(typeof(DogMakingManager))]
+[RequireComponent(typeof(DogShowingManager))]
 public class GameManager : MonoBehaviour
 {
 	public IntVariable nPlayer;
@@ -13,20 +15,18 @@ public class GameManager : MonoBehaviour
 	public GamePhaseVariable gamePhase;
 	private Dictionary<GamePhase,ProcessManager> gameProcesses;
 	private ProcessManager currentProcess;
-	
+
 	
     private void Awake()
     {
-        ProcessManager playersGenerator = GetComponent<PlayersGenerator>();
-		ProcessManager dealManager = GetComponent<DealManager>();
-		ProcessManager bidManager = GetComponent<BidManager>();
-
         // Dictionary of process
         gameProcesses = new Dictionary<GamePhase, ProcessManager>
         {
-            { GamePhase.PlayerPreparation, playersGenerator },
-            { GamePhase.Dealing, dealManager },
-            { GamePhase.Bidding, bidManager }
+            { GamePhase.PlayerPreparation, GetComponent<PlayersGenerator>() },
+            { GamePhase.Dealing, GetComponent<DealManager>() },
+            { GamePhase.Bidding, GetComponent<BidManager>() },
+			{ GamePhase.DogShowing, GetComponent<DogShowingManager>() },
+			{ GamePhase.DogMaking, GetComponent<DogMakingManager>() }
         };
     }
 
@@ -70,6 +70,11 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log("Change Game Phase: " + newPhase);
 		gamePhase.Value = newPhase;
+		if (currentProcess != null)
+		{
+			currentProcess.ResetProcess();
+			currentProcess = null;
+		}
 		if (gameProcesses.TryGetValue(newPhase, out currentProcess))
 		{
 			currentProcess.StartProcess();
@@ -91,8 +96,11 @@ public class GameManager : MonoBehaviour
 				}
 				else
 				{
-					return GamePhase.DogMaking;
+					return GamePhase.DogShowing;
 				}
+			case GamePhase.DogShowing: return GamePhase.DogMaking;
+			case GamePhase.DogMaking: return GamePhase.Play;
+			case GamePhase.Play: return GamePhase.Scoring;
 			default: return GamePhase.None;
 		}
 	}

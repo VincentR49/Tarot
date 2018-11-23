@@ -6,7 +6,7 @@ public class Player : ScriptableObject
 {
 	public new String name = "Player";
 	public int score = 0;
-	
+	public int teamIndex;
 	// Properties
 	public bool IsDealer { get; set; }
 	public bool IsTaker { get; set; }
@@ -37,13 +37,29 @@ public class Player : ScriptableObject
 		Hand.Sort((a,b) => -1 * a.CompareTo(b));
 	}
 	
+	
 	public void SetBid(Bid bid)
 	{
 		this.bid = bid;
 	}
 
-    public void SetBid(int bid)
+	
+	public void SetBid(Bid bid, Bid minBid)
+	{
+		if (bid <= minBid)
+		{
+			Debug.Log("Cannot make bid inferior or egal to the min bid");
+			SetBid(Bid.Pass);
+		}
+		else
+		{
+			SetBid(bid);
+		}
+	}
+	
+	
+    public void SetBid(int bid, int minBid)
     {
-        SetBid((Bid) bid);
+		SetBid((Bid) bid, (Bid) minBid);
     }
 }

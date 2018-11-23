@@ -8,6 +8,7 @@ public enum GamePhase
 	PlayerPreparation,
 	Dealing,
 	Bidding,
+	DogShowing,
 	DogMaking,
 	Play,
 	Scoring

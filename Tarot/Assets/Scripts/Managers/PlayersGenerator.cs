@@ -6,16 +6,15 @@ using UnityEngine;
 // Réinitialise les scores des joueurs
 public class PlayersGenerator : ProcessManager 
 {
+	public override string Name => "Players Creation";
     [Tooltip("Reference to the full bank of players")]
     public PlayerList playersBank;
     [Tooltip("Reference to the current players")]
     public PlayerList players;
     public IntVariable nPlayer;
 	
-
     public override void StartProcess()
     {
-        Debug.Log("Player generation: " + nPlayer.Value);
 		base.StartProcess();
         players.Clear();
         GeneratePlayers();

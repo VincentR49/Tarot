@@ -5,13 +5,18 @@ using UnityEngine;
 // Gère le système d'enchère
 public class BidManager : ProcessManager 
 {
+	public override string Name => "Bidding";
 	public PlayerList players;
     [Tooltip("Event raised when the human player has to bid")]
-    public float limitAnswerTimeSec = 5;
+	public GameEvent humanPlayerReadyToBid;
+	[Tooltip("Event raised when the human player cannot bid anymore")]
+	public GameEvent humanPlayerBidAborted;
+    public float limitAnswerTimeSec = 10;
 	private Bid maxBid = Bid.None;
 	private Player bidder = null;
     private float timeSinceBidBegin = 0f;
 
+	
 	private void Update()
 	{
 		if (status == ProcessState.Running)
@@ -21,12 +26,13 @@ public class BidManager : ProcessManager
 				CpuPlayer cpu = (CpuPlayer) bidder;
 				cpu.MakeABid(maxBid);
 			}	
-            else
+            else // human player
             {
                 timeSinceBidBegin += Time.deltaTime;
                 if (timeSinceBidBegin > limitAnswerTimeSec)
                 {
                     bidder.SetBid (Bid.Pass);
+					humanPlayerBidAborted.Raise();
                 }
             }
 			Bid currentBid = bidder.CurrentBid;
@@ -73,7 +79,6 @@ public class BidManager : ProcessManager
                 }
             }
 		}
-        Debug.Log("Bidding finished.");
         base.FinishProcess();
 	}
 	
@@ -90,7 +95,6 @@ public class BidManager : ProcessManager
 	
 	private bool IsBiddingFinished()
 	{
-		if (maxBid == Bid.GardeContre) return true;
 		foreach (Player p in players.Items)
 		{
 			if (p.CurrentBid == Bid.None) return false;
@@ -103,5 +107,9 @@ public class BidManager : ProcessManager
     {
         bidder = newBidder;
         timeSinceBidBegin = 0f;
+		if (bidder is HumanPlayer)
+		{
+			humanPlayerReadyToBid.Raise();
+		}
     }
 }

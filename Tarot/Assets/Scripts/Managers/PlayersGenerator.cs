@@ -6,7 +6,7 @@ using UnityEngine;
 // Réinitialise les scores des joueurs
 public class PlayersGenerator : ProcessManager 
 {
-	public override string Name => "Players Creation";
+	protected override string Name => "Players Creation";
     [Tooltip("Reference to the full bank of players")]
     public PlayerList playersBank;
     [Tooltip("Reference to the current players")]

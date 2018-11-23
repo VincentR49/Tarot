@@ -5,7 +5,7 @@ using UnityEngine;
 // Génère des events pour afficher / masquer le chien
 public class DogShowingManager : ProcessManager 
 {
-	public override string Name => "DogShowing";
+	protected override string Name => "DogShowing";
 	public PlayerList players;
 	public GameEvent showDogEvent;
 	public GameEvent hideDogEvent;
@@ -17,7 +17,7 @@ public class DogShowingManager : ProcessManager
 	{
 		if (status == ProcessState.Running)
 		{
-			showDogCounter += Time.DeltaTime;
+            showDogCounter += Time.deltaTime;
 			if (showDogCounter > showDogDurationSec)
 			{
 				FinishProcess();
@@ -41,7 +41,7 @@ public class DogShowingManager : ProcessManager
 	}
 	
 	
-	public override void FinishProcess();
+	public override void FinishProcess()
 	{
 		base.FinishProcess();
 		hideDogEvent.Raise();

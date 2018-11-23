@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1755035877912296}
+  m_IsPrefabAsset: 1
+--- !u!1 &1755035877912296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4033762136997342}
+  - component: {fileID: 114773578331762010}
+  - component: {fileID: 114174458346293478}
+  - component: {fileID: 114494074357195876}
+  - component: {fileID: 114099347509087104}
+  - component: {fileID: 114102557424426724}
+  - component: {fileID: 114508439799562842}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4033762136997342
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114099347509087104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86a19f1da19fbd408dfc98a310b327d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  humanPlayerReadyToBid: {fileID: 11400000, guid: 24bb321dcd6d78b4e97de400ab7fe411,
+    type: 2}
+  humanPlayerBidAborted: {fileID: 11400000, guid: 315fbf8c29a904f4ca2872bd01e4dfde,
+    type: 2}
+  limitAnswerTimeSec: 10
+--- !u!114 &114102557424426724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a45321039d45a43814a8f1a2e5dbb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  showDogEvent: {fileID: 11400000, guid: 4d172396993033f4fb45ce3b7acb1b33, type: 2}
+  hideDogEvent: {fileID: 11400000, guid: 91b836fc31ff32640a82229c32b72599, type: 2}
+  showDogDurationSec: 5
+--- !u!114 &114174458346293478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ed7fb7db29f1e4ca3ee7598b6e0ec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playersBank: {fileID: 11400000, guid: f3b608ab2815345489337e9551164589, type: 2}
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  nPlayer: {fileID: 11400000, guid: 9fcc094926cb7554f88c1f69b5b34618, type: 2}
+--- !u!114 &114494074357195876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a73deb8ba4f2348bb36ac24fb69170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardDeck: {fileID: 11400000, guid: 81029d16279834f49b1670cedfd6c6f1, type: 2}
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  dog: {fileID: 11400000, guid: e006c267139ea3740821db1f7caeafb2, type: 2}
+--- !u!114 &114508439799562842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2569229d57dda9b4a86b4a7728e31171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  dog: {fileID: 11400000, guid: e006c267139ea3740821db1f7caeafb2, type: 2}
+  makeDogTimeLimitSec: 0
+--- !u!114 &114773578331762010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b015cc6b1c45343a609639b89225ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nPlayer: {fileID: 11400000, guid: 9fcc094926cb7554f88c1f69b5b34618, type: 2}
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  gamePhase: {fileID: 11400000, guid: 3a0585a0842f6c7479044f410e04968c, type: 2}

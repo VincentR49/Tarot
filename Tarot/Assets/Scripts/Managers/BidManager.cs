@@ -5,7 +5,7 @@ using UnityEngine;
 // Gère le système d'enchère
 public class BidManager : ProcessManager 
 {
-	public override string Name => "Bidding";
+    protected override string Name => "Bidding";
 	public PlayerList players;
     [Tooltip("Event raised when the human player has to bid")]
 	public GameEvent humanPlayerReadyToBid;

@@ -6,7 +6,7 @@ using UnityEngine;
 // Séparer en dealingManager et dealerManager ?
 public class DealManager : ProcessManager
 {
-	public override string Name => "Dealing";
+	protected override string Name => "Dealing";
 	[Tooltip("Reference to the full standard deck")]
 	public Deck standardDeck;
     [Tooltip("Reference to the full standard deck")]
@@ -14,10 +14,9 @@ public class DealManager : ProcessManager
 	[Tooltip("Reference to the global dog")]
 	public Dog dog;
 	private Deck deck;
-	
 
 	private static int GetNumberOfCardsToDeal(int nPlayer) => (nPlayer <= 3) ? 4 : 3;
-	private static int GetNumberOfCardsInDog(int nPlayer) => (nPlayer <= 4) ? 6 : 3
+    private static int GetNumberOfCardsInDog(int nPlayer) => (nPlayer <= 4) ? 6 : 3;
 	
 	
 	public override void StartProcess()
@@ -49,7 +48,7 @@ public class DealManager : ProcessManager
 			newDealer = players.GetNext(lastDealer);
 		}
 		newDealer.IsDealer = true;
-		Debug.Log("Dealer selection: " + nearDealer.name);
+		Debug.Log("Dealer selection: " + newDealer.name);
 	}
 	
 	

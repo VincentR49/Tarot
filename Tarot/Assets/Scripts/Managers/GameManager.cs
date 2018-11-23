@@ -68,7 +68,6 @@ public class GameManager : MonoBehaviour
 	
 	public void ChangeGamePhase(GamePhase newPhase)
 	{
-		Debug.Log("Change Game Phase: " + newPhase);
 		gamePhase.Value = newPhase;
 		if (currentProcess != null)
 		{

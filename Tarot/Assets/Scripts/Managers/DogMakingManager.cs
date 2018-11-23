@@ -6,10 +6,10 @@ using UnityEngine;
 // Permet d'échanger ses cartes avec les cartes du chien si le niveau de prise le permet
 public class DogMakingManager : ProcessManager 
 {
-	public override string Name => "DogMaking";
+	protected override string Name => "DogMaking";
 	public PlayerList players;
 	public Dog dog;
-	public float makeDogTimeLimitSec = 60; // security (à supprimer)
+	public float makeDogTimeLimitSec = 0; // security (à supprimer)
 	
 	private float startMakeDogTimer = 0f;
 	private Player Taker => players.GetTaker();
@@ -24,12 +24,12 @@ public class DogMakingManager : ProcessManager
 			if (Taker is CpuPlayer)
 			{
 				CpuPlayer cpuPlayer = (CpuPlayer) Taker;
-				cardsToPutInDog = cpuPlayer.ChooseCardsForDog(nDogCards);
+				cardsToPutInDog = cpuPlayer.ChooseCardsForDog(nDogCard);
 				PutCardsIntoDog();
 			}	
 			else // human player
 			{
-				startMakeDogTimer += Time.DeltaTime;
+				startMakeDogTimer += Time.deltaTime;
 				if (startMakeDogTimer > makeDogTimeLimitSec)
 				{
 					cardsToPutInDog = initDogCards;
@@ -98,10 +98,10 @@ public class DogMakingManager : ProcessManager
 		if (cardsToPutInDog.Count == nDogCard)
 		{
 			// à implémenter
-			foreach (Card card in cardsToPutIntoDog)
+			foreach (Card card in cardsToPutInDog)
 			{
 				Taker.Hand.Remove(card);
-				Dog.Add(card);
+				dog.Add(card);
 			}
 			FinishProcess();
 		}

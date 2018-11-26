@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-public abstract class RunTimeCardList : RuntimeList<Card>
+[CreateAssetMenu(menuName = "Scriptable Objects/Runtime Card List")]
+public class RunTimeCardList : RuntimeList<Card>
 {
     public override string ToString()
     {

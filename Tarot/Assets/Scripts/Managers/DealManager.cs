@@ -22,8 +22,9 @@ public class DealManager : ProcessManager
 	public override void StartProcess()
 	{
 		base.StartProcess();
-		dog.Clear(); // security
-		SelectDealer();
+		dog.Clear(); 
+        CleanPlayersHand();
+        SelectDealer();
 		PrepareDeck();
 		DealCards();
 		SortPlayersHand();
@@ -31,6 +32,14 @@ public class DealManager : ProcessManager
 	}
 	
 	
+    private void CleanPlayersHand()
+    {
+        foreach (Player player in players.Items)
+        {
+            player.PrepareForNewHand();
+        }
+    }
+
 	private void SelectDealer()
 	{
 		Player lastDealer = players.GetDealer();

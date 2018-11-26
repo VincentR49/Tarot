@@ -40,8 +40,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: a74bc22092aab1545a61112ceac310af, type: 2}
   cardPrefab: {fileID: 1694053415996350, guid: 9d8e7ad607c0db24080538fed088b01d, type: 2}
-  pixelBetweenCard: 20
-  hideCards: 0
+  pixelBetweenCard: 25
+  hideCpuCards: 1
 --- !u!224 &224949847113955812
 RectTransform:
   m_ObjectHideFlags: 1

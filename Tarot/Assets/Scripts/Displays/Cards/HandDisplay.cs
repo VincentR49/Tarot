@@ -10,7 +10,9 @@ public class HandDisplay : MonoBehaviour
     public Player player;
     public GameObject cardPrefab;
     public int pixelBetweenCard = 10;
-    public bool hideCards = false;
+    public bool hideCpuCards = true;
+
+    private bool HideCards => (player is CpuPlayer) && hideCpuCards;
     private List<GameObject> cardObjects;
     private CardList currentHand = new CardList();
 
@@ -51,7 +53,7 @@ public class HandDisplay : MonoBehaviour
             cardObject.transform.localPosition = new Vector2(startPixel + count * pixelBetweenCard, 0);
             CardDisplay cardDisplay = cardObject.GetComponent<CardDisplay>();
             cardDisplay.card = card;
-            cardDisplay.SetFlipped(hideCards);
+            cardDisplay.SetFlipped(HideCards);
             cardObjects.Add(cardObject);
             count++;
         }

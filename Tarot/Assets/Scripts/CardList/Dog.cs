@@ -8,6 +8,6 @@ public class Dog : RunTimeCardList
 	public static bool IsCardAllowedInDog(Card card, CardList hand)
 	{
 		// TODO A préciser (dépend de la main également)
-		return !(card.IsOudler || card.rank == CardRank.Roi || card.type == CardType.Trump);
+		return !(card.IsOudler() || card.rank == CardRank.Roi || card.type == CardType.Trump);
 	}
 }

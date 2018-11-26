@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Gère le système d'enchère
+// A simplifier ...
 public class BidManager : ProcessManager 
 {
     protected override string Name => "Bidding";
@@ -12,6 +13,7 @@ public class BidManager : ProcessManager
 	[Tooltip("Event raised when the human player cannot bid anymore")]
 	public GameEvent humanPlayerBidAborted;
     public float limitAnswerTimeSec = 10;
+
 	private Bid maxBid = Bid.None;
 	private Player bidder = null;
     private float timeSinceBidBegin = 0f;

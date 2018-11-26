@@ -11,73 +11,84 @@ public class DogMakingManager : ProcessManager
 	public Dog dog;
 	public RunTimeCardList cardsToPutInDog;
 	public float makeDogTimeLimitSec = 0; // security (à supprimer)
-	private float startTimer = 0f;
 	private Player Taker => players.GetTaker();
     private int nDog;
-    
-	
-	private void Update()
-	{
-		if (status == ProcessState.Running)
-		{
-			if (Taker is CpuPlayer)
-			{
-				CpuPlayer cpuPlayer = (CpuPlayer) Taker;
-				foreach (Card card in  cpuPlayer.ChooseCardsForDog(nDog))
-				{
-					cardsToPutInDog.Add(card);
-				}
-				PutCardsInDog();
-			}	
-			else // human player
-			{
-				startTimer += Time.deltaTime;
-				if (startTimer > makeDogTimeLimitSec)
-				{
-					PutCardsRandomlyInDog();
-				}
-			}
-		}
-	}
-	
-	
-	public override void StartProcess()
+    private float waitTimer = 0f;
+
+    private void Update()
+    {
+        if (status == ProcessState.Running)
+        {
+            waitTimer += Time.deltaTime;
+            if (waitTimer > makeDogTimeLimitSec)
+            {
+                PutCardsRandomlyInDog();
+            }
+        }
+    }
+
+
+    public override void StartProcess()
 	{
 		base.StartProcess();
 		cardsToPutInDog.Clear();
-        startTimer = 0f;
-		nDog = dog.Items.Count;
+        waitTimer = 0f;
+        nDog = dog.Items.Count;
         if (Taker.CurrentBid >= Bid.GardeSans)
 		{
 			FinishProcess();
 		}
 		else
 		{
-			TakeDog();
-		}
+			PutDogInHand();
+            Taker.SortHand();
+            MakeDog();
+        }
 	}
 	
 	
 	public override void FinishProcess()
 	{
-		startTimer = 0f;
 		cardsToPutInDog.Clear();
 		base.FinishProcess();
 	}
 	
 	
-	private void TakeDog()
+	private void PutDogInHand()
 	{
         foreach (Card card in dog.Items)
 		{
 			Taker.Hand.Add(card);
-		}
-		Taker.SortHand();
+		}	
         dog.Clear();
     }
 	
 	
-	public void SelectCardToPutInDog(Card card)
+    private void MakeDog()
+    {
+        if (Taker is CpuPlayer)
+        {
+            MakeCpuDog();
+        }
+        else
+        {
+            // human
+        }
+    }
+
+
+    private void MakeCpuDog()
+    {
+        CpuPlayer cpuPlayer = (CpuPlayer)Taker;
+        foreach (Card card in cpuPlayer.ChooseCardsForDog(nDog))
+        {
+            cardsToPutInDog.Add(card);
+        }
+        PutCardsInDog();
+    }
+
+
+    public void SelectCardToPutInDog(Card card)
 	{
 		if (cardsToPutInDog.Count >= dog.Count)
 		{

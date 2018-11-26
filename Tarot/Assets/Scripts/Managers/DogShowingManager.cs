@@ -10,33 +10,18 @@ public class DogShowingManager : ProcessManager
 	public GameEvent showDogEvent;
 	public GameEvent hideDogEvent;
 	public float showDogDurationSec = 5f;
-	private float showDogCounter = 0f;
 
-	
-	private void Update()
-	{
-		if (status == ProcessState.Running)
-		{
-            showDogCounter += Time.deltaTime;
-			if (showDogCounter > showDogDurationSec)
-			{
-				FinishProcess();
-			}
-		}
-	}
-	
-	
+
 	public override void StartProcess()
 	{
 		base.StartProcess();
-		showDogCounter = 0f;
 		if (players.GetTaker().CurrentBid >= Bid.GardeSans)
 		{
 			FinishProcess();
 		}
 		else
 		{
-			showDogEvent.Raise();
+            StartCoroutine(ShowAndHideDog(showDogDurationSec));
 		}
 	}
 	
@@ -46,4 +31,16 @@ public class DogShowingManager : ProcessManager
 		base.FinishProcess();
 		hideDogEvent.Raise();
 	}
+
+
+    private IEnumerator ShowAndHideDog(float waitTime)
+    {
+        showDogEvent.Raise();
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            FinishProcess();
+            break;
+        }
+    }
 }

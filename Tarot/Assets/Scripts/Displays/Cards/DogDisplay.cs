@@ -15,25 +15,38 @@ public class DogDisplay : MonoBehaviour
 
     private void Start()
     {
-        CleanDog();
+        cards = new List<GameObject>();
     }
 
 
-    private void Update()
+    public void ShowCards()
     {
-        UpdateDisplay();
+        if (flipped)
+        {
+            FlipCards();
+            flipped = false;
+        }
+        
     }
 
 
-    public void Show()
+    public void HideCards()
     {
-        flipped = false;
+        if (!flipped)
+        {
+            FlipCards();
+            flipped = true;
+        }       
     }
 
 
-    public void Hide()
+    private void FlipCards()
     {
-        flipped = true;
+        foreach (GameObject card in cards)
+        {
+            CardDisplay cardDisplay = card.GetComponent<CardDisplay>();
+            cardDisplay.FlipCard();
+        }
     }
 
 
@@ -50,15 +63,13 @@ public class DogDisplay : MonoBehaviour
     }
 
 
-    private void UpdateDisplay()
+    public void UpdateDisplay()
     {
-        // A optimiser
         CleanDog();
         if (dog == null)
         {
             return;
         }
-
         int count = 0;
         foreach (Card card in dog.Items)
         {

@@ -22,9 +22,16 @@ public class CpuPlayer : Player
 	{
 		// AI à développer
 		CardList cards = new CardList();
-		for (int i = 0; i < nCard; i++)
+		foreach (Card card in Hand)
 		{
-			cards.Add(Hand[i]);
+			if (Dog.IsCardAllowedInDog(card, Hand))
+			{
+				cards.Add(card);
+				if (cards.Count == nCard)
+				{
+					break;
+				}
+			}
 		}
 		return cards;
 	}

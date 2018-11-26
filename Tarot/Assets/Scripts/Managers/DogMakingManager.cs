@@ -9,13 +9,11 @@ public class DogMakingManager : ProcessManager
 	protected override string Name => "DogMaking";
 	public PlayerList players;
 	public Dog dog;
+	public RunTimeCardList cardsToPutInDog;
 	public float makeDogTimeLimitSec = 0; // security (à supprimer)
-	
-	private float startMakeDogTimer = 0f;
+	private float startTimer = 0f;
 	private Player Taker => players.GetTaker();
-	private CardList cardsToPutInDog;
-    private CardList initDogCards;
-    private int NDogCard => initDogCards.Count;
+    private int nDog;
     
 	
 	private void Update()
@@ -25,16 +23,18 @@ public class DogMakingManager : ProcessManager
 			if (Taker is CpuPlayer)
 			{
 				CpuPlayer cpuPlayer = (CpuPlayer) Taker;
-				cardsToPutInDog = cpuPlayer.ChooseCardsForDog(NDogCard);
-				PutCardsIntoDog();
+				foreach (Card card in  cpuPlayer.ChooseCardsForDog(nDog))
+				{
+					cardsToPutInDog.Add(card);
+				}
+				PutCardsInDog();
 			}	
 			else // human player
 			{
-				startMakeDogTimer += Time.deltaTime;
-				if (startMakeDogTimer > makeDogTimeLimitSec)
+				startTimer += Time.deltaTime;
+				if (startTimer > makeDogTimeLimitSec)
 				{
-					cardsToPutInDog = initDogCards;
-					PutCardsIntoDog();
+					PutCardsRandomlyInDog();
 				}
 			}
 		}
@@ -44,8 +44,9 @@ public class DogMakingManager : ProcessManager
 	public override void StartProcess()
 	{
 		base.StartProcess();
-		cardsToPutInDog = new CardList();
-        startMakeDogTimer = 0f;
+		cardsToPutInDog.Clear();
+        startTimer = 0f;
+		nDog = dog.Item.Count;
         if (Taker.CurrentBid >= Bid.GardeSans)
 		{
 			FinishProcess();
@@ -57,17 +58,22 @@ public class DogMakingManager : ProcessManager
 	}
 	
 	
+	public override void FinishProcess()
+	{
+		startTimer = 0f;
+		cardsToPutInDog.Clear();
+		base.FinishProcess();
+	}
+	
+	
 	private void TakeDog()
 	{
-        initDogCards = new CardList();
         foreach (Card card in dog.Items)
 		{
-			initDogCards.Add(card); // save dog cards
 			Taker.Hand.Add(card);
 		}
 		Taker.SortHand();
         dog.Clear();
-
     }
 	
 	
@@ -77,9 +83,13 @@ public class DogMakingManager : ProcessManager
 		{
 			Debug.LogError("Cannot select more cards to put inside the dog.");
 		}
-		else
+		else if (Dog.IsCardAllowedInDog(card, Taker.Hand))
 		{
 			cardsToPutInDog.Add(card);
+		}
+		else
+		{
+			Debug.Log("Cannot put card " + card + "into dog");
 		}
 	}
 	
@@ -93,20 +103,46 @@ public class DogMakingManager : ProcessManager
 	}
 	
 	
-	public void PutCardsIntoDog()
+	public void PutCardsInDog()
 	{
-		if (cardsToPutInDog.Count == NDogCard)
+		if (cardsToPutInDog.Count == nDog)
 		{
-			foreach (Card card in cardsToPutInDog)
+			foreach (Card card in cardsToPutInDog.Items)
 			{
 				Taker.Hand.Remove(card);
 				dog.Add(card);
+				Debug.Log("Added " + card + " in the dog");
 			}
 			FinishProcess();
 		}
 		else
 		{
-			Debug.Log("You should put " + NDogCard + " cards in the dog");
+			Debug.Log("You should put " + nDog + " cards in the dog");
 		}
+	}
+	
+	
+	private void PutCardsRandomlyInDog()
+	{
+		int nCardToPut = nDog - cardsToPutInDog.Count;
+		if (nCardToPut > 0)
+		{
+			// Choose randomly the rest of the cards to put in the dog
+			Debug.Log(nCardToPut " cards will be put in dog randomly.");
+			CardList possibleCards = new CardList();
+			foreach (Card card in Taker.Hand)
+			{
+				if (!cardsToPutInDog.Contains(card) && Dog.IsCardAllowedInDog(card, Taker.Hand))
+				{
+					possibleCards.Add(card);
+				}
+			}
+			int indexes = Utils.GetRandomUniqueIndexes(nCardToPut, 0, possibleCards.Count-1);
+			foreach (int index in indexes)
+			{
+				cardsToPutInDog.Add(possibleCards[index]);
+			}
+		}
+		PutCardsInDog();
 	}
 }

@@ -45,7 +45,7 @@ public class DogDisplay : MonoBehaviour
         foreach (GameObject card in cards)
         {
             CardDisplay cardDisplay = card.GetComponent<CardDisplay>();
-            cardDisplay.FlipCard();
+            cardDisplay.FlipCardAnimated();
         }
     }
 

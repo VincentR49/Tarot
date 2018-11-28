@@ -10,15 +10,16 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler
 {
 	public Card card;
 	public SpriteVariable cardBackSprite;
-    public float rotateDegreePerSec = 180f;
-
+    public float flipAnimationSec = 1f;
+    private float RotateDegreePerSec =>  180 / flipAnimationSec;
     private bool flipped = false;
-    private static float animationFPS = 60;
 	private Image image;
-    private bool isAnimationProcessing = false;
-    private bool flippedBeforeAnimation = false;
+    private bool isFlipAnimation = false;
+    private float initAnimationAngle = 0f;
+    private Sprite GetCardSprite(bool flipped) => flipped ? cardBackSprite.Value : card.sprite;
 
-	private void Awake()
+
+    private void Awake()
 	{
 		image = GetComponent<Image>();
 	}	
@@ -30,29 +31,35 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler
 	}
 
 
+    private void Update()
+    {
+        if (isFlipAnimation)
+        {
+            FlipAnimation();
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
-        FlipCard();
+        FlipCardAnimated();
     }
 
     public void UpdateSprite()
     {
-        UpdateSprite(flipped);
+        image.sprite = GetCardSprite(flipped);
     }
         
 
-    public void UpdateSprite(bool flipped)
-	{
-	    image.sprite = flipped ? cardBackSprite.Value : card.sprite;	
-	}
-	
-
-    public void FlipCard()
+    public void FlipCardAnimated()
     {
-        if (!isAnimationProcessing)
+        if (!isFlipAnimation)
         {
-            flippedBeforeAnimation = flipped;
-            StartCoroutine(FlipAnimation());
+            if (flipped)
+            {
+                transform.Rotate(new Vector3(0, 180, 0));
+            }
+            initAnimationAngle = transform.rotation.eulerAngles.y;
+            FlipAnimation();
         } 
     }
 
@@ -62,41 +69,26 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler
         if (flipped != this.flipped)
         {
             this.flipped = flipped;
-            UpdateSprite(flipped);
+            UpdateSprite();
         }
 	}
 
 
-    IEnumerator FlipAnimation()
+    void FlipAnimation()
     {
-        //Debug.Log("Start flip animation");
-        isAnimationProcessing = true;
-        bool done = false;
-        if (flipped)
+        isFlipAnimation = true;
+        float degree = RotateDegreePerSec * Time.deltaTime;
+        transform.Rotate(new Vector3(0, degree, 0));
+        float angle = transform.rotation.eulerAngles.y - initAnimationAngle;
+        if (angle > 90 && image.sprite != GetCardSprite(!flipped))
         {
-            transform.Rotate(new Vector3(0, 180, 0));
+            image.sprite = GetCardSprite(!flipped);
         }
-        float initAngle = transform.rotation.eulerAngles.y;
-        while (!done)
+        if (angle > 180 || angle < 0)
         {
-            float degree = rotateDegreePerSec * Time.deltaTime;
-            transform.Rotate(new Vector3(0, degree, 0));
-            float angle = transform.rotation.eulerAngles.y - initAngle;
-            if (flippedBeforeAnimation == flipped)
-            {
-                if (angle > 90)
-                {
-                    SetFlipped(!flipped);
-                }
-            }
-            if (angle > 180 || angle < 0)
-            {
-                transform.rotation = Quaternion.identity;
-                done = true;
-            }
-            yield return new WaitForSeconds(1.0f / animationFPS);
+            transform.rotation = Quaternion.identity;
+            isFlipAnimation = false;
+            SetFlipped(!flipped);
         }
-        isAnimationProcessing = false;
-        //Debug.Log("Stop flip animation");
     }
 }

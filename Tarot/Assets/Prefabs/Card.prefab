@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   card: {fileID: 11400000, guid: 362e8032bc76e4d4a805fa119c4f78c1, type: 2}
   cardBackSprite: {fileID: 11400000, guid: 6904fb1be025c144ba0c5b7f8c46d879, type: 2}
-  rotateDegreePerSec: 360
+  animationDurationSec: 0.5
 --- !u!222 &222792662058477044
 CanvasRenderer:
   m_ObjectHideFlags: 1

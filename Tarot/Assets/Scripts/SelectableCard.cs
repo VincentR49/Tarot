@@ -7,8 +7,8 @@ using UnityEngine.UI;
 // Gère la sélection / déselection d'une carte
 // Complète la liste liée
 [RequireComponent(typeof(Image))]
-[RequireComponent(typeof(CardDisplay)]
-public class SelectableCard : MonoBehaviour 
+[RequireComponent(typeof(CardDisplay))]
+public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
 	public RunTimeCardList selectedCards;
 	public GamePhaseVariable gamePhase;
@@ -17,56 +17,59 @@ public class SelectableCard : MonoBehaviour
 	private bool selected;
 	private Image image;
 	private Color originalColor;
-	private Card card;
-	
+    private Card Card => cardDisplay.card;
+    private CardDisplay cardDisplay;
 	
 	void Awake()
 	{
 		image = GetComponent<Image>();
+        cardDisplay = GetComponent<CardDisplay>();
 		originalColor = image.color;
-		card = GetComponent<CardDisplay>().card;
-	}
-	
-	
-	void OnMouseOver()
-	{
-		if (IsSelectable())
-		{
-			image.color = cyan;
-			Debug.Log("On mouse over");
-		}
 	}
 
-	
-	void OnMouseExit()
-	{
-		if (IsSelectable())
-		{
-			image.color = originalColor;
-			Debug.Log("On mouse exit");
-		}
-	}
 
-	
-	void OnMouseDown()
-	{
-		if (IsSelectable())
-		{
-			SelectCard();
-		}
-	}
-	
-	
-	private void SelectCard()
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (IsSelectable())
+        {
+            image.color = Color.cyan;
+        }
+        Debug.Log("On mouse over");
+    }
+
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (IsSelectable())
+        {
+            SelectCard();
+        }
+        Debug.Log("On mouse down");
+    }
+
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (IsSelectable())
+        {
+            image.color = originalColor;
+        }
+        Debug.Log("On mouse exit");
+    }
+
+
+    private void SelectCard()
 	{
 		selected = !selected;
 		if (selected)
 		{
-			selectedCards.Add(card);
+            Debug.Log("Selected card " + Card);
+			selectedCards.Add(Card);
 		}
 		else
 		{
-			selectedCards.Remove(card);
+            Debug.Log("Unselected card " + Card);
+            selectedCards.Remove(Card);
 		}
 	}
 	
@@ -76,15 +79,15 @@ public class SelectableCard : MonoBehaviour
 	{	
 		Player humanPlayer = players.GetFirstHumanPlayer();
 		if (humanPlayer == null) return false;
-		if (!humanPlayer.Hand.Contains(card)) return false;
+		if (!humanPlayer.Hand.Contains(Card)) return false;
 		
 		if (gamePhase.Value == GamePhase.DogMaking)
 		{
-			if (selectedCards.Count >= dog.Count)
+			if (selectedCards.Count >= Dog.GetNumberOfCards(players.Count))
 			{
 				return false;
 			}
-			else if (Dog.IsCardAllowedInDog(card, humanPlayer.Hand))
+			else if (Dog.IsCardAllowedInDog(Card, humanPlayer.Hand))
 			{
 				return true;
 			}
@@ -96,5 +99,5 @@ public class SelectableCard : MonoBehaviour
 			// à définir
 		}
 		return false;
-	}
+	}  
 }

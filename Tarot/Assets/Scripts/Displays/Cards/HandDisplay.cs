@@ -24,16 +24,19 @@ public class HandDisplay : MonoBehaviour
 
     private void Update()
     {
-       
         if (player != null)
         {
-            currentHand = player.Hand;
+            if (!player.Hand.IsEqualTo(currentHand))
+            {
+                currentHand = player.Hand.Clone();
+                UpdateDisplay();
+            }
         }
         else
         {
             currentHand = null;
+            UpdateDisplay();
         }
-        UpdateDisplay();
     }
 
 
@@ -45,6 +48,7 @@ public class HandDisplay : MonoBehaviour
         {
             return;
         }
+        Debug.Log("update hand display");
         int startPixel = -currentHand.Count * pixelBetweenCard / 2;
         int count = 0;
         foreach (Card card in currentHand)

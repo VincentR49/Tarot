@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
 					return GamePhase.DogShowing;
 				}
 			case GamePhase.DogShowing: return GamePhase.DogMaking;
-			case GamePhase.DogMaking: return GamePhase.Play;
+			//case GamePhase.DogMaking: return GamePhase.Play;
 			//case GamePhase.Play: return GamePhase.Scoring;
 			default: return GamePhase.None;
 		}

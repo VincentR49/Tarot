@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName="Scriptable Objects/Cpu Player")]
@@ -37,12 +38,12 @@ public class CpuPlayer : Player
 		return cards;
 	}
 	
-	public Card SelectCardToPlay(CardList cardsOnBoard)
+	public Card SelectCardToPlay(List<Card> cardsOnBoard)
 	{
 		// A développer
 		// Dans un premier temps prendre une carte au hasard dans la main
 		// Plus tard, dire quelles cartes sont autorisées
-		System.random rnd = new System.Random();
+		System.Random rnd = new System.Random();
 		return Hand[rnd.Next(0, Hand.Count - 1)];
 	}
 }

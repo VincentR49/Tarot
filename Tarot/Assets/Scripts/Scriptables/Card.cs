@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName="Scriptable Objects/Card")]
-public class Card : ScriptableObject, IComparable<Card> 
+public class Card : ScriptableObject, IComparable<Card>
 {
 	public Sprite sprite;
 	public CardType type = CardType.Heart;
@@ -56,4 +56,13 @@ public class Card : ScriptableObject, IComparable<Card>
 	}
 
     public bool IsEqualTo(Card other) => Id == other.Id;
+
+    public Card Clone()
+    {
+        Card card = ScriptableObject.CreateInstance<Card>();
+        card.sprite = sprite;
+        card.rank = rank;
+        card.type = type; 
+        return card;
+    }
 }

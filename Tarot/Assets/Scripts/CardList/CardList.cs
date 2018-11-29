@@ -41,4 +41,24 @@ public class CardList : List<Card>
         }
         return true;
     }
+
+
+    public CardList Clone()
+    {
+        CardList cardList = new CardList();
+        foreach (Card card in this)
+        {
+            cardList.Add(card.Clone());
+        }
+        return cardList;
+    }
+
+    public new bool Contains(Card card)
+    {
+        foreach (Card c in this)
+        {
+            if (c.IsEqualTo(card)) return true;
+        }
+        return false;
+    }
 }

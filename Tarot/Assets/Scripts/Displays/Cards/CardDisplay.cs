@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 // Gère l'affichage d'une carte
 [RequireComponent(typeof(Image))]
-public class CardDisplay : MonoBehaviour, IPointerDownHandler
+public class CardDisplay : MonoBehaviour
 {
 	public Card card;
 	public SpriteVariable cardBackSprite;
@@ -17,7 +17,7 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler
     private bool isFlipAnimation = false;
     private float initAnimationAngle = 0f;
     private Sprite GetCardSprite(bool flipped) => flipped ? cardBackSprite.Value : card.sprite;
-	public void GetFlipped() => flipped;
+	public bool GetFlipped() => flipped;
 
     private void Awake()
 	{
@@ -39,10 +39,6 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        FlipCardAnimated();
-    }
 
     public void UpdateSprite()
     {

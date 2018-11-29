@@ -33,11 +33,10 @@ public class PlayManager : ProcessManager
 					FinishCurrentTurn();
 					NewTurn();
 				}
-				
 				if (currentPlayer is CpuPlayer)
 				{
 					CpuPlayer cpuPlayer = (CpuPlayer) currentPlayer;
-					Card card = cpuPlayer.SelectCardToPlay(selectedCards);
+					Card card = cpuPlayer.SelectCardToPlay(selectedCards.Items);
 					PlayCard(cpuPlayer, card);
 				}
 				else
@@ -70,7 +69,7 @@ public class PlayManager : ProcessManager
 	{
 		turn = 0;
 		nTurnMax = players.Items[0].Hand.Count - 1;
-		currentPlayer = players.GetNext(dealer);
+		currentPlayer = players.GetNext(Dealer);
 		selectedCards.Clear();
 		turnWinner = null;		
 	}
@@ -94,6 +93,6 @@ public class PlayManager : ProcessManager
 	private void PlayCard(Player player, Card card)
 	{
 		player.Hand.Remove(card);
-		selectedCard.Add(card);
+		selectedCards.Add(card);
 	}
 }

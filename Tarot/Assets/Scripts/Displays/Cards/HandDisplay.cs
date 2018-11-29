@@ -53,7 +53,8 @@ public class HandDisplay : MonoBehaviour
             cardObject.transform.localPosition = new Vector2(startPixel + count * pixelBetweenCard, 0);
             CardDisplay cardDisplay = cardObject.GetComponent<CardDisplay>();
             cardDisplay.card = card;
-            cardDisplay.SetFlipped(HideCards);
+			cardDisplay.SetFlipped(HideCards);
+			// Créer un cardManager pour initialiser les cartes?
             cardObjects.Add(cardObject);
             count++;
         }

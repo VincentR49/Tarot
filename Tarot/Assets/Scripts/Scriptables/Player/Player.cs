@@ -7,12 +7,13 @@ public class Player : ScriptableObject
 	public new String name = "Player";
 	public int score = 0;
 	public int teamIndex;
-	// Properties
+
 	public bool IsDealer { get; set; }
 	public bool IsTaker { get; set; }
 	public CardList Hand { get; set; }
 	public CardList ScoringPile { get; set; }
 	public Bid CurrentBid => bid;
+	
 	private Bid bid = Bid.None;
 	
 	public void PrepareForNewGame()

@@ -17,7 +17,7 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler
     private bool isFlipAnimation = false;
     private float initAnimationAngle = 0f;
     private Sprite GetCardSprite(bool flipped) => flipped ? cardBackSprite.Value : card.sprite;
-
+	public void GetFlipped() => flipped;
 
     private void Awake()
 	{
@@ -72,7 +72,7 @@ public class CardDisplay : MonoBehaviour, IPointerDownHandler
             UpdateSprite();
         }
 	}
-
+	
 
     void FlipAnimation()
     {

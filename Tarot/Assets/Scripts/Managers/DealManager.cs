@@ -16,9 +16,7 @@ public class DealManager : ProcessManager
 	private Deck deck;
 
 	private static int GetNumberOfCardsToDeal(int nPlayer) => (nPlayer <= 3) ? 4 : 3;
-    private static int GetNumberOfCardsInDog(int nPlayer) => (nPlayer <= 4) ? 6 : 3;
-	
-	
+
 	public override void StartProcess()
 	{
 		base.StartProcess();
@@ -73,7 +71,7 @@ public class DealManager : ProcessManager
 	{
 		int nPlayer = players.Count;
 		int nCard = GetNumberOfCardsToDeal (nPlayer);
-		int nDog = GetNumberOfCardsInDog (nPlayer);
+		int nDog = Dog.GetNumberOfCards (nPlayer);
 		List<int> dogIndexes = GetPutInDogIndexes (nDog, nCard, deck.Count);
 		Player receiver = players.GetNext (players.GetDealer());
 		int index = 0;

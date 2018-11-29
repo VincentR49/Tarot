@@ -30,4 +30,6 @@ public class Dog : RunTimeCardList
 		// TODO A préciser (dépend de la main également)
 		return !(card.IsOudler() || card.rank == CardRank.Roi || card.type == CardType.Trump);
 	}
+	
+	private static int GetNumberOfCards(int nPlayer) => (nPlayer <= 4) ? 6 : 3;
 }

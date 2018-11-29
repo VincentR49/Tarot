@@ -8,6 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(BidManager))]
 [RequireComponent(typeof(DogMakingManager))]
 [RequireComponent(typeof(DogShowingManager))]
+[RequireComponent(typeof(PlayManager))]
 public class GameManager : MonoBehaviour
 {
 	public IntVariable nPlayer;
@@ -26,7 +27,8 @@ public class GameManager : MonoBehaviour
             { GamePhase.Dealing, GetComponent<DealManager>() },
             { GamePhase.Bidding, GetComponent<BidManager>() },
 			{ GamePhase.DogShowing, GetComponent<DogShowingManager>() },
-			{ GamePhase.DogMaking, GetComponent<DogMakingManager>() }
+			{ GamePhase.DogMaking, GetComponent<DogMakingManager>() },
+			{ GamePhase.Play, GetComponent<PlayManager>() },
         };
     }
 
@@ -103,7 +105,7 @@ public class GameManager : MonoBehaviour
 					return GamePhase.DogShowing;
 				}
 			case GamePhase.DogShowing: return GamePhase.DogMaking;
-			//case GamePhase.DogMaking: return GamePhase.Play;
+			case GamePhase.DogMaking: return GamePhase.Play;
 			//case GamePhase.Play: return GamePhase.Scoring;
 			default: return GamePhase.None;
 		}

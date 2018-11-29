@@ -6,6 +6,7 @@ public class CpuPlayer : Player
 {
 	public BidAI bidAI;
 	public DogAI dogAI;
+	public PlayAI playAI;
 	
 	public void MakeABid(Bid minBid)
 	{
@@ -34,5 +35,14 @@ public class CpuPlayer : Player
 			}
 		}
 		return cards;
+	}
+	
+	public Card SelectCardToPlay(CardList cardsOnBoard)
+	{
+		// A développer
+		// Dans un premier temps prendre une carte au hasard dans la main
+		// Plus tard, dire quelles cartes sont autorisées
+		System.random rnd = new System.Random();
+		return Hand[rnd.Next(0, Hand.Count - 1)];
 	}
 }

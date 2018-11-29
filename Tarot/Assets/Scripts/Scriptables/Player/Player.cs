@@ -15,13 +15,14 @@ public class Player : ScriptableObject
 	public Bid CurrentBid => bid;
 	
 	private Bid bid = Bid.None;
+	private List<int> pastScores = new List<int>();
+	
 	
 	public void PrepareForNewGame()
 	{
 		score = 0;
 		PrepareForNewHand();
 	}
-	
 	
 	public void PrepareForNewHand()
 	{

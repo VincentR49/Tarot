@@ -9,7 +9,7 @@ public class ValidDogButtonDisplay : CanvasGroupDisplay {
     public Button validDogButton;
 	public PlayerList players;
 	public GamePhaseVariable gamePhase;
-	public RunTimeCardList selectedCards;
+	public CardListVariable selectedCards;
 	
 	private new void Awake()
     {

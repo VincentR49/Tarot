@@ -71,7 +71,7 @@ public class DogDisplay : MonoBehaviour
             return;
         }
         int count = 0;
-        foreach (Card card in dog.Items)
+        foreach (Card card in dog.Value)
         {
             GameObject cardObject = Instantiate(cardPrefab, placeHolders[count].transform);
             cardObject.transform.localPosition = new Vector2(0, 0);

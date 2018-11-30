@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Dog")]
-public class Dog : RunTimeCardList
+public class Dog : CardListVariable
 {
     public GameEvent dogEditedEvent;
 

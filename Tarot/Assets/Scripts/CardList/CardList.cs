@@ -42,17 +42,6 @@ public class CardList : List<Card>
         return true;
     }
 
-
-    public CardList Clone()
-    {
-        CardList cardList = new CardList();
-        foreach (Card card in this)
-        {
-            cardList.Add(card.Clone());
-        }
-        return cardList;
-    }
-
     public new bool Contains(Card card)
     {
         foreach (Card c in this)
@@ -61,4 +50,24 @@ public class CardList : List<Card>
         }
         return false;
     }
+
+	
+	public Card GetBestCard() => this[GetBestCardIndex()];
+
+	// Get the best card, following tarot rule, starting by the first card of the list
+	public int GetBestCardIndex()
+	{
+		int bestIndex = 0;
+		for (int i = 1; i < Count; i++)
+		{
+			if (this[i].type == this[bestIndex].type)
+			{
+				if (this[i].rank > this[bestIndex].rank) 
+					bestIndex = this[i];
+			}
+			else if (this[i].type == CardType.Trump)
+				bestIndex = this[i];
+		}
+		return bestIndex;
+	}
 }

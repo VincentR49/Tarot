@@ -8,7 +8,7 @@ public class PlayManager : ProcessManager
 	protected override string Name => "Play";
 	public PlayerList players;
 	public Dog dog;
-	public RunTimeCardList selectedCards;
+	public CardListVariable selectedCards;
 	
 	private Player Taker => players.GetTaker();
 	private Player Dealer => players.GetDealer();
@@ -36,7 +36,7 @@ public class PlayManager : ProcessManager
 				if (currentPlayer is CpuPlayer)
 				{
 					CpuPlayer cpuPlayer = (CpuPlayer) currentPlayer;
-					Card card = cpuPlayer.SelectCardToPlay(selectedCards.Items);
+					Card card = cpuPlayer.SelectCardToPlay(selectedCards.Value);
 					PlayCard(cpuPlayer, card);
 				}
 				else
@@ -60,7 +60,6 @@ public class PlayManager : ProcessManager
 	public override void FinishProcess()
 	{
 		// TODO
-		// Gestion du chien ici
 		base.FinishProcess();
 	}
 	
@@ -79,14 +78,14 @@ public class PlayManager : ProcessManager
 	{
 		turn += 1;
 		currentPlayer = turnWinner;
-		selectedCards.Clear();
 	}
 	
 	
 	private void FinishCurrentTurn()
 	{
-		// Check all the cards and decice the winner
-		turnWinner = null; // TODO à décider
+		int bestCardIndex = selectedCards.GetBestCardIndex();
+		turnWinner = players.Items[bestCardIndex];
+		PutBoardCardsInWinnerScoringPile();
 	}
 	
 	
@@ -94,5 +93,16 @@ public class PlayManager : ProcessManager
 	{
 		player.Hand.Remove(card);
 		selectedCards.Add(card);
+	}
+	
+	
+	private void PutBoardCardsInWinnerScoringPile()
+	{
+		// TODO: gérer l'excuse
+		foreach (Card card in selectedCards.Value)
+		{
+			turnWinner.scoringPile.Add(card);
+		}
+		selectedCards.Clear();
 	}
 }

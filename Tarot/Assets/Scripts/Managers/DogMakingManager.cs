@@ -9,7 +9,7 @@ public class DogMakingManager : ProcessManager
 	protected override string Name => "DogMaking";
 	public PlayerList players;
 	public Dog dog;
-	public RunTimeCardList selectedCards;
+	public CardListVariable selectedCards;
 	public float makeDogTimeLimitSec = 0; // security (à supprimer)
 	private Player Taker => players.GetTaker();
     private int nDog;
@@ -33,7 +33,7 @@ public class DogMakingManager : ProcessManager
 		base.StartProcess();
 		selectedCards.Clear();
         waitTimer = 0f;
-        nDog = dog.Items.Count;
+        nDog = dog.Count;
         if (Taker.CurrentBid >= Bid.GardeSans)
 		{
 			FinishProcess();
@@ -56,7 +56,7 @@ public class DogMakingManager : ProcessManager
 	
 	private void PutDogInHand()
 	{
-        foreach (Card card in dog.Items)
+        foreach (Card card in dog.Value)
 		{
 			Taker.Hand.Add(card);
 		}	
@@ -92,7 +92,7 @@ public class DogMakingManager : ProcessManager
 	{
 		if (selectedCards.Count == nDog)
 		{
-			foreach (Card card in selectedCards.Items)
+			foreach (Card card in selectedCards.Value)
 			{
 				Taker.Hand.Remove(card);
 				dog.Add(card);
@@ -117,7 +117,7 @@ public class DogMakingManager : ProcessManager
 			CardList possibleCards = new CardList();
 			foreach (Card card in Taker.Hand)
 			{
-				if (!selectedCards.Items.Contains(card) && Dog.IsCardAllowedInDog(card, Taker.Hand))
+				if (!selectedCards.Contains(card) && Dog.IsCardAllowedInDog(card, Taker.Hand))
 				{
 					possibleCards.Add(card);
 				}

@@ -11,5 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4150efd8c217748ae5617a84ac9390, type: 3}
   m_Name: Dog
   m_EditorClassIdentifier: 
-  Items: []
   dogEditedEvent: {fileID: 11400000, guid: e76473e7caed3c2478849df83b2bbac4, type: 2}

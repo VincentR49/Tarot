@@ -4,8 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable Objects/Runtime Card List")]
 public class CardListVariable : ScriptableObject
 {
-    public CardList Value;
-	
+    public CardList Value = new CardList();
 	public int Count => Value.Count;
 	public bool Contains(Card card) => Value.Contains(card);
 	public Card GetBestCard() => Value.GetBestCard();

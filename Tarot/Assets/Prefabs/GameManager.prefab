@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114099347509087104}
   - component: {fileID: 114102557424426724}
   - component: {fileID: 114508439799562842}
+  - component: {fileID: 114641943498119472}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -76,7 +77,7 @@ MonoBehaviour:
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
   showDogEvent: {fileID: 11400000, guid: 4d172396993033f4fb45ce3b7acb1b33, type: 2}
   hideDogEvent: {fileID: 11400000, guid: 91b836fc31ff32640a82229c32b72599, type: 2}
-  showDogDurationSec: 0
+  showDogDurationSec: 2
 --- !u!114 &114174458346293478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,7 +121,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
   dog: {fileID: 11400000, guid: e006c267139ea3740821db1f7caeafb2, type: 2}
-  makeDogTimeLimitSec: 0
+  selectedCards: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
+  makeDogTimeLimitSec: 60
+--- !u!114 &114641943498119472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 029393596f30c2947b3d019305045baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  dog: {fileID: 11400000, guid: e006c267139ea3740821db1f7caeafb2, type: 2}
+  selectedCards: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
 --- !u!114 &114773578331762010
 MonoBehaviour:
   m_ObjectHideFlags: 1

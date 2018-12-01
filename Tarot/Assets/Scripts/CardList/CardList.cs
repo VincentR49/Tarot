@@ -63,10 +63,10 @@ public class CardList : List<Card>
 			if (this[i].type == this[bestIndex].type)
 			{
 				if (this[i].rank > this[bestIndex].rank) 
-					bestIndex = this[i];
+					bestIndex = i;
 			}
 			else if (this[i].type == CardType.Trump)
-				bestIndex = this[i];
+				bestIndex = i;
 		}
 		return bestIndex;
 	}

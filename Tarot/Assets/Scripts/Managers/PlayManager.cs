@@ -7,7 +7,6 @@ public class PlayManager : ProcessManager
 {
 	protected override string Name => "Play";
 	public PlayerList players;
-	public Dog dog;
 	public CardListVariable selectedCards;
 	
 	private Player Taker => players.GetTaker();
@@ -22,7 +21,7 @@ public class PlayManager : ProcessManager
 	{
 		if (status == ProcessState.Running)
         {
-			if (turn >= nTurnMax)
+			if (turn > nTurnMax)
 			{
 				FinishProcess();
 			}
@@ -33,18 +32,21 @@ public class PlayManager : ProcessManager
 					FinishCurrentTurn();
 					NewTurn();
 				}
-				if (currentPlayer is CpuPlayer)
-				{
-					CpuPlayer cpuPlayer = (CpuPlayer) currentPlayer;
-					Card card = cpuPlayer.SelectCardToPlay(selectedCards.Value);
-					PlayCard(cpuPlayer, card);
-				}
 				else
-				{
-					// humanPlayer (ne rien faire pour le moment)
-					// Carte au hasard
-					PlayCard(currentPlayer, currentPlayer.Hand[0]);
-				}
+                {
+                    if (currentPlayer is CpuPlayer)
+                    {
+                        CpuPlayer cpuPlayer = (CpuPlayer)currentPlayer;
+                        Card card = cpuPlayer.SelectCardToPlay(selectedCards.Value);
+                        PlayCard(cpuPlayer, card);
+                    }
+                    else
+                    {
+                        // humanPlayer (ne rien faire pour le moment)
+                        // Carte au hasard
+                        PlayCard(currentPlayer, currentPlayer.Hand[0]);
+                    }
+                } 
 			}
 		}
 	}
@@ -66,7 +68,8 @@ public class PlayManager : ProcessManager
 	
 	private void InitPlay()
 	{
-		turn = 0;
+        Debug.Log("Init play");
+        turn = 0;
 		nTurnMax = players.Items[0].Hand.Count - 1;
 		currentPlayer = players.GetNext(Dealer);
 		selectedCards.Clear();
@@ -78,7 +81,8 @@ public class PlayManager : ProcessManager
 	{
 		turn += 1;
 		currentPlayer = turnWinner;
-	}
+        Debug.Log("Started Turn " + turn);
+    }
 	
 	
 	private void FinishCurrentTurn()
@@ -86,14 +90,17 @@ public class PlayManager : ProcessManager
 		int bestCardIndex = selectedCards.GetBestCardIndex();
 		turnWinner = players.Items[bestCardIndex];
 		PutBoardCardsInWinnerScoringPile();
+        Debug.Log("Finished turn " + turn + ". Winner: " + turnWinner.name);
 	}
 	
 	
 	private void PlayCard(Player player, Card card)
 	{
+        Debug.Log(player.name + " played " + card);
 		player.Hand.Remove(card);
 		selectedCards.Add(card);
-	}
+        currentPlayer = players.GetNext(player);
+    }
 	
 	
 	private void PutBoardCardsInWinnerScoringPile()
@@ -101,7 +108,7 @@ public class PlayManager : ProcessManager
 		// TODO: gérer l'excuse
 		foreach (Card card in selectedCards.Value)
 		{
-			turnWinner.scoringPile.Add(card);
+            turnWinner.ScoringPile.Add(card);
 		}
 		selectedCards.Clear();
 	}

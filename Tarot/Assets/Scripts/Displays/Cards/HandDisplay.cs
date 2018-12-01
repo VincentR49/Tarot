@@ -15,7 +15,7 @@ public class HandDisplay : MonoBehaviour
     private bool HideCards => (player is CpuPlayer) && hideCpuCards;
     private List<GameObject> cardObjects;
     String currentHandSignature = "";
-
+    CardList Hand => player.Hand;
     private void Start()
     {
         Clean();
@@ -28,14 +28,12 @@ public class HandDisplay : MonoBehaviour
         {
             if (player.Hand.ToString() != currentHandSignature)
             {
-                currentHand = player.Hand;
-				currentHandSignature = currentHand.ToString();
+				currentHandSignature = player.Hand.ToString();
                 UpdateDisplay();
             }
         }
         else
         {
-            currentHand = null;
 			currentHandSignature = "";
             Clean(); 
         }
@@ -46,10 +44,10 @@ public class HandDisplay : MonoBehaviour
     {
         // A optimiser
         Clean();   
-        if (currentHand == null) return;
-        int startPixel = -currentHand.Count * pixelBetweenCard / 2;
+        if (Hand == null) return;
+        int startPixel = -Hand.Count * pixelBetweenCard / 2;
         int count = 0;
-        foreach (Card card in currentHand)
+        foreach (Card card in Hand)
         {
             GameObject cardObject = Instantiate(cardPrefab, transform);
             cardObject.transform.localPosition = new Vector2(startPixel + count * pixelBetweenCard, 0);

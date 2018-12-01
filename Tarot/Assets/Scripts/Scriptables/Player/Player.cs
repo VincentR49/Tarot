@@ -59,4 +59,7 @@ public class Player : ScriptableObject
 			SetBid(bid);
 		}
 	}
+
+
+
 }

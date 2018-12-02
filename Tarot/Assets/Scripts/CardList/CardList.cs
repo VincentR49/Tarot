@@ -51,6 +51,27 @@ public class CardList : List<Card>
         return false;
     }
 
+
+    public bool ContainsType(CardType cardType)
+    {
+        foreach (Card c in this)
+        {
+            if (c.type == cardType) return true;
+        }
+        return false;
+    }
+
+
+    public bool ContainsStrongerTrump(CardRank trumpRank)
+    {
+        foreach (Card c in this)
+        {
+            if (c.type == CardType.Trump && c.rank > trumpRank) return true;
+        }
+        return false;
+    }
+
+
 	
 	public Card GetBestCard() => this[GetBestCardIndex()];
 

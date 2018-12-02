@@ -135,7 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
-  dog: {fileID: 11400000, guid: e006c267139ea3740821db1f7caeafb2, type: 2}
   selectedCards: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
 --- !u!114 &114773578331762010
 MonoBehaviour:

@@ -24,12 +24,7 @@ public class Dog : CardListVariable
         base.Clear();
         dogEditedEvent.Raise();
     }
-
-    public static bool IsCardAllowedInDog(Card card, CardList hand)
-	{
-		// TODO A préciser (dépend de la main également)
-		return !(card.IsOudler() || card.rank == CardRank.Roi || card.type == CardType.Trump);
-	}
 	
+
 	public static int GetNumberOfCards(int nPlayer) => (nPlayer <= 4) ? 6 : 3;
 }

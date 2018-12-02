@@ -37,7 +37,7 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (IsSelectable())
+        if (IsSelectable() || selected)
         {
             SelectionAnimation(!selected);
         }
@@ -46,7 +46,7 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (IsSelectable())
+        if (IsSelectable() || selected)
         {
             SelectCard();
         }
@@ -55,7 +55,7 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (IsSelectable())
+        if (IsSelectable() || selected)
         {
             SelectionAnimation(selected);
         }
@@ -91,7 +91,7 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 			{
 				return false;
 			}
-			else if (Dog.IsCardAllowedInDog(Card, humanPlayer.Hand))
+			else if (humanPlayer.CanPutCardInDog(Card))
 			{
 				return true;
 			}
@@ -100,8 +100,11 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 		
 		if (gamePhase.Value == GamePhase.Play)
 		{
-			// à définir
-		}
+            if (humanPlayer.CanPlayCard(Card, selectedCards.Value))
+            {
+                return true;
+            }
+        }
 		return false;
 	} 
 

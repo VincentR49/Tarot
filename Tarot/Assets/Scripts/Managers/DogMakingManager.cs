@@ -117,7 +117,7 @@ public class DogMakingManager : ProcessManager
 			CardList possibleCards = new CardList();
 			foreach (Card card in Taker.Hand)
 			{
-				if (!selectedCards.Contains(card) && Dog.IsCardAllowedInDog(card, Taker.Hand))
+				if (!selectedCards.Contains(card) && Taker.CanPutCardInDog(card))
 				{
 					possibleCards.Add(card);
 				}

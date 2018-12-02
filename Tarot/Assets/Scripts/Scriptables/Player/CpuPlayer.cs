@@ -26,7 +26,7 @@ public class CpuPlayer : Player
 		CardList cards = new CardList();
 		foreach (Card card in Hand)
 		{
-			if (Dog.IsCardAllowedInDog(card, Hand))
+			if (CanPutCardInDog(card))
 			{
 				cards.Add(card);
 				if (cards.Count == nCard)

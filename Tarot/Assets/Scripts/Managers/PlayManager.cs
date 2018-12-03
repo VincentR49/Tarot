@@ -42,9 +42,7 @@ public class PlayManager : ProcessManager
                     }
                     else
                     {
-                        // humanPlayer (ne rien faire pour le moment)
-                        // Carte au hasard
-                        PlayCard(currentPlayer, currentPlayer.Hand[0]);
+                        // joueur humain, ne rien faire pour le moment
                     }
                 } 
 			}
@@ -96,10 +94,17 @@ public class PlayManager : ProcessManager
 	
 	private void PlayCard(Player player, Card card)
 	{
-        Debug.Log(player.name + " played " + card);
-		player.Hand.Remove(card);
-		selectedCards.Add(card);
-        currentPlayer = players.GetNext(player);
+		if (player.CanPlayCard(card, selectedCards.Value)
+		{	
+			Debug.Log(player.name + " played " + card);
+			player.Hand.Remove(card);
+			selectedCards.Add(card);
+			currentPlayer = players.GetNext(player);
+		}
+        else
+		{
+			Debug.LogError(player.name " cannot play " + card);
+		}
     }
 	
 	

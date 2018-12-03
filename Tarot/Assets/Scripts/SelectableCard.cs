@@ -79,7 +79,6 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 	}
 	
 	// Définit si la carte peut être sélectionnée
-	// Dépend de divers paramètres (mode de jeu etc.)
 	private bool IsSelectable()
 	{	
 		Player humanPlayer = players.GetFirstHumanPlayer();

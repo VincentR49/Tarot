@@ -13,9 +13,11 @@ public class HandDisplay : MonoBehaviour
     public bool hideCpuCards = true;
 
     private bool HideCards => (player is CpuPlayer) && hideCpuCards;
-    private List<GameObject> cardObjects;
+    private List<GameObject> cards;
     String currentHandSignature = "";
     CardList Hand => player.Hand;
+	
+	
     private void Start()
     {
         Clean();
@@ -54,8 +56,7 @@ public class HandDisplay : MonoBehaviour
             CardDisplay cardDisplay = cardObject.GetComponent<CardDisplay>();
             cardDisplay.card = card;
 			cardDisplay.SetFlipped(HideCards);
-			// Créer un cardManager pour initialiser les cartes?
-            cardObjects.Add(cardObject);
+            cards.Add(cardObject);
             count++;
         }
     }
@@ -63,13 +64,13 @@ public class HandDisplay : MonoBehaviour
 
     private void Clean()
     {
-        if (cardObjects != null)
+        if (cards != null)
         {
-            foreach (GameObject go in cardObjects)
+            foreach (GameObject go in cards)
             {
                 Destroy(go);
             }
         }
-        cardObjects = new List<GameObject>();
+        cards = new List<GameObject>();
     }
 }

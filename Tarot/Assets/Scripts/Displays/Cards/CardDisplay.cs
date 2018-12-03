@@ -11,6 +11,7 @@ public class CardDisplay : MonoBehaviour
 	public Card card;
 	public SpriteVariable cardBackSprite;
     public float flipAnimationSec = 1f;
+	
     private float RotateDegreePerSec =>  180 / flipAnimationSec;
     private bool flipped = false;
 	private Image image;

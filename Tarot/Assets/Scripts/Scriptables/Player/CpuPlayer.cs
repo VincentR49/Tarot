@@ -38,12 +38,18 @@ public class CpuPlayer : Player
 		return cards;
 	}
 	
-	public Card SelectCardToPlay(List<Card> cardsOnBoard)
+	public Card SelectCardToPlay(CardList cardsOnBoard)
 	{
-		// A développer
-		// Dans un premier temps prendre une carte au hasard dans la main
-		// Plus tard, dire quelles cartes sont autorisées
-		System.Random rnd = new System.Random();
-		return Hand[rnd.Next(0, Hand.Count - 1)];
+		// AI développer
+		// Pour l'instant joue la première carte disponnible
+		foreach (Card card in Hand)
+		{
+			if (CanPlayCard (card, cardsOnBoard))
+			{
+				return card;
+			}
+		}
+		Debug.LogError("Aucune carte ne peut être jouée par le cpu");
+		return null; // ne doit pas arriver là
 	}
 }

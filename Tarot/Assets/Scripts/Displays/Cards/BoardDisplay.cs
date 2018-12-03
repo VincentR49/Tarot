@@ -5,22 +5,22 @@ using UnityEngine;
 // Gère l'affichage des cartes en jeu
 public class BoardDisplay : MonoBehaviour
 {
-    public CardListVariable selectedCards;
+    public CardListVariable playedCards;
 	public GamePhaseVariable gamePhase;
 	public GameObject cardPrefab;
 	public List<GameObject> cardPlaceHolders;
 	
 	private List<GameObject> cards;
-	String lastCards = "";
+	string lastCards = "";
 	
 	
 	void Update()
 	{
 		if (gamePhase.Value == GamePhase.Play)
 		{
-			if (selectedCards.Value.ToString() != lastCards)
+			if (playedCards.Value.ToString() != lastCards)
 			{
-				lastCards = selectedCards.Value.ToString();
+				lastCards = playedCards.Value.ToString();
 				UpdateDisplay();
 			}
 		}
@@ -47,11 +47,12 @@ public class BoardDisplay : MonoBehaviour
 	private void UpdateDisplay()
     {
         Clean();   
-        if (selectedCards.Value == null) return;
+        if (playedCards.Value == null) return;
         int count = 0;
-        foreach (Card card in selectedCards.Value)
+        foreach (Card card in playedCards.Value)
         {
             GameObject cardObject = Instantiate(cardPrefab, cardPlaceHolders[count].transform);
+            cardObject.transform.localPosition = Vector3.zero;
             CardDisplay cardDisplay = cardObject.GetComponent<CardDisplay>();
             cardDisplay.card = card;
             cards.Add(cardObject);

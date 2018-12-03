@@ -32,9 +32,9 @@ public class Player : ScriptableObject
 		ScoringPile = new CardList();
 		IsDealer = false;
 		IsTaker = false;
-		HasToDoSomething = false;
-	}
-	
+        HasToDoSomething = false;
+    }
+
 	// can save other stats
 	// game won / lost etc / nombre de prise, niveau des prises...
 	public void SortHand()

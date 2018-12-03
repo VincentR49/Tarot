@@ -50,6 +50,7 @@ public class DogMakingManager : ProcessManager
 	public override void FinishProcess()
 	{
 		selectedCards.Clear();
+        Taker.HasToDoSomething = false;
 		base.FinishProcess();
 	}
 	
@@ -66,6 +67,7 @@ public class DogMakingManager : ProcessManager
 	
     private void MakeDog()
     {
+        Taker.HasToDoSomething = true;
         if (Taker is CpuPlayer)
         {
             MakeCpuDog();

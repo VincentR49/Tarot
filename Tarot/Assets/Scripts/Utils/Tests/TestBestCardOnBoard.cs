@@ -7,7 +7,7 @@ public class TestBestCardOnBoard : MonoBehaviour
 {
 	public Player player;
 	public Deck standardDeck; 
-	private CardList boardCardss;
+	private CardList boardCards;
 	
 	
 	void Start()
@@ -94,15 +94,15 @@ public class TestBestCardOnBoard : MonoBehaviour
 		CheckBestCard();
 	}
 	
-	private void PrepareTest(String name)
+	private void PrepareTest(string name)
 	{
 		Debug.Log("Start check best card board test: " + name);
 		boardCards = new CardList();
 	}
 
-	private Card GetCard(CardType type, CardRank rank) = > Deck.GetCard(type, rank);
+	private Card GetCard(CardType type, CardRank rank) => standardDeck.GetCard(type, rank);
 
-	private void AddCardBoard(CardType type, CardRank, rank) 
+	private void AddCardBoard(CardType type, CardRank rank) 
 	{ 
 		Card card = GetCard(type, rank);
 		boardCards.Add (card); 

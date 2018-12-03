@@ -61,7 +61,7 @@ public class TestPlayCard : MonoBehaviour
 		AddCardBoard (CardType.Heart, CardRank.Six);
 		AddCardBoard (CardType.Trump, CardRank.Twelve);
 
-		AddCardHand (CardType.Spade, CardRank.King);
+		AddCardHand (CardType.Spade, CardRank.Roi);
 		AddCardHand (CardType.Trump, CardRank.Eleven);
 		AddCardHand (CardType.Trump, CardRank.Sixteen);
 		
@@ -76,7 +76,7 @@ public class TestPlayCard : MonoBehaviour
 		AddCardBoard (CardType.Heart, CardRank.Six);
 		AddCardBoard (CardType.Trump, CardRank.Twelve);
 
-		AddCardHand (CardType.Spade, CardRank.King);
+		AddCardHand (CardType.Spade, CardRank.Roi);
 		AddCardHand (CardType.Trump, CardRank.One);
 		AddCardHand (CardType.Trump, CardRank.Eleven);
 		
@@ -91,7 +91,7 @@ public class TestPlayCard : MonoBehaviour
 		AddCardBoard (CardType.Heart, CardRank.Six);
 		AddCardBoard (CardType.Trump, CardRank.Twelve);
 
-		AddCardHand (CardType.Spade, CardRank.King);
+		AddCardHand (CardType.Spade, CardRank.Roi);
 		AddCardHand (CardType.Club, CardRank.Ten);
 		AddCardHand (CardType.Diamond, CardRank.Valet);
 		
@@ -107,7 +107,7 @@ public class TestPlayCard : MonoBehaviour
 		AddCardBoard (CardType.Heart, CardRank.Six);
 		AddCardBoard (CardType.Trump, CardRank.Twelve);
 
-		AddCardHand (CardType.Spade, CardRank.King);
+		AddCardHand (CardType.Spade, CardRank.Roi);
 		AddCardHand (CardType.Club, CardRank.Ten);
 		AddCardHand (CardType.Diamond, CardRank.Valet);
 		
@@ -123,7 +123,7 @@ public class TestPlayCard : MonoBehaviour
 		AddCardBoard (CardType.Trump, CardRank.Twelve);
 
 		AddCardHand (CardType.Excuse, CardRank.None);
-		AddCardHand (CardType.Spade, CardRank.King);
+		AddCardHand (CardType.Spade, CardRank.Roi);
 		AddCardHand (CardType.Club, CardRank.Ten);
 		AddCardHand (CardType.Diamond, CardRank.Valet);
 		
@@ -132,23 +132,23 @@ public class TestPlayCard : MonoBehaviour
 	}
 	
 	
-	private void PrepareTest(String name)
+	private void PrepareTest(string name)
 	{
 		Debug.Log("Start play test: " + name);
 		boardCards = new CardList();
 		player.PrepareForNewHand();
 	}
 
-	private Card GetCard(CardType type, CardRank rank) = > Deck.GetCard(type, rank);
+	private Card GetCard(CardType type, CardRank rank) => standardDeck.GetCard(type, rank);
 	
-	private void AddCardHand(CardType type, CardRank, rank) 
+	private void AddCardHand(CardType type, CardRank rank) 
 	{ 
 		Card card = GetCard(type, rank);
 		player.Hand.Add (card); 
 		Debug.Log("Add card to hand: " + card);
 	}
 	
-	private void AddCardBoard(CardType type, CardRank, rank) 
+	private void AddCardBoard(CardType type, CardRank rank) 
 	{ 
 		Card card = GetCard(type, rank);
 		boardCards.Add (card); 
@@ -158,7 +158,8 @@ public class TestPlayCard : MonoBehaviour
 	
 	private void CheckPlayCard (int handIndex)
 	{
-		bool canPlay = player.CanPlayCard(player.Hand[handIndex]);
+        Card card = player.Hand[handIndex];
+		bool canPlay = player.CanPlayCard(card, boardCards);
 		Debug.Log("Player can play " + card + ": " + canPlay);
 	}
 }

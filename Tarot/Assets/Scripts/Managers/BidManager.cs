@@ -117,6 +117,10 @@ public class BidManager : ProcessManager
 		{
 			bidder.HasToDoSomething = true;
 		}
+        if (bidder is HumanPlayer)
+        {
+            humanPlayerReadyToBid.Raise();
+        }
         timeSinceBidBegin = 0f;
     }
 }

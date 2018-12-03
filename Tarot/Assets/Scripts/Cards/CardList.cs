@@ -83,7 +83,7 @@ public class CardList : List<Card>
 		// Excuse en premier
 		if (this[0].type == CardType.Excuse)
 		{
-			bestIndex = 1:
+            bestIndex = 1;
 		}
 		for (int i = bestIndex + 1; i < Count; i++)
 		{

@@ -7,16 +7,20 @@ public class PlayManager : ProcessManager
 {
 	protected override string Name => "Play";
 	public PlayerList players;
-	public CardListVariable selectedCards;
-	
+	public CardListVariable playedCard;
+    public CardListVariable cardsSelected;
+    public float delayBetweenTurnsSec = 2;
+
+    private float waitForNewTurnTimer = 0;
 	private Player Taker => players.GetTaker();
 	private Player Dealer => players.GetDealer();
 	private Player currentPlayer;
 	private Player turnWinner;
 	private int turn = 0;
 	private int nTurnMax = 0;
-	
-	
+    private int nCardPlayed = 0;
+    private Dictionary<Card, Player> playedCardDict;
+
 	void Update()
 	{
 		if (status == ProcessState.Running)
@@ -27,22 +31,31 @@ public class PlayManager : ProcessManager
 			}
 			else
 			{
-				if (selectedCards.Count == players.Count) // toutes les cartes ont été jouées
+				if (playedCard.Count == players.Count) // toutes les cartes ont été jouées
 				{
-					FinishCurrentTurn();
-					NewTurn();
+                    waitForNewTurnTimer += Time.deltaTime;
+                    if (waitForNewTurnTimer > delayBetweenTurnsSec)
+                    {
+                        FinishCurrentTurn();
+                        NewTurn(turnWinner);
+                    } 
 				}
 				else
                 {
                     if (currentPlayer is CpuPlayer)
                     {
-                        CpuPlayer cpuPlayer = (CpuPlayer)currentPlayer;
-                        Card card = cpuPlayer.SelectCardToPlay(selectedCards.Value);
-                        PlayCard(cpuPlayer, card);
+                        CpuPlayer cpuPlayer = (CpuPlayer) currentPlayer;
+                        Card card = cpuPlayer.SelectCardToPlay(playedCard.Value);
+                        PlayCard(currentPlayer, card);
                     }
                     else
                     {
-                        // joueur humain, ne rien faire pour le moment
+                        if (cardsSelected.Count == 1)
+                        {
+                            Card card = cardsSelected.Value[0];
+                            PlayCard(currentPlayer, card);
+                            cardsSelected.Value.Remove(card);
+                        }
                     }
                 } 
 			}
@@ -68,43 +81,51 @@ public class PlayManager : ProcessManager
 	private void InitPlay()
 	{
         Debug.Log("Init play");
-        turn = 0;
-		nTurnMax = players.Items[0].Hand.Count - 1;
-		ChangeCurrentPlayer (players.GetNext(Dealer));
-		selectedCards.Clear();
-		turnWinner = null;		
-	}
+        playedCardDict = new Dictionary<Card, Player>();
+        turn = -1;
+        turnWinner = null;
+        nTurnMax = players.Items[0].Hand.Count - 1;
+        NewTurn(players.GetNext(Dealer));
+    }
 
 	
-	private void NewTurn()
+	private void NewTurn(Player startPlayer)
 	{
-		turn += 1;
-		ChangeCurrentPlayer (turnWinner);
+        turn += 1;
+        nCardPlayed = 0;
+        waitForNewTurnTimer = 0;
+        playedCard.Clear();
+        cardsSelected.Clear();
+        ChangeCurrentPlayer (startPlayer);
         Debug.Log("Started Turn " + turn);
     }
 	
 	
 	private void FinishCurrentTurn()
 	{
-		int bestCardIndex = selectedCards.GetBestCardIndex();
-		turnWinner = players.Items[bestCardIndex];
-		PutBoardCardsInWinnerScoringPile();
+        Card bestCard = playedCard.GetBestCard();
+        turnWinner = playedCardDict[bestCard];
+        PutBoardCardsInWinnerScoringPile();
         Debug.Log("Finished turn " + turn + ". Winner: " + turnWinner.name);
 	}
 	
+
+
 	
 	private void PlayCard(Player player, Card card)
 	{
-		if (player.CanPlayCard(card, selectedCards.Value)
+		if (player.CanPlayCard(card, playedCard.Value))
 		{	
 			Debug.Log(player.name + " played " + card);
 			player.Hand.Remove(card);
-			selectedCards.Add(card);
-			ChangeCurrentPlayer (players.GetNext(player));
-		}
+			playedCard.Add(card);
+            playedCardDict.Add(card, player);
+            ChangeCurrentPlayer (players.GetNext(player));
+            nCardPlayed++;
+        }
         else
 		{
-			Debug.LogError(player.name " cannot play " + card);
+			Debug.LogError(player.name + " cannot play " + card);
 		}
     }
 	
@@ -112,11 +133,11 @@ public class PlayManager : ProcessManager
 	private void PutBoardCardsInWinnerScoringPile()
 	{
 		// TODO: gérer l'excuse
-		foreach (Card card in selectedCards.Value)
+		foreach (Card card in playedCard.Value)
 		{
             turnWinner.ScoringPile.Add(card);
 		}
-		selectedCards.Clear();
+		playedCard.Clear();
 	}
 	
 	

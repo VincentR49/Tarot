@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
 	public CardListVariable selectedCards;
+    public CardListVariable playedCards;
 	public GamePhaseVariable gamePhase;
 	public PlayerList players;
 	public float shiftPixelYSelection = 10;
@@ -96,7 +97,8 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 		
 		if (gamePhase.Value == GamePhase.Play)
 		{
-            if (humanPlayer.CanPlayCard(Card, selectedCards.Value) && humanPlayer.HasToDoSomething)
+            if (humanPlayer.CanPlayCard(Card, playedCards.Value) 
+                && humanPlayer.HasToDoSomething)
             {
                 return true;
             }

@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCards: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
+  playedCards: {fileID: 11400000, guid: 6055bbaa07d009d4e9a4d27fba067a5b, type: 2}
   gamePhase: {fileID: 11400000, guid: 3a0585a0842f6c7479044f410e04968c, type: 2}
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
   shiftPixelYSelection: 10

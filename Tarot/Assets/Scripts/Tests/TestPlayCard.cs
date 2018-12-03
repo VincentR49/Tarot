@@ -7,7 +7,7 @@ public class TestPlayCard : MonoBehaviour
 {
 	public Player player;
 	public Deck standardDeck; 
-	private CardList boardsCards;
+	private CardList boardCards;
 	
 	
 	void Start()
@@ -18,6 +18,8 @@ public class TestPlayCard : MonoBehaviour
 		Test3();
 		Test4();
 		Test5();
+		Test6();
+		Test7();
 	}
 	
 	
@@ -133,7 +135,7 @@ public class TestPlayCard : MonoBehaviour
 	private void PrepareTest(String name)
 	{
 		Debug.Log("Start play test: " + name);
-		boardsCard = new CardList();
+		boardCards = new CardList();
 		player.PrepareForNewHand();
 	}
 
@@ -149,7 +151,7 @@ public class TestPlayCard : MonoBehaviour
 	private void AddCardBoard(CardType type, CardRank, rank) 
 	{ 
 		Card card = GetCard(type, rank);
-		boardsCard.Add (card); 
+		boardCards.Add (card); 
 		Debug.Log("Add card to board: " + card);
 	}
 	

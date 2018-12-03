@@ -80,7 +80,12 @@ public class CardList : List<Card>
 	public int GetBestCardIndex()
 	{
 		int bestIndex = 0;
-		for (int i = 1; i < Count; i++)
+		// Excuse en premier
+		if (this[0].type == CardType.Excuse)
+		{
+			bestIndex = 1:
+		}
+		for (int i = bestIndex + 1; i < Count; i++)
 		{
 			if (this[i].type == this[bestIndex].type)
 			{

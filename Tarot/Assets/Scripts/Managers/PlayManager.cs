@@ -60,6 +60,7 @@ public class PlayManager : ProcessManager
 	public override void FinishProcess()
 	{
 		// TODO
+		ChangeCurrentPlayer(null);
 		base.FinishProcess();
 	}
 	
@@ -69,7 +70,7 @@ public class PlayManager : ProcessManager
         Debug.Log("Init play");
         turn = 0;
 		nTurnMax = players.Items[0].Hand.Count - 1;
-		currentPlayer = players.GetNext(Dealer);
+		ChangeCurrentPlayer (players.GetNext(Dealer));
 		selectedCards.Clear();
 		turnWinner = null;		
 	}
@@ -78,7 +79,7 @@ public class PlayManager : ProcessManager
 	private void NewTurn()
 	{
 		turn += 1;
-		currentPlayer = turnWinner;
+		ChangeCurrentPlayer (turnWinner);
         Debug.Log("Started Turn " + turn);
     }
 	
@@ -99,7 +100,7 @@ public class PlayManager : ProcessManager
 			Debug.Log(player.name + " played " + card);
 			player.Hand.Remove(card);
 			selectedCards.Add(card);
-			currentPlayer = players.GetNext(player);
+			ChangeCurrentPlayer (players.GetNext(player));
 		}
         else
 		{
@@ -116,5 +117,19 @@ public class PlayManager : ProcessManager
             turnWinner.ScoringPile.Add(card);
 		}
 		selectedCards.Clear();
+	}
+	
+	
+	public void ChangeCurrentPlayer(Player currentPlayer)
+	{
+		if (this.currentPlayer != null)
+		{
+			this.currentPlayer.HasToDoSomething = false;
+		}
+		this.currentPlayer = currentPlayer;
+		if (this.currentPlayer != null)
+		{
+			this.currentPlayer.HasToDoSomething = true;
+		}
 	}
 }

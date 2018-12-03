@@ -69,6 +69,7 @@ public class BidManager : ProcessManager
 	
 	public override void FinishProcess()
 	{
+		SelectBidder(null);
 		if (maxBid >= Bid.Prise)
 		{
 			foreach (Player p in players.Items)
@@ -107,11 +108,15 @@ public class BidManager : ProcessManager
 
     private void SelectBidder(Player newBidder)
     {
-        bidder = newBidder;
-        timeSinceBidBegin = 0f;
-		if (bidder is HumanPlayer)
+		if (bidder != null)
 		{
-			humanPlayerReadyToBid.Raise();
+			bidder.HasToDoSomething = false;
 		}
+        bidder = newBidder;
+		if (bidder != null)
+		{
+			bidder.HasToDoSomething = true;
+		}
+        timeSinceBidBegin = 0f;
     }
 }

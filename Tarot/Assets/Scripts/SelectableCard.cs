@@ -86,20 +86,17 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 		if (!humanPlayer.Hand.Contains(Card)) return false;
 		if (gamePhase.Value == GamePhase.DogMaking)
 		{
-			if (selectedCards.Count >= Dog.GetNumberOfCards(players.Count))
-			{
-				return false;
-			}
-			else if (humanPlayer.CanPutCardInDog(Card))
+			if (humanPlayer.CanPutCardInDog(Card) 
+					&& selectedCards.Count < Dog.GetNumberOfCards(players.Count)
+					&& humanPlayer.HasToDoSomething)
 			{
 				return true;
 			}
-			return false;
 		}	
 		
 		if (gamePhase.Value == GamePhase.Play)
 		{
-            if (humanPlayer.CanPlayCard(Card, selectedCards.Value))
+            if (humanPlayer.CanPlayCard(Card, selectedCards.Value) && humanPlayer.HasToDoSomething)
             {
                 return true;
             }

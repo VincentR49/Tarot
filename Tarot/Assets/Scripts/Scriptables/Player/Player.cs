@@ -9,6 +9,7 @@ public class Player : ScriptableObject
 	public int score = 0;
 	public int teamIndex;
 
+	public bool HasToDoSomething { get; set; }
 	public bool IsDealer { get; set; }
 	public bool IsTaker { get; set; }
 	public CardList Hand { get; set; }
@@ -31,6 +32,7 @@ public class Player : ScriptableObject
 		ScoringPile = new CardList();
 		IsDealer = false;
 		IsTaker = false;
+		HasToDoSomething = false;
 	}
 	
 	// can save other stats

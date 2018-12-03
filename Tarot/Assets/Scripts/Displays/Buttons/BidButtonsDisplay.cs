@@ -15,7 +15,7 @@ public class BidButtonsDisplay : CanvasGroupDisplay
         base.Awake();
         Hide();
     }
-
+	
     private void Start()
     {
         passButton.onClick.AddListener(() => SetBid(Bid.Pass));
@@ -24,8 +24,8 @@ public class BidButtonsDisplay : CanvasGroupDisplay
         gardeSansButton.onClick.AddListener(() => SetBid(Bid.GardeSans));
         gardeContreButton.onClick.AddListener(() => SetBid(Bid.GardeContre));
     }
-
-
+	
+	
     private void SetBid(Bid bid)
     {
         Player player = players.GetFirstHumanPlayer();

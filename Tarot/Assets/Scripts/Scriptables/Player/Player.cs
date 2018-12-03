@@ -70,10 +70,9 @@ public class Player : ScriptableObject
 
     public bool CanPlayCard(Card card, CardList cardsOnBoard) // à simplifier
     {
+		if (!Hand.Contains(card)) return false;
         if (cardsOnBoard.Count == 0)  return true;
-       
         CardType firstCardType = cardsOnBoard[0].type;
-        // Gérer l'excuse ici
         if (firstCardType == CardType.Excuse || card.type == CardType.Excuse)
         {
             return true;
@@ -115,7 +114,7 @@ public class Player : ScriptableObject
                     else // trump card 
                     {
                         // La carte est un atout.
-                        // La première carte n'est pas atout.
+                        // La première carte n'est pas atout et on ne peut pas jouer cette couleur
                         // Notre main contient des atouts
                         // Si la carte joué est un atout inférieur à l'atout le plus fort de la liste
                         // S'assurer que le jouer ne possède pas d'atout plus fort dans son jeu

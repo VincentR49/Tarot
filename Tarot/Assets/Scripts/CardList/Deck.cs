@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,4 +32,7 @@ public class Deck : RuntimeStack<Card>
 		if (Items.Count == 0) return null;
 		return Pop();
 	}
+	
+	
+	public Card GetCard(CardType type, CardRank rank) => Items.FirstOrDefault(c => c.type == type && c.rank == rank);
 }

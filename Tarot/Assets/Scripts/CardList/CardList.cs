@@ -42,6 +42,7 @@ public class CardList : List<Card>
         return true;
     }
 
+	
     public new bool Contains(Card card)
     {
         foreach (Card c in this)
@@ -72,9 +73,9 @@ public class CardList : List<Card>
     }
 
 
-	
 	public Card GetBestCard() => this[GetBestCardIndex()];
 
+	
 	// Get the best card, following tarot rule, starting by the first card of the list
 	public int GetBestCardIndex()
 	{
@@ -90,5 +91,15 @@ public class CardList : List<Card>
 				bestIndex = i;
 		}
 		return bestIndex;
+	}
+	
+	
+	public Card GetCard(CardType type, CardRank rank)
+	{
+		foreach (Card c in this)
+        {
+            if (c.type == type && c.rank == rank) return c;
+        }
+		return null;
 	}
 }

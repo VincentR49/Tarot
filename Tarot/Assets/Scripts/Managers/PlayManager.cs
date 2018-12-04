@@ -153,4 +153,10 @@ public class PlayManager : ProcessManager
 			this.currentPlayer.HasToDoSomething = true;
 		}
 	}
+
+
+    private void SetPlayersTeam()
+    {
+
+    }
 }

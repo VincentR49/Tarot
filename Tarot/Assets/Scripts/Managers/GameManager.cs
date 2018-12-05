@@ -6,9 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(PlayersGenerator))]
 [RequireComponent(typeof(DealManager))]
 [RequireComponent(typeof(BidManager))]
+[RequireComponent(typeof(AllySelectionManager))]
 [RequireComponent(typeof(DogMakingManager))]
 [RequireComponent(typeof(DogShowingManager))]
 [RequireComponent(typeof(PlayManager))]
+[RequireComponent(typeof(ScoringManager))]
 public class GameManager : MonoBehaviour
 {
 	public IntVariable nPlayer;
@@ -20,15 +22,16 @@ public class GameManager : MonoBehaviour
 	
     private void Awake()
     {
-        // Dictionary of process
         gameProcesses = new Dictionary<GamePhase, ProcessManager>
         {
             { GamePhase.PlayerPreparation, GetComponent<PlayersGenerator>() },
             { GamePhase.Dealing, GetComponent<DealManager>() },
             { GamePhase.Bidding, GetComponent<BidManager>() },
+			{ GamePhase.AllySelection, GetComponent<AllySelectionManager>() },
 			{ GamePhase.DogShowing, GetComponent<DogShowingManager>() },
 			{ GamePhase.DogMaking, GetComponent<DogMakingManager>() },
 			{ GamePhase.Play, GetComponent<PlayManager>() },
+			{ GamePhase.Scoring, GetComponent<ScoringManager>() },
         };
     }
 
@@ -102,11 +105,12 @@ public class GameManager : MonoBehaviour
 				}
 				else
 				{
-					return GamePhase.DogShowing;
+					return nPlayer.Value == 5 ? GamePhase.AllySelection : GamePhase.DogShowing;
 				}
+			case GamePhase.AllySelection: return GamePhase.DogShowing;
 			case GamePhase.DogShowing: return GamePhase.DogMaking;
 			case GamePhase.DogMaking: return GamePhase.Play;
-			//case GamePhase.Play: return GamePhase.Scoring;
+			case GamePhase.Play: return GamePhase.Scoring;
 			default: return GamePhase.None;
 		}
 	}

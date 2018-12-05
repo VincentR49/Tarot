@@ -58,4 +58,14 @@ public class PlayerList : RuntimeList<Player>
 		}
 		return null;
 	}
+	
+	
+	public Player GetFirstPlayerByTeam(int team)
+	{
+		foreach (Player p in Items)
+		{
+			if (p.team == team) return p;
+		}
+		return null;
+	}
 }

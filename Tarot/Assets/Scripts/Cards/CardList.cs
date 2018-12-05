@@ -107,4 +107,14 @@ public class CardList : List<Card>
         }
 		return null;
 	}
+	
+	
+	public Card GetFirstCardByValue(float value)
+	{
+		foreach (Card c in this)
+        {
+            if (c.Value == value) return c;
+        }
+		return null;
+	}
 }

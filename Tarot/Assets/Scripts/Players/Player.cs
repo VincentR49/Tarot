@@ -7,8 +7,7 @@ public class Player : ScriptableObject
 {
 	public new String name = "Player";
 	public int score = 0;
-	public int teamIndex;
-
+	public int team = 0;
 	public bool HasToDoSomething { get; set; }
 	public bool IsDealer { get; set; }
 	public bool IsTaker { get; set; }
@@ -17,9 +16,7 @@ public class Player : ScriptableObject
 	public Bid CurrentBid => bid;
 	
 	private Bid bid = Bid.None;
-	private List<int> pastScores = new List<int>();
-	
-	
+
 	public void PrepareForNewGame()
 	{
 		score = 0;

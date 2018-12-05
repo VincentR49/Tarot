@@ -8,25 +8,23 @@ using UnityEngine.UI;
 public class SelectAllyDisplay : MonoBehaviour
 {
     public PlayerList players;
-	public GameObject cardPrefab;
+	public GameObject cardButtonPrefab;
 	public GamePhaseVariable gamePhase;
 
 	private Player Taker => players.GetTaker();
 	private List<GameObject> cards;
-	private boolean buttonsShown;
+	private bool buttonsShown;
 	
 	
     private void Awake()
     {
-       text = GetComponent<Text>();
-	   image = GetComponent<Image>();
 	   cards = new List<GameObject>();
     }
 
 
     private void Update()
     {
-		if (gamePhase.Value == GamePhase.SelectAlly)
+		if (gamePhase.Value == GamePhase.AllySelection)
 		{
 			if (cards.Count == 0)
 			{

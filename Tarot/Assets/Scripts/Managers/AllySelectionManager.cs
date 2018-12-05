@@ -39,8 +39,8 @@ public class AllySelectionManager : ProcessManager
 		timer = 0f;
 		if (Taker is CpuPlayer)
 		{
-			Card card = (CpuPlayer) Taker.SelectCalledCard();
-			ChooseCalledCard (card);
+            CpuPlayer cpuPlayer = (CpuPlayer) Taker;
+			ChooseCalledCard (cpuPlayer.SelectCalledCard(standardDeck));
 		}
 	}
 	

@@ -91,6 +91,7 @@ public class PlayManager : ProcessManager
 		excuseWinner = null;
         turn = -1;
         nTurnMax = players.Items[0].Hand.Count - 1;
+        SetPlayersTeam();
         NewTurn(players.GetNext(Dealer));
     }
 
@@ -145,7 +146,7 @@ public class PlayManager : ProcessManager
 	
 	private void PutBoardCardsInWinnerScoringPile()
 	{
-		cardReceiver = GetScoringPilePlayer(turnWinner.team);
+		Player cardReceiver = GetScoringPilePlayer(turnWinner.team);
 		foreach (Card card in playedCard.Value)
 		{   
 			cardReceiver.ScoringPile.Add(card);
@@ -175,6 +176,7 @@ public class PlayManager : ProcessManager
     private void SetPlayersTeam()
     {
 		int nPlayers = players.Count;
+        Debug.Log("Set players teams");
 		if (nPlayers != 5)
 		{
 			foreach (Player p in players.Items)
@@ -194,7 +196,8 @@ public class PlayManager : ProcessManager
 	
 	private void SetPlayersTeam5Players(Player calledPlayer)
 	{
-		foreach (Player p in players.Items)
+        Debug.Log("Set 5 players teams");
+        foreach (Player p in players.Items)
 		{
 			p.team = (p.IsTaker || p == calledPlayer) ? TAKER_TEAM_INDEX : DEFENDER_TEAM_INDEX;
 		}

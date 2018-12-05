@@ -20,6 +20,7 @@ public class TestPlayCard : MonoBehaviour
 		Test5();
 		Test6();
 		Test7();
+        Test8();
 	}
 	
 	
@@ -130,9 +131,25 @@ public class TestPlayCard : MonoBehaviour
 		for (int i = 0; i < player.Hand.Count; i++) 
 			CheckPlayCard (i);
 	}
-	
-	
-	private void PrepareTest(string name)
+
+    void Test8()
+    {
+        PrepareTest("Excuse first card, need play heart");
+
+        AddCardBoard(CardType.Excuse, CardRank.None);
+        AddCardBoard(CardType.Heart, CardRank.Six);
+        AddCardBoard(CardType.Trump, CardRank.Twelve);
+
+        AddCardHand(CardType.Heart, CardRank.Roi);
+        AddCardHand(CardType.Club, CardRank.Ten);
+        AddCardHand(CardType.Diamond, CardRank.Valet);
+
+        for (int i = 0; i < player.Hand.Count; i++)
+            CheckPlayCard(i);
+    }
+
+
+    private void PrepareTest(string name)
 	{
 		Debug.Log("Start play test: " + name);
 		boardCards = new CardList();

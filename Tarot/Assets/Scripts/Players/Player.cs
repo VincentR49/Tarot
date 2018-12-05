@@ -69,13 +69,13 @@ public class Player : ScriptableObject
 	
 	public CardRank GetMinRankCallable()
 	{
-		int rank = (int) CardRank.Roi;
+		CardRank rank = CardRank.Roi;
 		while (rank >= CardRank.Valet)
 		{
-			Card heart = Hand.GetCard(rank, CardType.Heart);
-			Card diamond = Hand.GetCard(rank, CardType.Diamond);
-			Card spade = Hand.GetCard(rank, CardType.Spade);
-			Card club = Hand.GetCard(rank, CardType.Club);
+			Card heart = Hand.GetCard (CardType.Heart, rank);
+			Card diamond = Hand.GetCard (CardType.Diamond, rank);
+			Card spade = Hand.GetCard (CardType.Spade, rank);
+			Card club = Hand.GetCard (CardType.Club, rank);
 			if (heart == null || diamond == null || spade == null || club == null)
 			{
 				break;
@@ -91,11 +91,20 @@ public class Player : ScriptableObject
 		if (!Hand.Contains(card)) return false;
         if (cardsOnBoard.Count == 0)  return true;
         CardType firstCardType = cardsOnBoard[0].type;
-        if (firstCardType == CardType.Excuse || card.type == CardType.Excuse)
+        if (card.type == CardType.Excuse) return true;
+        if (firstCardType == CardType.Excuse)
         {
-            return true;
+            if (cardsOnBoard.Count == 1)
+            {
+                return true;
+            }
+            else
+            {
+                firstCardType = cardsOnBoard[1].type;
+            }
         }
-        else if (firstCardType == card.type)
+
+        if (firstCardType == card.type)
         {
             if (firstCardType == CardType.Trump)
             {

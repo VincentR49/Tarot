@@ -8,7 +8,7 @@ public class CpuPlayer : Player
 	public BidAI bidAI;
 	public DogAI dogAI;
 	public PlayAI playAI;
-	public ChooseAllyAI chooseAllAI;
+	public ChooseAllyAI chooseAllyAI;
 	
 	public void MakeABid(Bid minBid)
 	{
@@ -62,10 +62,10 @@ public class CpuPlayer : Player
 	{
 		// TODO delegate to AI
 		CardRank minRank = GetMinRankCallable();
-		Card heart = Hand.GetCard(minRank, CardType.Heart);
-		Card diamond = Hand.GetCard(minRank, CardType.Diamond);
-		Card spade = Hand.GetCard(minRank, CardType.Spade);
-		Card club = Hand.GetCard(minRank, CardType.Club);
+		Card heart = Hand.GetCard (CardType.Heart, minRank);
+		Card diamond = Hand.GetCard (CardType.Diamond, minRank);
+        Card spade = Hand.GetCard (CardType.Spade, minRank);
+		Card club = Hand.GetCard (CardType.Club, minRank);
 		if (heart == null)
 		{
 			return standardDeck.GetCard(CardType.Heart, minRank);

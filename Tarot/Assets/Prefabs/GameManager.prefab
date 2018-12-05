@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 114102557424426724}
   - component: {fileID: 114508439799562842}
   - component: {fileID: 114641943498119472}
+  - component: {fileID: 114170974894093926}
+  - component: {fileID: 114431501683254602}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -62,7 +64,7 @@ MonoBehaviour:
     type: 2}
   humanPlayerBidAborted: {fileID: 11400000, guid: 315fbf8c29a904f4ca2872bd01e4dfde,
     type: 2}
-  limitAnswerTimeSec: 30
+  limitAnswerTimeSec: 120
 --- !u!114 &114102557424426724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,6 +80,17 @@ MonoBehaviour:
   showDogEvent: {fileID: 11400000, guid: 4d172396993033f4fb45ce3b7acb1b33, type: 2}
   hideDogEvent: {fileID: 11400000, guid: 91b836fc31ff32640a82229c32b72599, type: 2}
   showDogDurationSec: 2
+--- !u!114 &114170974894093926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9e25838d9ec6a44b489604e8d019f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114174458346293478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +107,21 @@ MonoBehaviour:
   nPlayer: {fileID: 11400000, guid: 9fcc094926cb7554f88c1f69b5b34618, type: 2}
   playersCreatedEvent: {fileID: 11400000, guid: e4c8f6ca24faeef4484a161fcb3eb3c0,
     type: 2}
+--- !u!114 &114431501683254602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72422944c79564d44a050b045113a52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  calledCard: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82, type: 2}
+  standardDeck: {fileID: 11400000, guid: 81029d16279834f49b1670cedfd6c6f1, type: 2}
+  limitAnswerTimeSec: 10
 --- !u!114 &114494074357195876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,7 +150,7 @@ MonoBehaviour:
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
   dog: {fileID: 11400000, guid: e006c267139ea3740821db1f7caeafb2, type: 2}
   selectedCards: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
-  makeDogTimeLimitSec: 60
+  makeDogTimeLimitSec: 120
 --- !u!114 &114641943498119472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  calledCard: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82, type: 2}
   playedCard: {fileID: 11400000, guid: 6055bbaa07d009d4e9a4d27fba067a5b, type: 2}
   cardsSelected: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
   delayBetweenTurnsSec: 2

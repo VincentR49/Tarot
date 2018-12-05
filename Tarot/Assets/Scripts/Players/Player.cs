@@ -66,6 +66,25 @@ public class Player : ScriptableObject
         return !(card.IsOudler() || card.rank == CardRank.Roi || card.type == CardType.Trump);
     }
 
+	
+	public CardRank GetMinRankCallable()
+	{
+		int rank = (int) CardRank.Roi;
+		while (rank >= CardRank.Valet)
+		{
+			Card heart = Hand.GetCard(rank, CardType.Heart);
+			Card diamond = Hand.GetCard(rank, CardType.Diamond);
+			Card spade = Hand.GetCard(rank, CardType.Spade);
+			Card club = Hand.GetCard(rank, CardType.Club);
+			if (heart == null || diamond == null || spade == null || club == null)
+			{
+				break;
+			}		
+			rank--;
+		}
+		return (CardRank) rank;
+	}
+	
 
     public bool CanPlayCard(Card card, CardList cardsOnBoard) // à simplifier
     {

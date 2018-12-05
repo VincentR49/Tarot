@@ -16,7 +16,7 @@ public class BidManager : ProcessManager
 
 	private Bid maxBid = Bid.None;
 	private Player bidder = null;
-    private float timeSinceBidBegin = 0f;
+    private float timer;
 
 	
 	private void Update()
@@ -30,8 +30,8 @@ public class BidManager : ProcessManager
 			}	
             else // human player
             {
-                timeSinceBidBegin += Time.deltaTime;
-                if (timeSinceBidBegin > limitAnswerTimeSec)
+                timer += Time.deltaTime;
+                if (timer > limitAnswerTimeSec)
                 {
                     bidder.SetBid (Bid.Pass);
 					humanPlayerBidAborted.Raise();
@@ -121,6 +121,6 @@ public class BidManager : ProcessManager
         {
             humanPlayerReadyToBid.Raise();
         }
-        timeSinceBidBegin = 0f;
+        timer = 0f;
     }
 }

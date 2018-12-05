@@ -151,7 +151,7 @@ public class PlayManager : ProcessManager
 			cardReceiver.ScoringPile.Add(card);
 			if (card.type == CardType.Excuse)
 			{
-				excuseWinner = turnWinner;
+				excuseWinner = cardReceiver;
 			}	
 		}
 		playedCard.Clear();

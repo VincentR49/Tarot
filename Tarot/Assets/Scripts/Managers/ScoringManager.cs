@@ -3,66 +3,69 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Calcul des points à la fin d'une partie
+// TODO: GESTION du chelem à faire
+// A réécrire en prenant en compte ScoringData...
 public class ScoringManager : ProcessManager 
 {
     protected override string Name => "Scoring Manager";
 	public PlayerList players;
 	public Dog dog;
+	public ScoringData scoringData;
 	private Player Taker => players.GetTaker();
-	private float takerPoints;
-	private float defensePoints;
 	
 	
 	public override void StartProcess()
 	{
 		base.StartProcess();
-		takerPoints = GetTakerPoints();
-		defensePoints = GetDefensePoints();
-		Debug.Log("Taker made " + takerPoints + " points.");
-		Debug.Log("Defense made " + defensePoints + " points.");
+		// Init
+		scoringData.nOudlerTaker = 0;
+		scoringData.nPointTaker = 0;
+		scoringData.petitWithTaker = false;
+		ScanScoringPiles();
+		ScanDog();
+		// TODO
 		ComputeScores();
 		FinishProcess();
 	}
-
 	
-	private float GetTakerPoints()
+	
+	private void ScanScoringPiles()
 	{
-		float points = 0;
 		foreach (Player p in players.Items)
 		{
-			if (p.team != TAKER_TEAM_INDEX) continue;
-			points += p.ScoringPile.GetPoints();
+			ScanCardList(p.ScoringPile, p.team == TAKER_TEAM_INDEX);
 		}
-		if (Taker.Bid < Bid.GardeContre)
-		{
-			points += dog.GetPoints();
-		}
-		return points;
 	}
-
 	
-	private float GetDefensePoints()
+	
+	private void ScanDog()
 	{
-		float points = 0;
-		foreach (Player p in players.Items)
+		ScanCardList(dog.Value, Taker.Bid < Bid.GardeContre);
+	}
+	
+	
+	private void ScanCardList(CardList cardList, bool belongToTaker)
+	{
+		foreach (Card card in cardList)
 		{
-			if (p.team == TAKER_TEAM_INDEX) continue;
-			points += p.ScoringPile.GetPoints();
+			if (belongToTaker)
+			{
+				scoringData.takerPoints += card.Value;
+				scoringData.nOudlerTaker += card.IsOudler() ? 1 : 0;
+			}
+			if (card.type == CardType.Trump && card.rank == CardRank.One)
+			{
+				scoringData.petitWithTaker = belongToTaker;
+			}
 		}
-		if (Taker.Bid == Bid.GardeContre)
-		{
-			points += dog.GetPoints();
-		}
-		return points;
 	}
 	
 	
 	private void ComputeScores()
 	{
-		// TODO
-	}
+		float winerBasePoints = scoringData.GetWinnerBasePoints();
 	
-
+	}
 	public override void FinishProcess()
 	{
         base.FinishProcess();

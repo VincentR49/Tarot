@@ -117,4 +117,15 @@ public class CardList : List<Card>
         }
 		return null;
 	}
+	
+	
+	public int GetNOudler()
+	{
+		int n = 0;
+		foreach (Card c in this)
+        {
+            if (c.IsOudler()) n++;
+        }
+		return n;
+	}
 }

@@ -10,6 +10,7 @@ public class CardListVariable : ScriptableObject
 	public Card GetBestCard() => Value.GetBestCard();
 	public int GetBestCardIndex() => Value.GetBestCardIndex();
 	public float GetPoints() => Value.GetPoints();
+	public int GetNOudler() => Value.GetNOudler();
 	
 	public void Add(Card card)
 	{

@@ -11,6 +11,7 @@ public class PlayManager : ProcessManager
 	public Card calledCard; // for 5 players game
 	public CardListVariable playedCard;
     public CardListVariable cardsSelected;
+	public ScoringData scoringData;
     public float delayBetweenTurnsSec = 2;
 
     private float waitForNewTurnTimer = 0;
@@ -87,6 +88,7 @@ public class PlayManager : ProcessManager
 	{
         Debug.Log("Init play");
         playedCardDict = new Dictionary<Card, Player>();
+		petitAuBout.Value = false;
 		excusePlayer = null;
 		excuseWinner = null;
         turn = -1;
@@ -139,6 +141,12 @@ public class PlayManager : ProcessManager
 			if (players.Count == 5 && card == calledCard)
 			{
 				SetPlayersTeam5Players(player);
+			}
+			if (turn == nTurnMax 
+					&& card.rank == CardRank.One 
+					&& card.type == CardType.Trump)
+			{
+				petitAuBout.Value = true;
 			}
             nCardPlayed++;
         }

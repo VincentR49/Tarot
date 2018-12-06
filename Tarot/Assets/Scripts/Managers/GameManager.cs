@@ -46,12 +46,12 @@ public class GameManager : MonoBehaviour
     }
 
 	
-
     private void InitGame()
     {
         ChangeGamePhase(GamePhase.None);
     }
 
+	
 	private void Update()
 	{
 		if (currentProcess != null 

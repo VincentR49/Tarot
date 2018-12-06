@@ -11,6 +11,8 @@ public enum GamePhase
 	AllySelection,
 	DogShowing,
 	DogMaking,
+	ChelemAnnouncement,
+	PoigneeShowing,
 	Play,
 	Scoring
 }

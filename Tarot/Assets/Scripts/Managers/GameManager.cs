@@ -9,6 +9,8 @@ using UnityEngine;
 [RequireComponent(typeof(AllySelectionManager))]
 [RequireComponent(typeof(DogMakingManager))]
 [RequireComponent(typeof(DogShowingManager))]
+[RequireComponent(typeof(ChelemAnnouncementManager))]
+[RequireComponent(typeof(PoigneeShowingManager))]
 [RequireComponent(typeof(PlayManager))]
 [RequireComponent(typeof(ScoringManager))]
 public class GameManager : MonoBehaviour
@@ -30,6 +32,8 @@ public class GameManager : MonoBehaviour
 			{ GamePhase.AllySelection, GetComponent<AllySelectionManager>() },
 			{ GamePhase.DogShowing, GetComponent<DogShowingManager>() },
 			{ GamePhase.DogMaking, GetComponent<DogMakingManager>() },
+			{ GamePhase.ChelemAnnouncement, GetComponent<ChelemAnnouncementManager>() },
+			{ GamePhase.PoigneeShowing, GetComponent<PoigneeShowingManager>() },
 			{ GamePhase.Play, GetComponent<PlayManager>() },
 			{ GamePhase.Scoring, GetComponent<ScoringManager>() },
         };
@@ -109,7 +113,9 @@ public class GameManager : MonoBehaviour
 				}
 			case GamePhase.AllySelection: return GamePhase.DogShowing;
 			case GamePhase.DogShowing: return GamePhase.DogMaking;
-			case GamePhase.DogMaking: return GamePhase.Play;
+			case GamePhase.DogMaking: return GamePhase.ChelemAnnouncement;
+			case GamePhase.ChelemAnnouncement: return GamePhase.PoigneeShowing;
+			case GamePhase.PoigneeShowing: return GamePhase.Play;
 			case GamePhase.Play: return GamePhase.Scoring;
 			default: return GamePhase.None;
 		}

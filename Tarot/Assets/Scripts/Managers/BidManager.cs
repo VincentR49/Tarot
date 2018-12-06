@@ -33,7 +33,7 @@ public class BidManager : ProcessManager
                 timer += Time.deltaTime;
                 if (timer > limitAnswerTimeSec)
                 {
-                    bidder.SetBid (Bid.Pass);
+                    bidder.SetBid (Bid.Pass, maxBid);
 					humanPlayerBidAborted.Raise();
                 }
             }
@@ -90,8 +90,7 @@ public class BidManager : ProcessManager
 	{
 		foreach (Player p in players.Items)
 		{
-			p.SetBid(Bid.None);
-			p.IsTaker = false;
+			p.PrepareForBid():
 		}
 	}
 

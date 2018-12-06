@@ -151,7 +151,7 @@ public class PlayManager : ProcessManager
 	
 	private void PutBoardCardsInWinnerScoringPile()
 	{
-		Player cardReceiver = GetScoringPilePlayer(turnWinner.team);
+		Player cardReceiver = GetTeamScoringPilePlayer(turnWinner.team);
 		foreach (Card card in playedCard.Value)
 		{   
 			cardReceiver.ScoringPile.Add(card);
@@ -212,8 +212,8 @@ public class PlayManager : ProcessManager
 	
 	private void JoinPlayersScoringPilesBasedOnTeam()
 	{
-		Player takerReceiver = GetScoringPilePlayer (TAKER_TEAM_INDEX);
-		Player defenderReceiver = GetScoringPilePlayer (DEFENDER_TEAM_INDEX);
+		Player takerReceiver = GetTeamScoringPilePlayer (TAKER_TEAM_INDEX);
+		Player defenderReceiver = GetTeamScoringPilePlayer (DEFENDER_TEAM_INDEX);
 		foreach (Player p in players.Items)
 		{
 			if (p.team == TAKER_TEAM_INDEX && p != takerReceiver)
@@ -241,8 +241,8 @@ public class PlayManager : ProcessManager
 	{
 		if (excuseWinner != null && excusePlayer != null)
 		{
-			CardList excuseWinnerPile = GetScoringPilePlayer (excuseWinner.team).ScoringPile;
-			CardList excusePlayerPile = GetScoringPilePlayer ((excuseWinner.team + 1) % 2).ScoringPile;
+			CardList excuseWinnerPile = GetTeamScoringPilePlayer (excuseWinner.team).ScoringPile;
+			CardList excusePlayerPile = GetTeamScoringPilePlayer ((excuseWinner.team + 1) % 2).ScoringPile;
 			Card excuse = excuseWinnerPile.GetCard(CardType.Excuse, CardRank.None);
 			Card exchangeCard = excusePlayerPile.GetFirstCardByValue(0.5f);
 			if (exchangeCard == null)
@@ -265,9 +265,16 @@ public class PlayManager : ProcessManager
 	}
 	
 	
-	private Player GetScoringPilePlayer(int team)
+	private Player GetTeamScoringPilePlayer(int team)
 	{
-		// TODO à complexifier (joueur en face?)
-		return players.GetFirstPlayerByTeam (team);
+		if (team == TAKER_TEAM_INDEX)
+		{
+			return Taker;
+		}
+		else
+		{
+			// TODO à complexifier (joueur en face?)
+			return players.GetFirstPlayerOfTeam (team);
+		}
 	}
 }

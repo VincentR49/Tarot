@@ -8,36 +8,52 @@ public class Player : ScriptableObject
 	public new String name = "Player";
 	public int score = 0;
 	public int team = 0;
+	
 	public bool HasToDoSomething { get; set; }
 	public bool IsDealer { get; set; }
 	public bool IsTaker { get; set; }
 	public bool IsFirstThisTurn { get; set; }
 	public CardList Hand { get; set; }
 	public CardList ScoringPile { get; set; }
+	public bool AnouncedChelem { get; set; }
 	public Bid CurrentBid => bid;
+	public Poignee CurrentPoignee => poignee;
 	
 	private Bid bid = Bid.None;
-
+	private Poignee poignee = Poignee.None;
+	
+	
 	public void PrepareForNewGame()
 	{
 		score = 0;
 		PrepareForNewHand();
+		PrepareForBid();
+		PrepareForNewTurn();
 	}
 	
 	
 	public void PrepareForNewHand()
 	{
+		// break into smaller pieces?
 		Hand = new CardList();
 		ScoringPile = new CardList();
 		IsDealer = false;
-		IsTaker = false;
         HasToDoSomething = false;
-		PrepareForNewTurn();
+		AnouncedChelem = false; // à séparer
+		poignee = Poignee.None;
     }
 
 	
+	public void PrepareForBid()
+	{
+		IsTaker = false;
+		bid = Bid.None;
+	}
+	
+	
 	public void PrepareForNewTurn()
 	{
+		HasToDoSomething = false;
 		IsFirstThisTurn = false;
 	}
 	
@@ -48,12 +64,6 @@ public class Player : ScriptableObject
 	{
 		Hand.Sort((a,b) => -1 * a.CompareTo(b));
 	}
-	
-	
-	public void SetBid(Bid bid)
-	{
-		this.bid = bid;
-	}
 
 	
 	public void SetBid(Bid bid, Bid minBid)
@@ -61,12 +71,19 @@ public class Player : ScriptableObject
 		if (bid <= minBid && bid > Bid.Pass)
 		{
 			Debug.Log("Cannot make bid inferior or egal to the min bid");
-			SetBid(Bid.Pass);
+			this.bid = Bid.Pass;
 		}
 		else
 		{
-			SetBid(bid);
+			this.bid = bid;
 		}
+	}
+	
+	
+	public void SetPoignee (Poignee poignee)
+	{
+		// TODO add checks
+		this.poignee = poignee;
 	}
 
 

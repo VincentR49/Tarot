@@ -9,6 +9,7 @@ public class CardListVariable : ScriptableObject
 	public bool Contains(Card card) => Value.Contains(card);
 	public Card GetBestCard() => Value.GetBestCard();
 	public int GetBestCardIndex() => Value.GetBestCardIndex();
+	public float GetPoints() => Value.GetPoints();
 	
 	public void Add(Card card)
 	{

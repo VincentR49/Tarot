@@ -19,7 +19,7 @@ public class CpuPlayer : Player
 		SetBid(bid, minBid);
         */
 		// TODO delegate to AI
-        SetBid(Bid.Pass);
+        SetBid(Bid.Pass, minBid);
 	}
 	
 	public CardList ChooseCardsForDog(int nCard)

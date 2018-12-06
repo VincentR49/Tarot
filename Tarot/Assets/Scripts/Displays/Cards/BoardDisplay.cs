@@ -8,6 +8,7 @@ public class BoardDisplay : MonoBehaviour
     public CardListVariable playedCards;
 	public GamePhaseVariable gamePhase;
 	public GameObject cardPrefab;
+	public PlayerList players;
 	public List<GameObject> cardPlaceHolders;
 	
 	private List<GameObject> cards;
@@ -51,7 +52,7 @@ public class BoardDisplay : MonoBehaviour
         int count = 0;
         foreach (Card card in playedCards.Value)
         {
-            GameObject cardObject = Instantiate(cardPrefab, cardPlaceHolders[count].transform);
+            GameObject cardObject = Instantiate(cardPrefab, cardPlaceHolders[GetPlayerIndex(count)].transform);
             cardObject.transform.localPosition = Vector3.zero;
             CardDisplay cardDisplay = cardObject.GetComponent<CardDisplay>();
             cardDisplay.card = card;
@@ -59,4 +60,14 @@ public class BoardDisplay : MonoBehaviour
             count++;
         }
     }
+	
+	
+	private int GetPlayerIndex(int boardCardIndex)
+	{
+		Player firstPlayer = players.GetFirstPlayerThisTurn();
+		int firstPlayerIndex = players.Items.IndexOf(firstPlayer);
+		int nPlayer = players.Count;
+		int index = (firstPlayerIndex + boardCardIndex) % nPlayer;
+		return index;
+	}
 }

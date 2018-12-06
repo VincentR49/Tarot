@@ -11,6 +11,7 @@ public class Player : ScriptableObject
 	public bool HasToDoSomething { get; set; }
 	public bool IsDealer { get; set; }
 	public bool IsTaker { get; set; }
+	public bool IsFirstThisTurn { get; set; }
 	public CardList Hand { get; set; }
 	public CardList ScoringPile { get; set; }
 	public Bid CurrentBid => bid;
@@ -23,6 +24,7 @@ public class Player : ScriptableObject
 		PrepareForNewHand();
 	}
 	
+	
 	public void PrepareForNewHand()
 	{
 		Hand = new CardList();
@@ -30,8 +32,16 @@ public class Player : ScriptableObject
 		IsDealer = false;
 		IsTaker = false;
         HasToDoSomething = false;
+		PrepareForNewTurn();
     }
 
+	
+	public void PrepareForNewTurn()
+	{
+		IsFirstThisTurn = false;
+	}
+	
+	
 	// can save other stats
 	// game won / lost etc / nombre de prise, niveau des prises...
 	public void SortHand()

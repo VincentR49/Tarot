@@ -102,8 +102,13 @@ public class PlayManager : ProcessManager
 		turnWinner = null;
         nCardPlayed = 0;
         waitForNewTurnTimer = 0;
+		foreach (Player p in players.Items)
+		{
+			p.PrepareForNewTurn();
+		}
         playedCard.Clear();
         cardsSelected.Clear();
+		startPlayer.IsFirstThisTurn = true;
         ChangeCurrentPlayer (startPlayer);
         Debug.Log("Started Turn " + turn);
     }

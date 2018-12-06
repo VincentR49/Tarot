@@ -68,4 +68,14 @@ public class PlayerList : RuntimeList<Player>
 		}
 		return null;
 	}
+	
+	
+	public Player GetFirstPlayerThisTurn()
+	{
+		foreach (Player p in Items)
+		{
+			if (p.IsFirstThisTurn) return p;
+		}
+		return null;
+	}
 }

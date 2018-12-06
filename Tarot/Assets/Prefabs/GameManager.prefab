@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 114641943498119472}
   - component: {fileID: 114170974894093926}
   - component: {fileID: 114431501683254602}
+  - component: {fileID: 114325847785496598}
+  - component: {fileID: 114370027937112854}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -91,6 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e9e25838d9ec6a44b489604e8d019f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  dog: {fileID: 11400000, guid: e006c267139ea3740821db1f7caeafb2, type: 2}
+  scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
 --- !u!114 &114174458346293478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,6 +112,31 @@ MonoBehaviour:
   nPlayer: {fileID: 11400000, guid: 9fcc094926cb7554f88c1f69b5b34618, type: 2}
   playersCreatedEvent: {fileID: 11400000, guid: e4c8f6ca24faeef4484a161fcb3eb3c0,
     type: 2}
+--- !u!114 &114325847785496598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5291a46b9bffa469e2e94e0e58bd3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
+--- !u!114 &114370027937112854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6dafe60f9ef8574a9fdc0aa525e8791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
 --- !u!114 &114431501683254602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,6 +196,7 @@ MonoBehaviour:
   calledCard: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82, type: 2}
   playedCard: {fileID: 11400000, guid: 6055bbaa07d009d4e9a4d27fba067a5b, type: 2}
   cardsSelected: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
+  scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
   delayBetweenTurnsSec: 2
 --- !u!114 &114773578331762010
 MonoBehaviour:

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 [CreateAssetMenu(menuName="Scriptable Objects/ScoringData")]
@@ -22,12 +24,13 @@ public class ScoringData : ScriptableObject
 	public bool TakerHasWon => takerPoints >= pointsRequiredPerOudler[nOudlerTaker];
 	public bool PetitWithWinner => (TakerHasWon && petitWithTaker) || (!TakerHasWon && !petitWithTaker);
 	public float BonusPoigneeTotal => bonusPoignee[poignee1] + bonusPoignee[poignee2];
-	
-	// Will not change (core rules)
-	private static const float contractBasePoint = 25;
-	private static const float bonusPetitBout = 10;
-	private static const float bonusChelemAnnounced = 200; 
-	private static const float bonusChelemDone = 200;
+	public float DeltaContract => (float) Math.Ceiling (Math.Abs (takerPoints - pointsRequiredPerOudler[nOudlerTaker]));
+
+    // Will not change (core rules)
+    private const float contractBasePoint = 25;
+	private const float bonusPetitBout = 10;
+	private const float bonusChelemAnnounced = 200; 
+	private const float bonusChelemDone = 200;
 	
 	private Dictionary<Bid,float> bidMultiplicator = new Dictionary<Bid,float>
 		{
@@ -40,7 +43,7 @@ public class ScoringData : ScriptableObject
 	private Dictionary<Poignee,float> bonusPoignee  = new Dictionary<Poignee,float>
 		{
 			{ Poignee.None, 0f },
-			{ Poignee.Simple, 20f },
+			{ Poignee.Single, 20f },
 			{ Poignee.Double, 30f },
 			{ Poignee.Triple, 40f },
 		};
@@ -56,14 +59,33 @@ public class ScoringData : ScriptableObject
 	
 	public float GetWinnerBasePoints()
 	{
-		float pointsNeeded = pointsRequiredPerOudler[nOudlerTaker];
-		float deltaContract = Math.Ceil(Math.Abs(takerPoints - pointsNeeded)); // arrondi supérieur
 		float petitPoint = petitAuBout ? bonusPetitBout : 0;
-		petitPoints *= (PetitWithWinner) 1 : -1;
-		float basePoints = contractBasePoint + deltaContract + petitPoints;
+        petitPoint *= PetitWithWinner ? 1 : -1;
+		float basePoints = contractBasePoint + DeltaContract + petitPoint;
 		float chelemPoints = chelemDone ? bonusChelemDone : 0;
 		chelemPoints += chelemAnnounced ? bonusChelemAnnounced : 0;
 		float winerBasePoints = basePoints * bidMultiplicator[bid] + BonusPoigneeTotal + chelemPoints;
 		return winerBasePoints;
 	}
+
+
+    public void PrintSummary()
+    {
+        Debug.LogFormat("ScoringData:\n" +
+            "Taker won: {0}, by {1} points\n" +
+            "Bid: {2}\n" +
+            "Taker Points: {3}\n" + 
+            "Defender Points: {4}\n" + 
+            "Oudlers: {5}\n" + 
+            "Petit au bout: {6}\n" + 
+            "Petit with winner: {7}\n" + 
+            "Chelem Done: {8}\n" + 
+            "Chelem Announced: {9}\n" + 
+            "Poignées: {10}, {11}\n",
+            TakerHasWon, DeltaContract, 
+            bid, takerPoints, DefenderPoints, nOudlerTaker,
+            petitAuBout, PetitWithWinner,
+            chelemDone, chelemAnnounced,
+            poignee1, poignee2);
+    }
 }

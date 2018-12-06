@@ -8,8 +8,9 @@ public class PoigneeShowingManager : ProcessManager
 {
     protected override string Name => "Show Poignée";
 	public PlayerList players;
-	
-	public override void StartProcess()
+    public ScoringData scoringData;
+
+    public override void StartProcess()
 	{
 		base.StartProcess();
 		// TODO

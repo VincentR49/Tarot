@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Constants;
 
 // Calcul des points à la fin d'une partie
 // TODO: GESTION du chelem à faire
-// A réécrire en prenant en compte ScoringData...
 public class ScoringManager : ProcessManager 
 {
     protected override string Name => "Scoring Manager";
@@ -17,18 +17,25 @@ public class ScoringManager : ProcessManager
 	public override void StartProcess()
 	{
 		base.StartProcess();
-		// Init
-		scoringData.nOudlerTaker = 0;
-		scoringData.nPointTaker = 0;
-		scoringData.petitWithTaker = false;
+        // Init
+        InitScoringData();
 		ScanScoringPiles();
 		ScanDog();
-		// TODO
-		ComputeScores();
+        // TODO
+        ComputeScores();
 		FinishProcess();
 	}
 	
-	
+
+    private void InitScoringData()
+    {
+        scoringData.nOudlerTaker = 0;
+        scoringData.takerPoints = 0;
+        scoringData.petitWithTaker = false;
+        scoringData.bid = Taker.CurrentBid;
+    }
+
+
 	private void ScanScoringPiles()
 	{
 		foreach (Player p in players.Items)
@@ -40,7 +47,7 @@ public class ScoringManager : ProcessManager
 	
 	private void ScanDog()
 	{
-		ScanCardList(dog.Value, Taker.Bid < Bid.GardeContre);
+		ScanCardList(dog.Value, Taker.CurrentBid < Bid.GardeContre);
 	}
 	
 	
@@ -64,10 +71,7 @@ public class ScoringManager : ProcessManager
 	private void ComputeScores()
 	{
 		float winerBasePoints = scoringData.GetWinnerBasePoints();
-	
-	}
-	public override void FinishProcess()
-	{
-        base.FinishProcess();
-	}
+        scoringData.PrintSummary();
+        Debug.Log("Computins Score: winerBasePoints of " + winerBasePoints);
+    }
 }

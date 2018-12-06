@@ -88,7 +88,6 @@ public class PlayManager : ProcessManager
 	{
         Debug.Log("Init play");
         playedCardDict = new Dictionary<Card, Player>();
-		petitAuBout.Value = false;
 		excusePlayer = null;
 		excuseWinner = null;
         turn = -1;
@@ -146,7 +145,7 @@ public class PlayManager : ProcessManager
 					&& card.rank == CardRank.One 
 					&& card.type == CardType.Trump)
 			{
-				petitAuBout.Value = true;
+				scoringData.petitAuBout = true;
 			}
             nCardPlayed++;
         }
@@ -281,8 +280,8 @@ public class PlayManager : ProcessManager
 		}
 		else
 		{
-			// TODO à complexifier (joueur en face?)
-			return players.GetFirstPlayerOfTeam (team);
+            // TODO à complexifier (joueur en face?)
+            return players.GetFirstPlayerByTeam(team);
 		}
 	}
 }

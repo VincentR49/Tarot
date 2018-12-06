@@ -90,7 +90,7 @@ public class BidManager : ProcessManager
 	{
 		foreach (Player p in players.Items)
 		{
-			p.PrepareForBid():
+            p.PrepareForBid();
 		}
 	}
 

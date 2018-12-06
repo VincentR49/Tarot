@@ -29,7 +29,7 @@ public class BidButtonsDisplay : CanvasGroupDisplay
     private void SetBid(Bid bid)
     {
         Player player = players.GetFirstHumanPlayer();
-        player.SetBid(bid);
+        player.SetBid(bid, GetCurrentMaxBid());
         Hide();
     }
 

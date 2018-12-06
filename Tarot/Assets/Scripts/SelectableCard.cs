@@ -8,12 +8,13 @@ using UnityEngine.UI;
 // Complète la liste liée
 [RequireComponent(typeof(Image))]
 [RequireComponent(typeof(CardDisplay))]
-public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
+public class SelectableCard : MonoBehaviour, IPointerClickHandler
 {
 	public CardListVariable selectedCards;
     public CardListVariable playedCards;
 	public GamePhaseVariable gamePhase;
 	public PlayerList players;
+    public Color selectableColor;
 	public float shiftPixelYSelection = 10;
 	
 	private bool selected;
@@ -22,7 +23,7 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
     private Card Card => cardDisplay.card;
     private CardDisplay cardDisplay;
 	private Vector3 positionNotSelected;
-	
+
 	void Awake()
 	{
 		image = GetComponent<Image>();
@@ -34,15 +35,6 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 	{
 		positionNotSelected = transform.position;
 	}
-	
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (IsSelectable() || selected)
-        {
-            SelectionAnimation(!selected);
-        }
-    }
 
 
     public void OnPointerClick(PointerEventData eventData)
@@ -54,12 +46,9 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
     }
 
 
-    public void OnPointerExit(PointerEventData eventData)
+    private void Update()
     {
-        if (IsSelectable() || selected)
-        {
-            SelectionAnimation(selected);
-        }
+        SetSelectableEffect(IsSelectable());
     }
 
 
@@ -83,8 +72,9 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 	private bool IsSelectable()
 	{	
 		Player humanPlayer = players.GetFirstHumanPlayer();
-		if (humanPlayer == null) return false;
+		if (humanPlayer == null || humanPlayer.Hand == null) return false;
 		if (!humanPlayer.Hand.Contains(Card)) return false;
+        if (!humanPlayer.HasToDoSomething) return false;
 		if (gamePhase.Value == GamePhase.DogMaking)
 		{
 			if (humanPlayer.CanPutCardInDog(Card) 
@@ -94,7 +84,6 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 				return true;
 			}
 		}	
-		
 		if (gamePhase.Value == GamePhase.Play)
 		{
             if (humanPlayer.CanPlayCard(Card, playedCards.Value) 
@@ -116,5 +105,11 @@ public class SelectableCard : MonoBehaviour, IPointerEnterHandler, IPointerClick
 		{
 			transform.position = positionNotSelected;
 		}
-	}
+    }
+
+
+    private void SetSelectableEffect(bool selectable)
+    {
+        image.color = selectable ? selectableColor : originalColor;
+    }
 }

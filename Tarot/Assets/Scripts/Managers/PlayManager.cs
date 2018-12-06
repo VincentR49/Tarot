@@ -39,6 +39,7 @@ public class PlayManager : ProcessManager
 			{
 				if (playedCard.Count == players.Count) // toutes les cartes ont été jouées
 				{
+                    ChangeCurrentPlayer(null);
                     waitForNewTurnTimer += Time.deltaTime;
                     if (waitForNewTurnTimer > delayBetweenTurnsSec)
                     {
@@ -90,6 +91,8 @@ public class PlayManager : ProcessManager
         playedCardDict = new Dictionary<Card, Player>();
 		excusePlayer = null;
 		excuseWinner = null;
+        scoringData.petitAuBout = false;
+        scoringData.chelemDone = false;
         turn = -1;
         nTurnMax = players.Items[0].Hand.Count - 1;
         SetPlayersTeam();

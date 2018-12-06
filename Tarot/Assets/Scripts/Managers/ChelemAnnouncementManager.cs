@@ -11,7 +11,7 @@ public class ChelemAnnouncementManager : ProcessManager
     public override void StartProcess()
     {
         base.StartProcess();
-        // TODO
+        scoringData.chelemAnnounced = false;
         FinishProcess();
     }
 

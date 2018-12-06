@@ -13,7 +13,8 @@ public class PoigneeShowingManager : ProcessManager
     public override void StartProcess()
 	{
 		base.StartProcess();
-		// TODO
+        scoringData.poignee1 = Poignee.None;
+        scoringData.poignee2 = Poignee.None;
 		FinishProcess(); 
 	}
 	

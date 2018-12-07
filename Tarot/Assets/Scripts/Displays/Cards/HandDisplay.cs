@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Gère l'affichage d'une main
+[RequireComponent(typeof(GridLayout))]
 public class HandDisplay : MonoBehaviour
 {
     public Player player;
     public GameObject cardPrefab;
-    public int pixelBetweenCard = 10;
     public bool hideCpuCards = true;
 
     private bool HideCards => (player is CpuPlayer) && hideCpuCards;
@@ -26,7 +26,7 @@ public class HandDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (player != null)
+        if (player != null && player.Hand != null)
         {
             if (player.Hand.ToString() != currentHandSignature)
             {
@@ -47,17 +47,13 @@ public class HandDisplay : MonoBehaviour
         // A optimiser
         Clean();   
         if (Hand == null) return;
-        int startPixel = -Hand.Count * pixelBetweenCard / 2;
-        int count = 0;
         foreach (Card card in Hand)
         {
             GameObject cardObject = Instantiate(cardPrefab, transform);
-            cardObject.transform.localPosition = new Vector2(startPixel + count * pixelBetweenCard, 0);
             CardDisplay cardDisplay = cardObject.GetComponent<CardDisplay>();
             cardDisplay.card = card;
 			cardDisplay.SetFlipped(HideCards);
             cards.Add(cardObject);
-            count++;
         }
     }
 

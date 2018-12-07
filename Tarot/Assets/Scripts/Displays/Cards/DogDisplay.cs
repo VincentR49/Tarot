@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Gère l'affichage du chien
+[RequireComponent(typeof(GridLayout))]
 public class DogDisplay : MonoBehaviour
 {
     public Dog dog;
     public GameObject cardPrefab;
-    public List<GameObject> placeHolders;
 
     private bool flipped = true;
     private List<GameObject> cards;
@@ -73,8 +73,7 @@ public class DogDisplay : MonoBehaviour
         int count = 0;
         foreach (Card card in dog.Value)
         {
-            GameObject cardObject = Instantiate(cardPrefab, placeHolders[count].transform);
-            cardObject.transform.localPosition = new Vector2(0, 0);
+            GameObject cardObject = Instantiate(cardPrefab, transform);
             CardDisplay cardDisplay = cardObject.GetComponent<CardDisplay>();
             cardDisplay.card = card;
             cardDisplay.SetFlipped(flipped);

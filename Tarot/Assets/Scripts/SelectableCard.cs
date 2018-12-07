@@ -15,7 +15,7 @@ public class SelectableCard : MonoBehaviour, IPointerClickHandler
 	public GamePhaseVariable gamePhase;
 	public PlayerList players;
     public Color selectableColor;
-	public float shiftPixelYSelection = 10;
+    public Color selectedColor;
 	
 	private bool selected;
 	private Image image;
@@ -97,19 +97,15 @@ public class SelectableCard : MonoBehaviour, IPointerClickHandler
 
 	private void SelectionAnimation(bool selected)
 	{
-		if (selected)
-		{
-			transform.position = positionNotSelected + Vector3.up * shiftPixelYSelection;
-		}
-		else
-		{
-			transform.position = positionNotSelected;
-		}
+        image.color = selected ? selectedColor : selectableColor;
     }
 
 
     private void SetSelectableEffect(bool selectable)
     {
-        image.color = selectable ? selectableColor : originalColor;
+        if (!selected)
+        {
+            image.color = selectable ? selectableColor : originalColor;
+        }
     }
 }

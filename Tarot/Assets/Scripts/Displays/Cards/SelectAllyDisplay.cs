@@ -9,7 +9,7 @@ public class SelectAllyDisplay : MonoBehaviour
 {
     public PlayerList players;
     public Deck standardDeck;
-    public CardListVariable selectedCards;
+    public CardListVariable selectedCard;
 	public GameObject cardButtonPrefab;
 	public GamePhaseVariable gamePhase;
 
@@ -70,11 +70,12 @@ public class SelectAllyDisplay : MonoBehaviour
 
     private void SelectCard(Card card)
     {
-        selectedCards.Add(card);
+        Debug.Log("Select Card: " + card);
+        selectedCard.Clear();
+        selectedCard.Add(card);
     }
 
 
-		
 	void Clean()
 	{
 		if (cards != null)

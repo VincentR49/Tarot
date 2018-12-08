@@ -8,7 +8,7 @@ public class PlayManager : ProcessManager
 {
 	protected override string Name => "Play";
 	public PlayerList players;
-	public Card calledCard; // for 5 players game
+	public CardVariable allyCard; // for 5 players game
 	public CardListVariable playedCard;
     public CardListVariable cardsSelected;
 	public ScoringData scoringData;
@@ -140,8 +140,9 @@ public class PlayManager : ProcessManager
 			{
 				excusePlayer = player;
 			}
-			if (players.Count == 5 && card == calledCard)
+			if (players.Count == 5 && card == allyCard.Value)
 			{
+                Debug.Log("Ally revealed: " + player.name + "!");
 				SetPlayersTeam5Players(player);
 			}
 			if (turn == nTurnMax 

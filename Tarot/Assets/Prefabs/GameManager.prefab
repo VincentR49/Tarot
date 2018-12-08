@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
-  calledCard: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82, type: 2}
+  allyCard: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82, type: 2}
   standardDeck: {fileID: 11400000, guid: 81029d16279834f49b1670cedfd6c6f1, type: 2}
   limitAnswerTimeSec: 10
 --- !u!114 &114494074357195876

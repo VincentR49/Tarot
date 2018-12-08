@@ -8,7 +8,8 @@ public class AllySelectionManager : ProcessManager
 {
     protected override string Name => "Ally Selection";
 	public PlayerList players;
-	public Card calledCard;
+    public CardVariable allyCard;
+    public CardListVariable selectedCard;
 	public Deck standardDeck;
 	public float limitAnswerTimeSec = 30f;
 	
@@ -27,6 +28,10 @@ public class AllySelectionManager : ProcessManager
 					Card card = standardDeck.GetCard(CardType.Heart, CardRank.Roi);
 					ChooseCalledCard (card);
 				}
+                if (selectedCard.Count >= 1)
+                {
+                    ChooseCalledCard(selectedCard.Value[0]);
+                }
 			}
 		}
 	}
@@ -35,7 +40,7 @@ public class AllySelectionManager : ProcessManager
 	public override void StartProcess()
 	{
 		base.StartProcess();
-		calledCard = null; // to be sure
+        selectedCard.Clear();
 		timer = 0f;
         if (Taker is CpuPlayer)
 		{
@@ -43,11 +48,13 @@ public class AllySelectionManager : ProcessManager
 			ChooseCalledCard (cpuPlayer.SelectCalledCard(standardDeck));
 		}
 	}
-	
+
+
 	private void ChooseCalledCard(Card card)
 	{
-		Debug.Log("Choose called card: " + card);
-		calledCard = card;
+		Debug.Log("Choose ally card: " + card);
+        allyCard.Value = card;
+        Debug.Log("Ally card: " + allyCard);
 		FinishProcess();
 	}
 }

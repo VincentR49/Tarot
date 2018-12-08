@@ -9,13 +9,15 @@ public class NewGameButtonsDisplay : CanvasGroupDisplay
 
     private void Update()
     {
-        if (gamePhase.Value == GamePhase.None)
+       // if (gamePhase.Value == GamePhase.None)
         {
             if (!visible) Show();
         }
+        /*
         else
         {
             if (visible) Hide();
         }
+        */
     }
 }

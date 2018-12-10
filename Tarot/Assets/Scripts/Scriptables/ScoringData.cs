@@ -4,11 +4,12 @@ using System.Text;
 using UnityEngine;
 
 [CreateAssetMenu(menuName="Scriptable Objects/ScoringData")]
-// A mettre à jour pour le décompte des scores
+// Contains all the information necessary to compute the game Score
+// Implements also methods to compute the score based on those information
+// Usefull also to make tests
 public class ScoringData : ScriptableObject
 {
 	// Parameters ingame
-	// Usefull to make tests
 	public Bid bid = Bid.Garde;
 	public float takerPoints = 42;
 	public int nOudlerTaker = 2;
@@ -68,7 +69,11 @@ public class ScoringData : ScriptableObject
 		return winerBasePoints;
 	}
 
-
+	
+	public float GetTakerBasePoint() => TakerHasWon ? GetWinnerBasePoints() : -GetWinnerBasePoints();
+	public float GetDefendersBasePoint() => -GetTakerBasePoint();
+	
+	
     public void PrintSummary()
     {
         Debug.LogFormat("ScoringData:\n" +
@@ -81,7 +86,7 @@ public class ScoringData : ScriptableObject
             "Petit with winner: {7}\n" + 
             "Chelem Done: {8}\n" + 
             "Chelem Announced: {9}\n" + 
-            "Poignées: {10}, {11}\n",
+            "Poignees: {10}, {11}\n",
             TakerHasWon, DeltaContract, 
             bid, takerPoints, DefenderPoints, nOudlerTaker,
             petitAuBout, PetitWithWinner,

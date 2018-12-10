@@ -11,28 +11,29 @@ public class ScoringManager : ProcessManager
 	public PlayerList players;
 	public Dog dog;
 	public ScoringData scoringData;
-	private Player Taker => players.GetTaker();
 	
+	private Player Taker => players.GetTaker();
+	private Bid bid => Taker.CurrentBid;
+	private List<float> playerScores;
 	
 	public override void StartProcess()
 	{
 		base.StartProcess();
-        // Init
         InitScoringData();
 		ScanScoringPiles();
 		ScanDog();
-        // TODO
         ComputeScores();
+		DistributeScores();
 		FinishProcess();
 	}
 	
-
+	
     private void InitScoringData()
     {
         scoringData.nOudlerTaker = 0;
         scoringData.takerPoints = 0;
         scoringData.petitWithTaker = false;
-        scoringData.bid = Taker.CurrentBid;
+        scoringData.bid = bid;
     }
 
 
@@ -47,7 +48,7 @@ public class ScoringManager : ProcessManager
 	
 	private void ScanDog()
 	{
-		ScanCardList(dog.Value, Taker.CurrentBid < Bid.GardeContre);
+		ScanCardList(dog.Value, bid < Bid.GardeContre);
 	}
 	
 	
@@ -68,10 +69,61 @@ public class ScoringManager : ProcessManager
 	}
 	
 	
+	private int GetNDefenders()
+	{
+		int n = 0;
+		foreach (Player p in players.Items)
+		{
+			if (p.team == DEFENDER_TEAM_INDEX) n++;
+		}
+		return n;
+	}
+	
+	// Fill the list playerScores
 	private void ComputeScores()
 	{
-		float winerBasePoints = scoringData.GetWinnerBasePoints();
-        scoringData.PrintSummary();
-        Debug.Log("Computins Score: winerBasePoints of " + winerBasePoints);
-    }
+		float defendersBasePoint = scoringData.GetDefendersBasePoint();
+		scoringData.PrintSummary();
+        Debug.Log("TakerBase points of " + takerBasePoint);
+		int nPlayer = players.Count;
+		int nDefenders = GetNDefenders();
+		List<float> playerScores = new List<float>();
+		foreach (Player p in players.Items)
+		{
+			float score = 0;
+			if (p.team == DEFENDER_TEAM_INDEX)
+			{
+				score = defendersBasePoint;
+			}
+			else // taker team
+			{
+				if (nPlayer == 5 && nDefenders == 3) // in the case the main player has an ally
+				{
+					score =  (p == Taker) ? - 2 * defendersBasePoint : - defendersBasePoint;
+				}
+				else
+				{
+					score = - nDefenders * defendersBasePoint;
+				}
+			}
+			playerScores.Add (score);
+		}
+		
+		// Check the total points (should be 0)
+		float total = 0;
+		foreach (float s in playerScore) 
+			total += s;
+		Debug.Log("Total score: " + total + " (should be 0)");
+	}
+	
+	// Add the game score the current score of the player
+	private void DistributeScores()
+	{
+		for (int i = 0; i < players.Count; i++)
+		{
+			Player player = players.Items[i];
+			player.score += playerScores[i];
+			Debug.Log("Player " + player.name + " received " + playerScores[i] + " points.");
+		}
+	}
 }

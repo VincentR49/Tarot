@@ -4,24 +4,24 @@ using System.Linq;
 using UnityEngine;
 
 // Other constants based on the game's rules
-public static class RulesConstants  {
-
+public static class RulesConstants
+{
 	// Poignées
-    private static Dictionary<Poignee,int> limitPoignee3Players = Dictionary<Poignee,int>
+    private static Dictionary<Poignee,int> limitPoignee3Players = new Dictionary<Poignee,int>
 	{
 		{ Poignee.Single, 13 },
 		{ Poignee.Double, 15 },
 		{ Poignee.Triple, 18 }
 	};
 	
-	private static Dictionary<Poignee,int> limitPoignee4Players = Dictionary<Poignee,int>
+	private static Dictionary<Poignee,int> limitPoignee4Players = new Dictionary<Poignee,int>
 	{
 		{ Poignee.Single, 10 },
 		{ Poignee.Double, 13 },
 		{ Poignee.Triple, 15 }
 	};
 	
-	private static Dictionary<Poignee,int> limitPoignee5Players = Dictionary<Poignee,int>
+	private static Dictionary<Poignee,int> limitPoignee5Players = new Dictionary<Poignee,int>
 	{
 		{ Poignee.Single, 8  },
 		{ Poignee.Double, 10 },
@@ -41,7 +41,7 @@ public static class RulesConstants  {
 		else
 		{
 			Debug.LogError("Number of player incorrect: " + nPlayer);
-			return Poignee.None;
+            return -1;
 		}
 		return dict[poignee];
 	}
@@ -55,7 +55,7 @@ public static class RulesConstants  {
 		{
 			if (nTrump >= GetNCardPoignee(maxPoignee, nPlayer))
 				return maxPoignee;
-			maxPoignee-;
+            maxPoignee--;
 		}
 		return Poignee.None;
 	}

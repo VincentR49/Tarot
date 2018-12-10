@@ -16,8 +16,9 @@ public class PoigneeShowingManager : ProcessManager
 	private float showTimer = 0f;
 	private float decideTimer = 0f;
 	private Player currentPlayer;
-	private void showPoignee = false;
+	private bool showPoignee = false;
 	private int NPlayer => players.Count;
+    private int playerChecked = 0;
 	
 	private void Update()
 	{
@@ -29,7 +30,7 @@ public class PoigneeShowingManager : ProcessManager
 			}
 			else
 			{
-				DecidePoigneeToShow();
+                ScanForPoigneeToShow();
 			}
 		}
 	}
@@ -106,7 +107,7 @@ public class PoigneeShowingManager : ProcessManager
 			else // human player
 			{
 				decideTimer += Time.deltaTime;
-				int nCardToShow = GetNCardPoignee (currentPlayer.Poignee, NPlayer);
+				int nCardToShow = GetNCardPoignee (currentPlayer.CurrentPoignee, NPlayer);
 				if (decideTimer >= decidePoigneeLimitTime)
 				{
 					SetPoigneeToShow (CompletePoigneeWithRandomCards (selectedCards.Value, nCardToShow));
@@ -125,6 +126,7 @@ public class PoigneeShowingManager : ProcessManager
 	{
 		poigneeToShow.Value = poignee;
 		showPoignee = true;
+        Debug.Log("Player " + currentPlayer + " is showing the following cards: " + poignee.ToString());
 	}
 	
 	

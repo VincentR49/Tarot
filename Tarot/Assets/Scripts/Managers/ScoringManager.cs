@@ -13,7 +13,6 @@ public class ScoringManager : ProcessManager
 	public ScoringData scoringData;
 	
 	private Player Taker => players.GetTaker();
-	private Bid bid => Taker.CurrentBid;
 	private List<float> playerScores;
 	
 	public override void StartProcess()
@@ -33,7 +32,7 @@ public class ScoringManager : ProcessManager
         scoringData.nOudlerTaker = 0;
         scoringData.takerPoints = 0;
         scoringData.petitWithTaker = false;
-        scoringData.bid = bid;
+        scoringData.bid = Taker.CurrentBid;
     }
 
 
@@ -48,7 +47,7 @@ public class ScoringManager : ProcessManager
 	
 	private void ScanDog()
 	{
-		ScanCardList(dog.Value, bid < Bid.GardeContre);
+		ScanCardList(dog.Value, Taker.CurrentBid < Bid.GardeContre);
 	}
 	
 	
@@ -84,10 +83,10 @@ public class ScoringManager : ProcessManager
 	{
 		float defendersBasePoint = scoringData.GetDefendersBasePoint();
 		scoringData.PrintSummary();
-        Debug.Log("TakerBase points of " + takerBasePoint);
+        Debug.Log("Defender base points of " + defendersBasePoint);
 		int nPlayer = players.Count;
 		int nDefenders = GetNDefenders();
-		List<float> playerScores = new List<float>();
+		playerScores = new List<float>();
 		foreach (Player p in players.Items)
 		{
 			float score = 0;
@@ -111,7 +110,7 @@ public class ScoringManager : ProcessManager
 		
 		// Check the total points (should be 0)
 		float total = 0;
-		foreach (float s in playerScore) 
+		foreach (float s in playerScores) 
 			total += s;
 		Debug.Log("Total score: " + total + " (should be 0)");
 	}

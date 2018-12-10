@@ -578,29 +578,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114641943498119472, guid: 862e437fc7f4b5d43a58742f82fe9697,
-        type: 2}
-      propertyPath: allyCard
-      value: 
-      objectReference: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82,
-        type: 2}
-    - target: {fileID: 114431501683254602, guid: 862e437fc7f4b5d43a58742f82fe9697,
-        type: 2}
-      propertyPath: selectedCard
-      value: 
-      objectReference: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6,
-        type: 2}
-    - target: {fileID: 114431501683254602, guid: 862e437fc7f4b5d43a58742f82fe9697,
-        type: 2}
-      propertyPath: limitAnswerTimeSec
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114431501683254602, guid: 862e437fc7f4b5d43a58742f82fe9697,
-        type: 2}
-      propertyPath: allyCard
-      value: 
-      objectReference: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 862e437fc7f4b5d43a58742f82fe9697, type: 2}
   m_IsPrefabAsset: 0

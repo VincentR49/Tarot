@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : ScriptableObject
 {
 	public new String name = "Player";
-	public int score = 0;
+	public float score = 0;
 	public int team = 0;
 	
 	public bool HasToDoSomething { get; set; }

@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114431501683254602}
   - component: {fileID: 114325847785496598}
   - component: {fileID: 114370027937112854}
+  - component: {fileID: 114978480739120836}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -123,8 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5291a46b9bffa469e2e94e0e58bd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCards: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
+  poigneeToShow: {fileID: 11400000, guid: ad7b9dcac4234094a82964365a1cec91, type: 2}
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
-  scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
+  decidePoigneeLimitTime: 0
+  showPoigneeDurationSec: 0
 --- !u!114 &114370027937112854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
   allyCard: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82, type: 2}
+  selectedCard: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
   standardDeck: {fileID: 11400000, guid: 81029d16279834f49b1670cedfd6c6f1, type: 2}
   limitAnswerTimeSec: 10
 --- !u!114 &114494074357195876
@@ -193,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
-  calledCard: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82, type: 2}
+  allyCard: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82, type: 2}
   playedCard: {fileID: 11400000, guid: 6055bbaa07d009d4e9a4d27fba067a5b, type: 2}
   cardsSelected: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
   scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
@@ -212,3 +217,18 @@ MonoBehaviour:
   nPlayer: {fileID: 11400000, guid: 9fcc094926cb7554f88c1f69b5b34618, type: 2}
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
   gamePhase: {fileID: 11400000, guid: 3a0585a0842f6c7479044f410e04968c, type: 2}
+--- !u!114 &114978480739120836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755035877912296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e48a38c71477224ab80ed40fa5a7716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  humanPlayerPoignee: {fileID: 11400000, guid: 2562f6b2de54bb04b84f161c1e12215f, type: 2}
+  answerTimeLimit: 0

@@ -71,7 +71,7 @@ public class PoigneeDecidingManager : ProcessManager
 			currentPlayer = players.GetNext(currentPlayer);
 		}
 		currentPlayer.HasToDoSomething = true;
-		currentPlayer.CurrentPoignee = Poignee.NotDecided;
+		currentPlayer.SetPoignee (Poignee.NotDecided);
 		answerTimer = 0f;
 		playerChecked += 1;
 		if (playerChecked == NPlayer)
@@ -114,19 +114,20 @@ public class PoigneeDecidingManager : ProcessManager
 	
 	public void SetPoigneeForCurrentPlayer(Poignee poignee)
 	{
-		currentPlayer.CurrentPoignee = poignee;
+		currentPlayer.SetPoignee (poignee);
 		if (poignee >= Poignee.Single) // update scoring data
 		{
 			if (!firstPoigneeShown)
 			{
 				scoringData.poignee1 = poignee;
-				firstPoigneeShown = true
+                firstPoigneeShown = true;
 			}
 			else // seconde poignée (max)
 			{
 				scoringData.poignee2 = poignee;
 			}
 		}
-		GotToNextPlayer();
+        Debug.Log("Player " + currentPlayer.name + " decided to show the poignee: " + poignee);
+        GoToNextPlayer();
 	}
 }

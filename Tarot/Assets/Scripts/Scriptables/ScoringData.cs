@@ -43,6 +43,7 @@ public class ScoringData : ScriptableObject
 	
 	private Dictionary<Poignee,float> bonusPoignee  = new Dictionary<Poignee,float>
 		{
+			{ Poignee.NotDecided, 0f },
 			{ Poignee.None, 0f },
 			{ Poignee.Single, 20f },
 			{ Poignee.Double, 30f },

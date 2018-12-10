@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum Poignee
 {
+	NotDecided,
 	None,
 	Single,
 	Double,

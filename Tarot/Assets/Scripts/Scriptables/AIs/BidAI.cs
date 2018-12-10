@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="Scriptable Objects/Bid AI")]
+[CreateAssetMenu(menuName="AIs/Bid AI")]
 public class BidAI : ScriptableObject
 {
 	

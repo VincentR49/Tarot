@@ -40,7 +40,7 @@ public class Player : ScriptableObject
 		IsDealer = false;
         HasToDoSomething = false;
 		AnouncedChelem = false; // à séparer
-		poignee = Poignee.None;
+		poignee = Poignee.NotDecided;
     }
 
 	

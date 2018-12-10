@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="Scriptable Objects/Dog AI")]
+[CreateAssetMenu(menuName="AIs/Dog AI")]
 public class DogAI : ScriptableObject
 {
 	

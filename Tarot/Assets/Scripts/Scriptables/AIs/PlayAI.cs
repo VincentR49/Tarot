@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptable Objects/Play AI")]
+[CreateAssetMenu(menuName = "AIs/Play AI")]
 public class PlayAI : ScriptableObject
 {
 

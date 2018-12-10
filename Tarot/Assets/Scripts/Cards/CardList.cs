@@ -128,4 +128,15 @@ public class CardList : List<Card>
         }
 		return n;
 	}
+	
+	
+	public int GetNCardOfType(CardType type)
+	{
+		int n = 0;
+		foreach (Card c in this)
+        {
+            if (c.type == type) n++;
+        }
+		return n;
+	}
 }

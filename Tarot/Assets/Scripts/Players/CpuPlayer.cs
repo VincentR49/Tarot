@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static RulesConstants;
 
 [CreateAssetMenu(menuName="Scriptable Objects/Cpu Player")]
 public class CpuPlayer : Player
 {
 	public BidAI bidAI;
-	public DogAI dogAI;
-	public PlayAI playAI;
 	public ChooseAllyAI chooseAllyAI;
+	public DogAI dogAI;
+	public PoigneeAI poigneeAI;
+	public PlayAI playAI;
+	
 	
 	public void MakeABid(Bid minBid)
 	{
@@ -86,5 +89,28 @@ public class CpuPlayer : Player
 		{
 			return chooseAllyAI.defaultCard;
 		}
+	}
+	
+	
+	public Poignee DecidePoigneeToShow()
+	{
+		// TODO delegate to AI
+		Poignee poignee = Poignee.None;
+		int nPossibleCards = Hand.GetNCardOfType(CardType.Trump) + Hand.GetNCardOfType(CardType.Excuse);
+		// TODO
+		return poignee;
+	}
+	
+	
+	public CardList SelectCardsOfPoigneeToShow(int nPlayers)
+	{
+		// TODO delegate to AI
+		// TODO AI de base à développer
+		CardList cardsToShow = new CardList();
+		if (CurrentPoignee >= Poignee.Single)
+		{
+			int nCards = GetNCardPoignee(CurrentPoignee, nPlayers);
+		}
+		return cardsToShow;
 	}
 }

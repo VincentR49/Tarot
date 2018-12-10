@@ -12,6 +12,7 @@ public enum GamePhase
 	DogShowing,
 	DogMaking,
 	ChelemAnnouncement,
+	PoigneeDeciding,
 	PoigneeShowing,
 	Play,
 	Scoring

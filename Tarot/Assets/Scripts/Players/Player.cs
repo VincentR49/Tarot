@@ -15,7 +15,6 @@ public class Player : ScriptableObject
 	public bool IsFirstThisTurn { get; set; }
 	public CardList Hand { get; set; }
 	public CardList ScoringPile { get; set; }
-	public bool AnouncedChelem { get; set; }
 	public Bid CurrentBid => bid;
 	public Poignee CurrentPoignee => poignee;
 	
@@ -39,7 +38,6 @@ public class Player : ScriptableObject
 		ScoringPile = new CardList();
 		IsDealer = false;
         HasToDoSomething = false;
-		AnouncedChelem = false; // à séparer
 		poignee = Poignee.NotDecided;
     }
 

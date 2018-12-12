@@ -109,6 +109,9 @@ public class CardList : List<Card>
 	}
 	
 	
+	public bool Contains(CardType type, CardRank rank) => GetCard(type, rank) != null;
+	
+	
 	public Card GetFirstCardByValue(float value)
 	{
 		foreach (Card c in this)

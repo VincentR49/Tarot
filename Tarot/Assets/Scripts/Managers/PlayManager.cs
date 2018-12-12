@@ -4,6 +4,7 @@ using UnityEngine;
 using static Constants;
 
 // Gestion du système de jeu
+// TODO: Petit au bout dans le cas du chelem
 public class PlayManager : ProcessManager 
 {
 	protected override string Name => "Play";
@@ -12,6 +13,8 @@ public class PlayManager : ProcessManager
 	public CardListVariable playedCard;
     public CardListVariable cardsSelected;
 	public ScoringData scoringData;
+	[Tooltip("Store data about the cards played in the game")]
+	public CardTrackerSet playedCardsRecord;
     public float delayBetweenTurnsSec = 2;
 
     private float waitForNewTurnTimer = 0;
@@ -20,18 +23,16 @@ public class PlayManager : ProcessManager
 	private Player currentPlayer;
 	private Player turnWinner;
 	private int turn = 0;
-	private int nTurnMax = 0;
+	private int lastTurn = 0;
     private int nCardPlayed = 0;
-    private Dictionary<Card, Player> playedCardDict;
-	private Player excusePlayer;
-	private Player excuseWinner;
+	private bool giveSmallCardForExcuse = false;
 	
 	
 	void Update()
 	{
 		if (status == ProcessState.Running)
         {
-			if (turn > nTurnMax)
+			if (turn > lastTurn)
 			{
 				FinishProcess();
 			}
@@ -44,7 +45,6 @@ public class PlayManager : ProcessManager
                     if (waitForNewTurnTimer > delayBetweenTurnsSec)
                     {
                         FinishCurrentTurn();
-                        NewTurn(turnWinner, false);
                     } 
 				}
 				else
@@ -52,16 +52,16 @@ public class PlayManager : ProcessManager
                     if (currentPlayer is CpuPlayer)
                     {
                         CpuPlayer cpuPlayer = (CpuPlayer) currentPlayer;
-                        Card card = cpuPlayer.SelectCardToPlay(playedCard.Value);
-                        PlayCard(currentPlayer, card);
+                        Card card = cpuPlayer.SelectCardToPlay (playedCard.Value);
+                        PlayCard (currentPlayer, card);
                     }
                     else
                     {
                         if (cardsSelected.Count == 1) // si le joueur humain a sélectionné sa carte à jouer
                         {
                             Card card = cardsSelected.Value[0];
-                            PlayCard(currentPlayer, card);
-                            cardsSelected.Value.Remove(card);
+                            PlayCard (currentPlayer, card);
+                            cardsSelected.Value.Remove (card);
                         }
                     }
                 } 
@@ -73,32 +73,48 @@ public class PlayManager : ProcessManager
 	public override void StartProcess()
 	{
 		base.StartProcess();
-		InitPlay();
+		playedCardsRecord.Clear();
+		excuseExchangedHasToBeDone = false;
+        scoringData.petitAuBout = false;
+        scoringData.chelemDone = false;
+        SetPlayersTeam();
+        lastTurn = players.Items[0].Hand.Count - 1; 
+		Player firstPlayer = scoringData.chelemAnnounced ? Taker : players.GetNext(Dealer);
+		NewTurn(firstPlayer, true);
 	}	
 	
 	
 	public override void FinishProcess()
 	{
-		ExchangeExcuse();
-		ChangeCurrentPlayer(null);
+		bool chelemDone = CheckChelem();
+		scoringData.chelemDone = chelemDone;
+		scoringData.petitAuBout = CheckPetitAuBout(chelemDone);
+		if (giveSmallCardForExcuse && !chelemDone)
+		{
+			GiveCardToReplaceExcuse();
+		}
 		base.FinishProcess();
 	}
-	
-	
-	private void InitPlay()
-	{
-        Debug.Log("Init play");
-        playedCardDict = new Dictionary<Card, Player>();
-		excusePlayer = null;
-		excuseWinner = null;
-        scoringData.petitAuBout = false;
-        scoringData.chelemDone = false;
-        SetPlayersTeam();
-        nTurnMax = players.Items[0].Hand.Count - 1; 
-		Player firstPlayer = scoringData.chelemAnnounced ? Taker : players.GetNext(Dealer);
-		NewTurn(firstPlayer, true);
-    }
 
+	
+	private bool CheckPetitAuBout(bool chelemDone)
+	{
+		int petitTurn = playedCardsRecord.GetTurn (CardType.Trump, CardType.One);
+		if (petitTurn == lastTurn)
+		{
+			return true;
+		}
+		if (chelemDone)
+		{
+			int excuseTurn = playedCardsRecord.GetTurn (CardType.Excuse, CardType.None);
+			if (excuseTurn == lastTurn && petitTurn == lastTurn -1)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	
 	private void NewTurn(Player startPlayer, bool firstTurn)
 	{
@@ -120,10 +136,30 @@ public class PlayManager : ProcessManager
 	
 	private void FinishCurrentTurn()
 	{
-        Card bestCard = playedCard.GetBestCard();
-        turnWinner = playedCardDict[bestCard];
+        turnWinner = playedCardsRecord.GetPlayer (GetBestCardOfThisTurn());
         PutBoardCardsInWinnerScoringPile();
         Debug.Log("Finished turn " + turn + ". Winner: " + turnWinner.name);
+		NewTurn (turnWinner, false);
+	}
+	
+	
+	private Card GetBestCardOfThisTurn()
+	{
+		Card bestCard = playedCard.GetBestCard();
+		if (turn == lastTurn) // Gestion du chelem et de l'excuse
+		{
+			Card excuse = playedCard.GetCard (CardType.Excuse, CardRank.None);
+			if (excuse != null)
+			{
+				Player excusePlayer = playedCardsRecord.GetPlayer (excuse);
+				int nOpponentCardWon = GetNumberOfWonCards (GetOpponentTeamIndex (excusePlayer.team));
+				if (nOpponentCardWon == 0) // CHELEM
+				{
+					bestCard = excuse;
+				}
+			}
+		}
+		return bestCard;
 	}
 	
 
@@ -134,22 +170,12 @@ public class PlayManager : ProcessManager
 			Debug.Log(player.name + " played " + card);
 			player.Hand.Remove(card);
 			playedCard.Add(card);
-            playedCardDict.Add(card, player);
+            playedCardsRecord.Add (new CardTracker (turn, card, player));
             ChangeCurrentPlayer (players.GetNext(player));
-			if (card.type == CardType.Excuse)
-			{
-				excusePlayer = player;
-			}
 			if (players.Count == 5 && card == allyCard.Value)
 			{
                 Debug.Log("Ally revealed: " + player.name + "!");
 				SetPlayersTeam5Players(player);
-			}
-			if (turn == nTurnMax 
-					&& card.rank == CardRank.One 
-					&& card.type == CardType.Trump)
-			{
-				scoringData.petitAuBout = true;
 			}
             nCardPlayed++;
         }
@@ -162,14 +188,22 @@ public class PlayManager : ProcessManager
 	
 	private void PutBoardCardsInWinnerScoringPile()
 	{
-		Player cardReceiver = GetTeamScoringPilePlayer(turnWinner.team);
+		CardList winerScoringPile = GetTeamScoringPile(turnWinner.team);
 		foreach (Card card in playedCard.Value)
 		{   
-			cardReceiver.ScoringPile.Add(card);
-			if (card.type == CardType.Excuse)
+			if (card.type == CardType.Excuse) // Stays in the excuse possessor team
 			{
-				excuseWinner = cardReceiver;
+				int excusePlayerTeam = playedCardsRecord.GetPlayer(card).team;
+				GetTeamScoringPile(excusePlayerTeam).Add(card);
+				if (excusePlayerTeam != turnWinner.team)
+				{
+					giveSmallCardForExcuse = true;
+				}
 			}	
+			else
+			{
+				winerScoringPile.Add(card);
+			}
 		}
 		playedCard.Clear();
 	}
@@ -200,7 +234,7 @@ public class PlayManager : ProcessManager
 				p.team = p.IsTaker ? TAKER_TEAM_INDEX : DEFENDER_TEAM_INDEX;
 			}
 		}
-		else
+		else // 5 players only
 		{
 			for (int i = 0; i < nPlayers; i++)
 			{
@@ -209,7 +243,7 @@ public class PlayManager : ProcessManager
 		}
     }
 	
-	
+	// 5 players only
 	private void SetPlayersTeam5Players(Player calledPlayer)
 	{
         Debug.Log("Set 5 players teams");
@@ -220,7 +254,7 @@ public class PlayManager : ProcessManager
 		JoinPlayersScoringPilesBasedOnTeam();
 	}
 	
-	
+	// 5 players only
 	private void JoinPlayersScoringPilesBasedOnTeam()
 	{
 		Player takerReceiver = GetTeamScoringPilePlayer (TAKER_TEAM_INDEX);
@@ -247,34 +281,26 @@ public class PlayManager : ProcessManager
 	}
 	
 	
-	// Echange l'excuse avec une carte de valeur 0.5 dans les piles
-	private void ExchangeExcuse()
+	// Donne une carte provenant de l'équipe contenant l'excuse à l'équipe adverse
+	// cette carte doit avoir une valeur de 0.5
+	// A faire à la fin du jeu (pour être sûr que les équipes ait été révélées)
+	private void GiveCardToReplaceExcuse()
 	{
-		if (excuseWinner != null && excusePlayer != null)
+		int teamExcuse = GetTeamScoringPile(TAKER_TEAM_INDEX).Contains(CardType.Excuse, CardRank.None) != null ?
+							TAKER_TEAM_INDEX : DEFENDER_TEAM_INDEX;
+		Card exchangeCard = GetTeamScoringPile(teamExcuse).GetFirstCardByValue(0.5f);
+		if (exchangeCard == null)
 		{
-			CardList excuseWinnerPile = GetTeamScoringPilePlayer (excuseWinner.team).ScoringPile;
-			CardList excusePlayerPile = GetTeamScoringPilePlayer ((excuseWinner.team + 1) % 2).ScoringPile;
-			Card excuse = excuseWinnerPile.GetCard(CardType.Excuse, CardRank.None);
-			Card exchangeCard = excusePlayerPile.GetFirstCardByValue(0.5f);
-			if (exchangeCard == null)
-			{
-				Debug.Log("Chelem non géré");
-			}
-			else
-			{
-				// Echange excuse / 0.5 card
-				excuseWinnerPile.Remove(excuse);
-				excuseWinnerPile.Add(exchangeCard);
-				excusePlayerPile.Remove(exchangeCard);	
-				excusePlayerPile.Add(excuse);
-			}
+			Debug.LogError("Cannot give a small card for excuse. Possible?");
 		}
 		else
 		{
-			Debug.LogError("No excuse player and excuse winner");
+			// give the card
+			GetTeamScoringPile(teamExcuse).Remove(exchangeCard);
+			GetTeamScoringPile(GetOpponentTeamIndex(teamExcuse)).Add(exchangeCard);
 		}
 	}
-	
+
 	
 	private Player GetTeamScoringPilePlayer(int team)
 	{
@@ -288,4 +314,10 @@ public class PlayManager : ProcessManager
             return players.GetFirstPlayerByTeam(team);
 		}
 	}
+
+	
+	private CardList GetTeamScoringPile(int team) => GetTeamScoringPilePlayer(team).ScoringPile;
+	private int GetNumberOfWonCards(int team) => GetTeamScoringPilePlayer(team).ScoringPile.Count;
+	private int GetOpponentTeamIndex(int team) => team == TAKER_TEAM_INDEX ? DEFENDER_TEAM_INDEX : TAKER_TEAM_INDEX;
+	private bool CheckChelem() => GetNumberOfWonCards(TAKER_TEAM_INDEX) <= 1 || GetNumberOfWonCards(DEFENDER_TEAM_INDEX) <= 1;
 }

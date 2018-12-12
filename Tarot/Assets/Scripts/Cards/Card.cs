@@ -8,7 +8,7 @@ public class Card : ScriptableObject, IComparable<Card>
 	public CardType type = CardType.Heart;
 	public CardRank rank = CardRank.Dame;
 
-    public int Id => ((int)rank + 1) * 100 + ((int)type);
+    //public int Id => ((int)rank + 1) * 100 + ((int)type);
     public float Value
 	{
 		get
@@ -55,5 +55,5 @@ public class Card : ScriptableObject, IComparable<Card>
 		return rank.CompareTo(other.rank);
 	}
 
-    public bool IsEqualTo(Card other) => Id == other.Id;
+    public bool IsEqualTo(Card other) => card.rank == other.rank && card.type == other.type;
 }

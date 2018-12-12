@@ -8,6 +8,7 @@ public class CpuPlayer : Player
 {
 	public BidAI bidAI;
 	public ChooseAllyAI chooseAllyAI;
+	public AnnounceChelemAI announceChelemAI;
 	public DogAI dogAI;
 	public PoigneeAI poigneeAI;
 	public PlayAI playAI;
@@ -112,5 +113,12 @@ public class CpuPlayer : Player
 			int nCards = GetNCardPoignee(CurrentPoignee, nPlayers);
 		}
 		return cardsToShow;
+	}
+	
+	
+	public bool AnnounceChelem(int nPlayers)
+	{
+		// TODO delegate to AI and AI à développer
+		return false;
 	}
 }

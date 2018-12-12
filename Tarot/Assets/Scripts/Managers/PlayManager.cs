@@ -44,7 +44,7 @@ public class PlayManager : ProcessManager
                     if (waitForNewTurnTimer > delayBetweenTurnsSec)
                     {
                         FinishCurrentTurn();
-                        NewTurn(turnWinner);
+                        NewTurn(turnWinner, false);
                     } 
 				}
 				else
@@ -93,16 +93,16 @@ public class PlayManager : ProcessManager
 		excuseWinner = null;
         scoringData.petitAuBout = false;
         scoringData.chelemDone = false;
-        turn = -1;
-        nTurnMax = players.Items[0].Hand.Count - 1;
         SetPlayersTeam();
-        NewTurn(players.GetNext(Dealer));
+        nTurnMax = players.Items[0].Hand.Count - 1; 
+		Player firstPlayer = scoringData.chelemAnnounced ? Taker : players.GetNext(Dealer);
+		NewTurn(firstPlayer, true);
     }
 
 	
-	private void NewTurn(Player startPlayer)
+	private void NewTurn(Player startPlayer, bool firstTurn)
 	{
-        turn += 1;
+        turn = firstTurn ? 0 : turn + 1;
 		turnWinner = null;
         nCardPlayed = 0;
         waitForNewTurnTimer = 0;

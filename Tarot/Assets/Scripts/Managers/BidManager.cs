@@ -17,7 +17,6 @@ public class BidManager : ProcessManager
 	private Bid maxBid = Bid.None;
 	private Player bidder = null;
     private float timer;
-
 	
 	private void Update()
 	{
@@ -26,7 +25,7 @@ public class BidManager : ProcessManager
 			if (bidder is CpuPlayer)
 			{
 				CpuPlayer cpu = (CpuPlayer) bidder;
-				cpu.MakeABid(maxBid);
+				cpu.MakeABid (players.Count, players.GetPlayerIndex(cpu), maxBid);
 			}	
             else // human player
             {

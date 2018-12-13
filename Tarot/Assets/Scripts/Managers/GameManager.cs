@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
 			case GamePhase.PoigneeDeciding: return GamePhase.PoigneeShowing;
 			case GamePhase.PoigneeShowing: return GamePhase.Play;
 			case GamePhase.Play: return GamePhase.Scoring;
+			case GamePhase.Scoring: return GamePhase.Dealing;
 			default: return GamePhase.None;
 		}
 	}

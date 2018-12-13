@@ -34,29 +34,29 @@ public class ScoringData : ScriptableObject
 	private const float bonusChelemDone = 200;
 	
 	private Dictionary<Bid,float> bidMultiplicator = new Dictionary<Bid,float>
-		{
-			{ Bid.Prise, 1f },
-			{ Bid.Garde, 2f },
-			{ Bid.GardeSans, 4f },
-			{ Bid.GardeContre, 6f },
-		};
+	{
+		{ Bid.Prise, 1f },
+		{ Bid.Garde, 2f },
+		{ Bid.GardeSans, 4f },
+		{ Bid.GardeContre, 6f },
+	};
 	
 	private Dictionary<Poignee,float> bonusPoignee  = new Dictionary<Poignee,float>
-		{
-			{ Poignee.NotDecided, 0f },
-			{ Poignee.None, 0f },
-			{ Poignee.Single, 20f },
-			{ Poignee.Double, 30f },
-			{ Poignee.Triple, 40f },
-		};
+	{
+		{ Poignee.NotDecided, 0f },
+		{ Poignee.None, 0f },
+		{ Poignee.Single, 20f },
+		{ Poignee.Double, 30f },
+		{ Poignee.Triple, 40f },
+	};
 	
 	private Dictionary<int,float> pointsRequiredPerOudler = new Dictionary<int,float>
-		{
-			{ 0, 56f },
-			{ 1, 51f },
-			{ 2, 41f },
-			{ 3, 36f },
-		};
+	{
+		{ 0, 56f },
+		{ 1, 51f },
+		{ 2, 41f },
+		{ 3, 36f },
+	};
 		
 	
 	public float GetWinnerBasePoints()

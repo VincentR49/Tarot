@@ -14,16 +14,10 @@ public class CpuPlayer : Player
 	public PlayAI playAI;
 	
 	
-	public void MakeABid(Bid minBid)
+	public void MakeABid(int nPlayer, int playerPosition, Bid minBid)
 	{
-		// Intelligence artificielle à développer
-        /*
-		System.Random rnd = new System.Random();
-		Bid bid = (Bid) rnd.Next(2, (int)Bid.GardeContre);
-		SetBid(bid, minBid);
-        */
-		// TODO delegate to AI
-        SetBid(Bid.Pass, minBid);
+		Bid bid = bidAI.DecideBid(Hand, nPlayer, playerPosition, minBid);
+        SetBid(bid, minBid);
 	}
 	
 	public CardList ChooseCardsForDog(int nCard)

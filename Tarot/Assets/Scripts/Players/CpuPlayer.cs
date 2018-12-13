@@ -16,7 +16,7 @@ public class CpuPlayer : Player
 	
 	public void MakeABid(int nPlayer, int playerPosition, Bid minBid)
 	{
-		Bid bid = bidAI.DecideBid(Hand, nPlayer, playerPosition, minBid);
+		Bid bid = bidAI.DecideBid(Hand, nPlayer, playerPosition);
         SetBid(bid, minBid);
 	}
 	

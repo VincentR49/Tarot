@@ -11,19 +11,19 @@ public class BidAI : ScriptableObject
 	private Dictionary<Bid,float> bidTresholds = new Dictionary<Bid,float> // TODO valeurs à fixer...
 	{
 		{ Bid.Pass, 0f},
-		{ Bid.Prise, 1f},
-		{ Bid.Garde, 2f},
-		{ Bid.GardeSans, 3f},
-		{ Bid.GardeContre, 4f}
+		{ Bid.Prise, 3f},
+		{ Bid.Garde, 5f},
+		{ Bid.GardeSans, 8f},
+		{ Bid.GardeContre, 10f}
 	};
 	
 	
-	public Bid DecideBid(CardList Hand, int nPlayer, int playerPosition, Bid minBid)
+	public Bid DecideBid(CardList Hand, int nPlayer, int playerPosition)
 	{
 		float handValue = EvaluateHand (Hand, nPlayer);
 		float score = (1 + riskFactor) * handValue; // TODO formule à déterminer
 		Bid bid = Bid.GardeContre;
-		while (bid > minBid)
+		while (bid > Bid.Pass)
 		{
 			if (score >= bidThresholds[bid]) return bid;
 			bid--;

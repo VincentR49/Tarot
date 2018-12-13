@@ -25,7 +25,7 @@ public class BidManager : ProcessManager
 			if (bidder is CpuPlayer)
 			{
 				CpuPlayer cpu = (CpuPlayer) bidder;
-				cpu.MakeABid (players.Count, players.GetPlayerIndex(cpu), maxBid);
+				cpu.MakeABid (players.Count, players.GetPlayerIndex(cpu));
 			}	
             else // human player
             {

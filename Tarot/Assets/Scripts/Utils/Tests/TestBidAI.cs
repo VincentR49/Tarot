@@ -27,21 +27,25 @@ public class TestBidAI : MonoBehaviour
 		List<int> cardIndexes = GetRandomUniqueIndexes (nHandCards, 0, standardDeck.Count-1);
 		foreach (int index in cardIndexes)
 		{
-			Card card = standardDeck.Items[index];
-			AddCardToHand(card.type, card.rank);
+			AddCardToHand (standardDeck.Items[index]);
 		}
-		player.MakeABid(nPlayer, playerPosition, Bid.Pass);
+		player.MakeABid (nPlayer, playerPosition, Bid.Pass);
 		Debug.Log("Player Bid: " + player.bid);
 	}
 	
-	
 
-	private void AddCardToHand(CardType type, CardRank rank) 
-	{ 
-		Card card = GetCard(type, rank);
+	private void AddCardToHand(Card card)
+	{
 		player.Hand.Add (card); 
 		Debug.Log("Add card to hand: " + card);
 	}
+	
+	
+	private void AddCardToHand(CardType type, CardRank rank) 
+	{ 
+		AddCardToHand (GetCard (type, rank));
+	}
+	
 	
 	private Card GetCard(CardType type, CardRank rank) => standardDeck.GetCard(type, rank);
 }

@@ -20,6 +20,7 @@ public class CpuPlayer : Player
         SetBid(bid, minBid);
 	}
 	
+	
 	public CardList ChooseCardsForDog(int nCard)
 	{
 		// AI à développer
@@ -38,6 +39,7 @@ public class CpuPlayer : Player
 		}
 		return cards;
 	}
+	
 	
 	public Card SelectCardToPlay(CardList cardsOnBoard)
 	{

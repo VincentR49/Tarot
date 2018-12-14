@@ -12,19 +12,22 @@ public class BidAI : ScriptableObject
 	// Valeurs fixées pour le jeu à 4, risque à 0.5
 	// Ajustement pour jeu à 3 et 5 via des coeffs
 	// A ajuster
-	private static Dictionary<Bid,float> bidTresholds = new Dictionary<Bid,float> 
+	private static Dictionary<Bid,float> bidThresholds = new Dictionary<Bid,float> 
 	{
 		{ Bid.Pass, 0f },
-		{ Bid.Prise, 2.2f }, // proche de la moyenne, jeu à 4, risque à 0.5
-		{ Bid.Garde, 3.2f }, 
-		{ Bid.GardeSans, 4.1f },
-		{ Bid.GardeContre, 4.6f }
+		{ Bid.Prise, 2.4f }, // proche de la moyenne, jeu à 4, risque à 0.5
+		{ Bid.Garde, 3.3f }, 
+		{ Bid.GardeSans, 4.2f },
+		{ Bid.GardeContre, 4.8f }
 	};
 	
 	// à Ajuster
 	private const float riskFactorWeight = 0.5f; 
 	private const float coeff3Players = 1.15f; 
 	private const float coeff5Players = 1.4f:
+	private const float bonusPosition = 0f;
+	private const float bonusLongue = 0f;
+	private const float bonusMarriage = 0f;
 	
 	// OK à garder
 	private const float trumpValue = 2f;
@@ -35,7 +38,7 @@ public class BidAI : ScriptableObject
 	public Bid DecideBid(CardList hand, int nPlayer, int playerPosition)
 	{
 		float handValue = EvaluateHand (hand, nPlayer);
-		float score = (1 + riskFactor * riskFactorWeight) * handValue; // TODO formule à déterminer
+		float score = (1 + riskFactor * riskFactorWeight) * handValue + bonusPosition; // TODO formule à déterminer
 		Debug.Log("hand value: " + handValue + " / Score: " + score);
 		Bid bid = Bid.GardeContre;
 		while (bid > Bid.Pass)
@@ -84,6 +87,5 @@ public class BidAI : ScriptableObject
 		return total;
 	}
 
-	
 	private int GetNHandCards(int nPlayer) => (Deck.NCardsTarot - Dog.GetNumberOfCards(nPlayer)) / nPlayer;
 }

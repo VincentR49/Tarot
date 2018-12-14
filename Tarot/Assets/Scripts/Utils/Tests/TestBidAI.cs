@@ -9,6 +9,7 @@ public class TestBidAI : MonoBehaviour
 	public CpuPlayer player;
 	public int nPlayer = 4;
 	public int playerPosition = 0;
+	public int nRandomTests = 10;
 	public Deck standardDeck;
 	
 	private int nHandCards => (standardDeck.Count - Dog.GetNumberOfCards(nPlayer)) / nPlayer;
@@ -16,13 +17,17 @@ public class TestBidAI : MonoBehaviour
 	
 	private void Start()
 	{
-		StartTestRandomCards();
+		for (int = 0; i < nRandomTests; i++)
+		{
+			StartTestRandomCards();
+		}
 	}
 	
 	
 	private void StartTestRandomCards()
 	{
 		Debug.Log("Start test bid AI with random hand");
+		Debug.Log("-----------------------------------------------");
 		player.Hand.Clear();
 		List<int> cardIndexes = GetRandomUniqueIndexes (nHandCards, 0, standardDeck.Count-1);
 		foreach (int index in cardIndexes)
@@ -31,6 +36,8 @@ public class TestBidAI : MonoBehaviour
 		}
 		player.MakeABid (nPlayer, playerPosition, Bid.Pass);
 		Debug.Log("Player Bid: " + player.bid);
+		Debug.Log("-----------------------------------------------");
+		Debug.Log("");
 	}
 	
 

@@ -15,7 +15,8 @@ public class CardList : List<Card>
 		}
 		return sb.ToString();
 	}
-	
+
+	public CardList ShallowCopy() => new CardList(this);
 	
 	public float GetPoints()
 	{

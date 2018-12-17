@@ -50,7 +50,6 @@ public class BidAI : ScriptableObject
 	};
 		
 	// Trumps bonus
-	private const float trumpBonusMoreThan4 = 2;
 	private const float majorTrump = 2; // 16 to 21
 	private const float majorTrumpSequence = 1; // ex: 16,17,18 = 3 points, 20,21 = 2 points
 	private const float trumpBonus = 2;

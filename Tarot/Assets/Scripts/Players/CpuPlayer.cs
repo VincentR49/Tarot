@@ -21,6 +21,13 @@ public class CpuPlayer : Player
 	}
 	
 	
+	public Card SelectCalledCard(Deck standardDeck)
+	{
+		CardRank minRank = GetMinRankCallable();
+		return chooseAllyAI.ChooseAllyCard (Hand, minRank, standardDeck);
+	}
+	
+	
 	public CardList ChooseCardsForDog(int nCard)
 	{
 		// AI à développer
@@ -41,6 +48,13 @@ public class CpuPlayer : Player
 	}
 	
 	
+	public bool AnnounceChelem(int nPlayers)
+	{
+		// TODO delegate to AI and AI à développer
+		return false;
+	}
+	
+	
 	public Card SelectCardToPlay(CardList cardsOnBoard)
 	{
 		// AI développer
@@ -57,38 +71,7 @@ public class CpuPlayer : Player
 		return null; // ne doit pas arriver là
 	}
 	
-	
-	public Card SelectCalledCard(Deck standardDeck)
-	{
-		// TODO delegate to AI
-		CardRank minRank = GetMinRankCallable();
-		Card heart = Hand.GetCard (CardType.Heart, minRank);
-		Card diamond = Hand.GetCard (CardType.Diamond, minRank);
-        Card spade = Hand.GetCard (CardType.Spade, minRank);
-		Card club = Hand.GetCard (CardType.Club, minRank);
-		if (heart == null)
-		{
-			return standardDeck.GetCard(CardType.Heart, minRank);
-		}
-		else if (diamond != null)
-		{
-			return standardDeck.GetCard(CardType.Diamond, minRank);
-		}
-		else if (spade != null)
-		{
-			return standardDeck.GetCard(CardType.Spade, minRank);
-		}
-		else if (club != null)
-		{
-			return standardDeck.GetCard(CardType.Club, minRank);
-		}
-		else
-		{
-			return chooseAllyAI.defaultCard;
-		}
-	}
-	
-	
+
 	public Poignee DecidePoigneeToShow()
 	{
 		// TODO delegate to AI
@@ -109,12 +92,5 @@ public class CpuPlayer : Player
 			int nCards = GetNCardPoignee(CurrentPoignee, nPlayers);
 		}
 		return cardsToShow;
-	}
-	
-	
-	public bool AnnounceChelem(int nPlayers)
-	{
-		// TODO delegate to AI and AI à développer
-		return false;
 	}
 }

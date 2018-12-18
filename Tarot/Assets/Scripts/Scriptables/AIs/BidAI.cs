@@ -3,7 +3,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName="AIs/Bid AI")]
 // AI to decide which bid to Make
-// Based on Noël Chavel algorithm
+// Based on Noël Chavey algorithm
 // Evalutation for 4 players
 // Adjustements have to be made for 3 and 5 players games
 
@@ -12,9 +12,8 @@ public class BidAI : ScriptableObject
 {
 	[Tooltip("0: very secure, 0.5: normal, 1: willing to take")]
 	[Range(0f,1f)]
-	public float riskFactor 0.5f;
-
-	// Add more parameters?
+	public float riskFactor = 0.5f;
+	private float riskWeight = 0.4f;
 	
 	private static Dictionary<Bid,float> bidThresholds = new Dictionary<Bid,float> 
 	{
@@ -33,7 +32,7 @@ public class BidAI : ScriptableObject
 		{ CardRank.Roi, 6 },
 		{ CardRank.Dame, 3 },
 		{ CardRank.Cavalier, 2 },
-		{ CardRank.Valet, 1}
+		{ CardRank.Valet, 1 }
 	};
 
 	// Bonus for Petit (petit included)
@@ -43,7 +42,7 @@ public class BidAI : ScriptableObject
 		{ 1, 0 },
 		{ 2, 0 },
 		{ 3, 0 },
-		{ 4, 0 }
+		{ 4, 0 },
 		{ 5, 5 },
 		{ 6, 7 },
 		{ 7, 9 }
@@ -68,9 +67,9 @@ public class BidAI : ScriptableObject
 	public Bid DecideBid(CardList hand, int nPlayer, int playerPosition)
 	{
 		float handValue = EvaluateHand (hand, nPlayer);
-		float score = (1 + riskFactor * riskFactorWeight) * handValue + bonusPosition; // TODO formule à déterminer
+		float score = (1 + riskWeight * (riskFactor - 0.5)) * handValue; // TODO formule à déterminer
 		float coupeSingletonBonus = GetCoupeSingletonBonus (hand);
-		Debug.Log("hand value: " + handValue + " / Score: " + score);
+		Debug.Log ("hand value: " + handValue + " / Score: " + score);
 		Bid bid = Bid.GardeContre;
 		while (bid > Bid.Pass)
 		{
@@ -181,7 +180,7 @@ public class BidAI : ScriptableObject
 	{
 		int nCards = cards.GetNCardOfType (type);
 		if (nCards >= 7) return longue7;
-		if (nCards == 6)  return longue6;
+		if (nCards == 6) return longue6;
 		if (nCards == 5) return longue5;
 		return 0f;
 	}

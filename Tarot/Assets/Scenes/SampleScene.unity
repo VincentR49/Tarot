@@ -578,6 +578,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114508439799562842, guid: 862e437fc7f4b5d43a58742f82fe9697,
+        type: 2}
+      propertyPath: makeDogTimeLimitSec
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 114099347509087104, guid: 862e437fc7f4b5d43a58742f82fe9697,
+        type: 2}
+      propertyPath: limitAnswerTimeSec
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114102557424426724, guid: 862e437fc7f4b5d43a58742f82fe9697,
+        type: 2}
+      propertyPath: showDogDurationSec
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 862e437fc7f4b5d43a58742f82fe9697, type: 2}
   m_IsPrefabAsset: 0
@@ -4359,23 +4374,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6715bb0d2167504428f6dab2c375f40d, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1879521735 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1659687834307320, guid: 6715bb0d2167504428f6dab2c375f40d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1879521734}
---- !u!114 &1879521736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1879521735}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7a34bb45752e2d4fb72a3f8656c0ecb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
 --- !u!1001 &1998590185
 Prefab:
   m_ObjectHideFlags: 0

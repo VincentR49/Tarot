@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CardList : List<Card>
 {
-	public override string ToString()
+    public override string ToString()
 	{
 		StringBuilder sb = new StringBuilder();
 		foreach (Card card in this)
@@ -16,8 +16,16 @@ public class CardList : List<Card>
 		return sb.ToString();
 	}
 
-	public CardList ShallowCopy() => new CardList(this);
+
+    public CardList ShallowCopy()
+    {
+        CardList copy = new CardList();
+        foreach (Card c in this)
+            copy.Add(c);
+        return copy;
+    }
 	
+
 	public float GetPoints()
 	{
 		float points = 0f;

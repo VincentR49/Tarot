@@ -67,7 +67,7 @@ MonoBehaviour:
     type: 2}
   humanPlayerBidAborted: {fileID: 11400000, guid: 315fbf8c29a904f4ca2872bd01e4dfde,
     type: 2}
-  limitAnswerTimeSec: 120
+  limitAnswerTimeSec: 10
 --- !u!114 &114102557424426724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,7 +82,7 @@ MonoBehaviour:
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
   showDogEvent: {fileID: 11400000, guid: 4d172396993033f4fb45ce3b7acb1b33, type: 2}
   hideDogEvent: {fileID: 11400000, guid: 91b836fc31ff32640a82229c32b72599, type: 2}
-  showDogDurationSec: 2
+  showDogDurationSec: 5
 --- !u!114 &114170974894093926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,8 +127,8 @@ MonoBehaviour:
   selectedCards: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
   poigneeToShow: {fileID: 11400000, guid: ad7b9dcac4234094a82964365a1cec91, type: 2}
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
-  decidePoigneeLimitTime: 0
-  showPoigneeDurationSec: 0
+  decidePoigneeLimitTime: 60
+  showPoigneeDurationSec: 10
 --- !u!114 &114370027937112854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,6 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
+  players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
+  answerTimeLimit: 0
 --- !u!114 &114431501683254602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,7 +158,7 @@ MonoBehaviour:
   allyCard: {fileID: 11400000, guid: d1ff1c2d29f549e4ea0eb659a8eb3f82, type: 2}
   selectedCard: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
   standardDeck: {fileID: 11400000, guid: 81029d16279834f49b1670cedfd6c6f1, type: 2}
-  limitAnswerTimeSec: 10
+  limitAnswerTimeSec: 30
 --- !u!114 &114494074357195876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,7 +187,7 @@ MonoBehaviour:
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
   dog: {fileID: 11400000, guid: e006c267139ea3740821db1f7caeafb2, type: 2}
   selectedCards: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
-  makeDogTimeLimitSec: 120
+  makeDogTimeLimitSec: 0
 --- !u!114 &114641943498119472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,6 +204,7 @@ MonoBehaviour:
   playedCard: {fileID: 11400000, guid: 6055bbaa07d009d4e9a4d27fba067a5b, type: 2}
   cardsSelected: {fileID: 11400000, guid: d4d24b2d3d0ec4e46a8006cd00ff75f6, type: 2}
   scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
+  playedCardsRecord: {fileID: 11400000, guid: c5fcd1daa74d35c4786931cee0a75fa1, type: 2}
   delayBetweenTurnsSec: 2
 --- !u!114 &114773578331762010
 MonoBehaviour:
@@ -231,4 +234,4 @@ MonoBehaviour:
   scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
   players: {fileID: 11400000, guid: 33323c944bd032246b65f912bc49d263, type: 2}
   humanPlayerPoignee: {fileID: 11400000, guid: 2562f6b2de54bb04b84f161c1e12215f, type: 2}
-  answerTimeLimit: 0
+  answerTimeLimit: 60

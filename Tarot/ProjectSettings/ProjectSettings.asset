@@ -616,7 +616,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 7095e975-2f9d-4fb7-aae6-ebf1bcdf3e52
   projectName: Tarot
   organizationId: zoltar

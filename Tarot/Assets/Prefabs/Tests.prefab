@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4754692409636178}
   - component: {fileID: 114226850088621064}
   - component: {fileID: 114069599089976904}
+  - component: {fileID: 114424195426732970}
+  - component: {fileID: 114751763400319160}
   m_Layer: 0
   m_Name: Tests
   m_TagString: Untagged
@@ -35,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1659687834307320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 373.0708, y: 630.00635, z: -1.4441553}
+  m_LocalPosition: {x: 439.92847, y: 407.55295, z: -1.4441553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,4 +68,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: a74bc22092aab1545a61112ceac310af, type: 2}
+  standardDeck: {fileID: 11400000, guid: 81029d16279834f49b1670cedfd6c6f1, type: 2}
+--- !u!114 &114424195426732970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1659687834307320}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a34bb45752e2d4fb72a3f8656c0ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoringData: {fileID: 11400000, guid: d68a5efba7514444cbf0e6cc95021d87, type: 2}
+--- !u!114 &114751763400319160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1659687834307320}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76dbcbfe74fcb7d4fb5ae46b8e003475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: d54976f455e618e4e9997f4c95e4f99a, type: 2}
+  nPlayer: 4
+  playerPosition: 0
+  nRandomTests: 10
   standardDeck: {fileID: 11400000, guid: 81029d16279834f49b1670cedfd6c6f1, type: 2}

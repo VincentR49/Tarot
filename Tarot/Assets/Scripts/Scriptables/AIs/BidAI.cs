@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName="AIs/Bid AI")]
@@ -6,7 +7,6 @@ using UnityEngine;
 // Based on Noël Chavey algorithm
 // Evalutation for 4 players
 // Adjustements have to be made for 3 and 5 players games
-
 // Addition of risk factor to add some personalities to AI
 public class BidAI : ScriptableObject
 {
@@ -66,8 +66,9 @@ public class BidAI : ScriptableObject
 	
 	public Bid DecideBid(CardList hand, int nPlayer, int playerPosition)
 	{
-		float handValue = EvaluateHand (hand, nPlayer);
-		float score = (1 + riskWeight * (riskFactor - 0.5)) * handValue; // TODO formule à déterminer
+		float handValue = EvaluateHand (hand);
+		float score = (1 + riskWeight * (riskFactor - 0.5f)) * handValue;
+        // TODO à ajuster en fonction du nombre de joueurs
 		float coupeSingletonBonus = GetCoupeSingletonBonus (hand);
 		Debug.Log ("hand value: " + handValue + " / Score: " + score);
 		Bid bid = Bid.GardeContre;
@@ -95,8 +96,8 @@ public class BidAI : ScriptableObject
 		float total = 0f;
 		int nTrump = hand.GetNCardOfType (CardType.Trump);
 		bool hasRoi = false;
-		CardType currentType = null;
-		CardRank previousCard = null;
+        CardType currentType = CardType.Trump;
+        Card previousCard = null;
 		foreach (Card card in cards)
 		{
 			if (currentType != card.type)
@@ -104,7 +105,8 @@ public class BidAI : ScriptableObject
 				hasRoi = false;
 				currentType = card.type;
 			}
-			if (rankBonus.TryGetValue(card.rank, out float bonusRankValue))
+            float bonusRankValue;
+			if (rankBonus.TryGetValue(card.rank, out bonusRankValue))
 			{
 				total += bonusRankValue;
 			}		
@@ -131,16 +133,11 @@ public class BidAI : ScriptableObject
 	}
 	
 	
-	private float GetPetitBonus(nTrump)
+	private float GetPetitBonus(int nTrump)
 	{
-		if (petitBonusByTrumps.TryGetValue(nTrump, out float bonusPetit))
-		{
-			return bonusPetit;
-		}
-		else // bonus max
-		{
-			return petitBonusByTrumps[6];
-		}
+        float bonusPetit = petitBonusByTrumps[6];
+        petitBonusByTrumps.TryGetValue (nTrump, out bonusPetit);
+		return bonusPetit;
 	}
 	
 	
@@ -156,7 +153,7 @@ public class BidAI : ScriptableObject
 			bonus += majorTrump;
 			if (previousCard != null 
 					&& previousCard.type == CardType.Trump 
-					&& (previousCard.rank - card.rank == 1))
+					&& (previousCard.rank - rank == 1))
 			{
 				bonus += majorTrumpSequence;
 			}

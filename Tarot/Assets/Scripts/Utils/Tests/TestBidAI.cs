@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Utils;
+
 // Test de l'AI pour les enchères
 public class TestBidAI : MonoBehaviour 
 {
@@ -12,34 +13,41 @@ public class TestBidAI : MonoBehaviour
 	public int nRandomTests = 10;
 	public Deck standardDeck;
 	
-	private int nHandCards => (standardDeck.Count - Dog.GetNumberOfCards(nPlayer)) / nPlayer;
+	private int NCards => (standardDeck.Count - Dog.GetNumberOfCards(nPlayer)) / nPlayer;
 
 	
 	private void Start()
 	{
-		for (int = 0; i < nRandomTests; i++)
-		{
-			StartTestRandomCards();
-		}
-	}
+        StartCoroutine (RandomCardCoroutine(nRandomTests));
+    }
 	
 	
 	private void StartTestRandomCards()
 	{
 		Debug.Log("Start test bid AI with random hand");
 		Debug.Log("-----------------------------------------------");
-		player.Hand.Clear();
-		List<int> cardIndexes = GetRandomUniqueIndexes (nHandCards, 0, standardDeck.Count-1);
+        player.PrepareForNewGame();
+		List<int> cardIndexes = GetRandomUniqueIndexes (NCards, 0, standardDeck.Count-1);
 		foreach (int index in cardIndexes)
 		{
 			AddCardToHand (standardDeck.Items[index]);
 		}
 		player.MakeABid (nPlayer, playerPosition, Bid.Pass);
-		Debug.Log("Player Bid: " + player.bid);
+		Debug.Log("Player Bid: " + player.CurrentBid);
 		Debug.Log("-----------------------------------------------");
 		Debug.Log("");
-	}
+    }
 	
+
+    private IEnumerator RandomCardCoroutine(int nTrials)
+    {
+        for (int i = 0; i < nRandomTests; i++)
+        {
+            StartTestRandomCards();
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
 
 	private void AddCardToHand(Card card)
 	{

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName="Scriptable Objects/Card Tracker Set")]
-public class CardTrackerSet : RunTimeList<CardTracker>
+public class CardTrackerSet : RuntimeList<CardTracker>
 {	
 	public Player GetPlayer(Card card)
 	{
@@ -19,7 +19,7 @@ public class CardTrackerSet : RunTimeList<CardTracker>
 	{
 		foreach (CardTracker tracker in Items)
 		{
-			if (tracker.card.rank == rank && tracker.card.type == type) return card.turn;
+			if (tracker.card.rank == rank && tracker.card.type == type) return tracker.turn;
 		}
 		return -1;
 	}

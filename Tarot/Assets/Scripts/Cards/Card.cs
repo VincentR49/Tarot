@@ -55,5 +55,5 @@ public class Card : ScriptableObject, IComparable<Card>
 		return rank.CompareTo(other.rank);
 	}
 
-    public bool IsEqualTo(Card other) => card.rank == other.rank && card.type == other.type;
+    public bool IsEqualTo(Card other) => rank == other.rank && type == other.type;
 }

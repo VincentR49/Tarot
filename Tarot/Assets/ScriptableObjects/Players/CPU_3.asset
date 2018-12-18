@@ -13,3 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: CPU3
   score: 0
+  team: 0
+  bidAI: {fileID: 11400000, guid: 1638ec47b9f7f3341b279523e6e8062a, type: 2}
+  chooseAllyAI: {fileID: 11400000, guid: 807a045a6dfdce54385744c84b0e9dd1, type: 2}
+  announceChelemAI: {fileID: 0}
+  dogAI: {fileID: 0}
+  poigneeAI: {fileID: 0}
+  playAI: {fileID: 0}

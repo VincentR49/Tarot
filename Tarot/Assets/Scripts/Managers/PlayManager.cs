@@ -74,7 +74,7 @@ public class PlayManager : ProcessManager
 	{
 		base.StartProcess();
 		playedCardsRecord.Clear();
-		excuseExchangedHasToBeDone = false;
+        giveSmallCardForExcuse = false;
         scoringData.petitAuBout = false;
         scoringData.chelemDone = false;
         SetPlayersTeam();
@@ -99,14 +99,14 @@ public class PlayManager : ProcessManager
 	
 	private bool CheckPetitAuBout(bool chelemDone)
 	{
-		int petitTurn = playedCardsRecord.GetTurn (CardType.Trump, CardType.One);
+		int petitTurn = playedCardsRecord.GetTurn (CardType.Trump, CardRank.One);
 		if (petitTurn == lastTurn)
 		{
 			return true;
 		}
 		if (chelemDone)
 		{
-			int excuseTurn = playedCardsRecord.GetTurn (CardType.Excuse, CardType.None);
+			int excuseTurn = playedCardsRecord.GetTurn (CardType.Excuse, CardRank.None);
 			if (excuseTurn == lastTurn && petitTurn == lastTurn -1)
 			{
 				return true;
@@ -286,16 +286,15 @@ public class PlayManager : ProcessManager
 	// A faire à la fin du jeu (pour être sûr que les équipes ait été révélées)
 	private void GiveCardToReplaceExcuse()
 	{
-		int teamExcuse = GetTeamScoringPile(TAKER_TEAM_INDEX).Contains(CardType.Excuse, CardRank.None) != null ?
+		int teamExcuse = GetTeamScoringPile(TAKER_TEAM_INDEX).Contains(CardType.Excuse, CardRank.None) ?
 							TAKER_TEAM_INDEX : DEFENDER_TEAM_INDEX;
 		Card exchangeCard = GetTeamScoringPile(teamExcuse).GetFirstCardByValue(0.5f);
 		if (exchangeCard == null)
 		{
 			Debug.LogError("Cannot give a small card for excuse. Possible?");
 		}
-		else
-		{
-			// give the card
+        else // give the card
+        {
 			GetTeamScoringPile(teamExcuse).Remove(exchangeCard);
 			GetTeamScoringPile(GetOpponentTeamIndex(teamExcuse)).Add(exchangeCard);
 		}

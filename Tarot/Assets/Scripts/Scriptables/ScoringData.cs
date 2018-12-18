@@ -65,7 +65,10 @@ public class ScoringData : ScriptableObject
         petitPoint *= PetitWithWinner ? 1 : -1;
 		float basePoints = contractBasePoint + DeltaContract + petitPoint;
 		float chelemPoints = chelemDone ? bonusChelemDone : 0;
-		chelemPoints += chelemAnnounced ? bonusChelemAnnounced : 0;
+        if (chelemAnnounced)
+        {
+            chelemPoints += chelemDone ? bonusChelemAnnounced : -bonusChelemAnnounced;
+        }
 		float winerBasePoints = basePoints * bidMultiplicator[bid] + BonusPoigneeTotal + chelemPoints;
 		return winerBasePoints;
 	}

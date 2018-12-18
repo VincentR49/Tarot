@@ -8,7 +8,9 @@ using UnityEngine;
 public class Deck : RuntimeStack<Card> 
 {
     public int NCard => Items.Count;
-	public static const int NCardsTarot = 78;
+	public static readonly int NCardsTarot = 78;
+
+
 	public void Shuffle()
 	{
 		System.Random rnd = new System.Random();
@@ -26,6 +28,7 @@ public class Deck : RuntimeStack<Card>
 			n--;
 		}
 	}
+
 
     public Card Take()
 	{

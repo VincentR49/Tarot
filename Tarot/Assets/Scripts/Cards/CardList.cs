@@ -17,7 +17,7 @@ public class CardList : List<Card>
 	}
 
 	
-	public override string ToSimpleString()
+	public string ToSimpleString()
 	{
 		StringBuilder sb = new StringBuilder();
 		sb.Append (Count + "C: ");

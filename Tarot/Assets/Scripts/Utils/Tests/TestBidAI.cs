@@ -18,7 +18,7 @@ public class TestBidAI : MonoBehaviour
 	
 	private void Start()
 	{
-        //StartCoroutine (RandomCardCoroutine(nRandomTests));
+        StartCoroutine (RandomCardCoroutine(nRandomTests));
     }
 	
 	
@@ -36,8 +36,10 @@ public class TestBidAI : MonoBehaviour
 		List<int> cardIndexes = GetRandomUniqueIndexes (NCards, 0, standardDeck.Count-1);
 		foreach (int index in cardIndexes)
 		{
-			AddCardToHand (standardDeck.Items[index]);
+			player.Hand.Add (standardDeck.Items[index]);
 		}
+        player.SortHand();
+        Debug.Log("Hand: " + player.Hand.ToSimpleString());
 		player.MakeABid (nPlayer, playerPosition, Bid.Pass);
 		Debug.Log("Player Bid: " + player.CurrentBid);
 		Debug.Log("-----------------------------------------------");
@@ -57,7 +59,7 @@ public class TestBidAI : MonoBehaviour
 
 	private void AddCardToHand(Card card)
 	{
-		player.Hand.Add (card); 
+		
 		Debug.Log("Add card to hand: " + card);
 	}
 	

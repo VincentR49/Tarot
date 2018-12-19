@@ -43,7 +43,7 @@ public class ChelemAnnouncementManager : ProcessManager
 	
 	public void DecideChelemAnnouncement(bool announceChelem)
 	{
-		scoringData.chelemAnnounced = true;
+		scoringData.chelemAnnounced = announceChelem;
 		answerTimer = 0f;
 		FinishProcess();
 	}

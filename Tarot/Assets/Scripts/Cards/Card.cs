@@ -1,41 +1,35 @@
 using System;
 using UnityEngine;
+using System.ComponentModel; 
 
 [CreateAssetMenu(menuName="Scriptable Objects/Card")]
+// Represent a Card Element
 public class Card : ScriptableObject, IComparable<Card>
 {
 	public Sprite sprite;
 	public CardType type = CardType.Heart;
 	public CardRank rank = CardRank.Dame;
 
-    //public int Id => ((int)rank + 1) * 100 + ((int)type);
     public float Value
 	{
 		get
 		{
-			if (IsOudler())
+			if (IsOudler()) return 4.5f;
+			switch (rank)
 			{
-				return 4.5f;
-			}
-			else
-			{
-				switch (rank)
-				{
-					case CardRank.Roi: return 4.5f;
-					case CardRank.Dame: return 3.5f;
-					case CardRank.Cavalier: return 2.5f;
-					case CardRank.Valet: return 1.5f;
-					default: return 0.5f;
-				}
+				case CardRank.Roi: return 4.5f;
+				case CardRank.Dame: return 3.5f;
+				case CardRank.Cavalier: return 2.5f;
+				case CardRank.Valet: return 1.5f;
+				default: return 0.5f;
 			}
 		}
 	}
 	
 	
-	public override String ToString()
-	{
-		 return rank + " " + type;
-	}
+	public override String ToString() =>  rank + " " + type;
+	public String ToSimpleString() => rank.GetDescription() + "" + type.GetDescription();
+	public bool IsEqualTo(Card other) => rank == other.rank && type == other.type;
 	
 	
 	public bool IsOudler()
@@ -53,7 +47,5 @@ public class Card : ScriptableObject, IComparable<Card>
 			return type.CompareTo(other.type);
 		}
 		return rank.CompareTo(other.rank);
-	}
-
-    public bool IsEqualTo(Card other) => rank == other.rank && type == other.type;
+	} 
 }

@@ -16,6 +16,19 @@ public class CardList : List<Card>
 		return sb.ToString();
 	}
 
+	
+	public override string ToSimpleString()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.Append (Count + "C: ");
+		foreach (Card card in this)
+		{
+			sb.Append (card.ToSimpleString());
+			sb.Append (" ");
+		}
+		return sb.ToString();
+	}
+	
 
     public CardList ShallowCopy()
     {

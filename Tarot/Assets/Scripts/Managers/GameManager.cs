@@ -103,7 +103,6 @@ public class GameManager : MonoBehaviour
 	{
 		switch (gamePhase.Value)
 		{
-			// à simplifier (créer une classe gérant les ProcessManager)
 			case GamePhase.PlayerPreparation: return GamePhase.Dealing;
 			case GamePhase.Dealing: return GamePhase.Bidding;
 			case GamePhase.Bidding:
@@ -122,7 +121,7 @@ public class GameManager : MonoBehaviour
 			case GamePhase.PoigneeDeciding: return GamePhase.PoigneeShowing;
 			case GamePhase.PoigneeShowing: return GamePhase.Play;
 			case GamePhase.Play: return GamePhase.Scoring;
-			case GamePhase.Scoring: return GamePhase.Dealing;
+			//case GamePhase.Scoring: return GamePhase.Dealing;
 			default: return GamePhase.None;
 		}
 	}

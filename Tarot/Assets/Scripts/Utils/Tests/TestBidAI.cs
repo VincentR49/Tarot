@@ -18,8 +18,14 @@ public class TestBidAI : MonoBehaviour
 	
 	private void Start()
 	{
-        StartCoroutine (RandomCardCoroutine(nRandomTests));
+        //StartCoroutine (RandomCardCoroutine(nRandomTests));
     }
+	
+	
+	private void Test1()
+	{
+	
+	}
 	
 	
 	private void StartTestRandomCards()

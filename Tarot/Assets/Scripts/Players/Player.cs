@@ -90,25 +90,6 @@ public class Player : ScriptableObject
         // A développer, dépend aussi de la main
         return !(card.IsOudler() || card.rank == CardRank.Roi || card.type == CardType.Trump);
     }
-
-	
-	public CardRank GetMinRankCallable()
-	{
-		CardRank rank = CardRank.Roi;
-		while (rank >= CardRank.Valet)
-		{
-			Card heart = Hand.GetCard (CardType.Heart, rank);
-			Card diamond = Hand.GetCard (CardType.Diamond, rank);
-			Card spade = Hand.GetCard (CardType.Spade, rank);
-			Card club = Hand.GetCard (CardType.Club, rank);
-			if (heart == null || diamond == null || spade == null || club == null)
-			{
-				break;
-			}		
-			rank--;
-		}
-		return (CardRank) rank;
-	}
 	
 
     public bool CanPlayCard(Card card, CardList cardsOnBoard) // à simplifier

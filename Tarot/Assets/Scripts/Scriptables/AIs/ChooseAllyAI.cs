@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static RulesConstants;
 
 [CreateAssetMenu(menuName="AIs/Choose Ally AI")]
 // Determine the ally card called in 5 players game
@@ -9,8 +10,9 @@ public class ChooseAllyAI : ScriptableObject
 	public CardType defaultType = CardType.Heart;
 	
 	// TODO à développer
-	public Card ChooseAllyCard(CardList hand, CardRank minRank, Deck standardDeck)
+	public Card ChooseAllyCard(CardList hand, Deck standardDeck)
 	{
+		CardRank minRank = GetMinRankCallable (rank);
 		Card heart = hand.GetCard (CardType.Heart, minRank);
 		Card diamond = hand.GetCard (CardType.Diamond, minRank);
         Card spade = hand.GetCard (CardType.Spade, minRank);

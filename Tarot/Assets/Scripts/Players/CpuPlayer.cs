@@ -23,8 +23,7 @@ public class CpuPlayer : Player
 	
 	public Card SelectCalledCard(Deck standardDeck)
 	{
-		CardRank minRank = GetMinRankCallable();
-		return chooseAllyAI.ChooseAllyCard (Hand, minRank, standardDeck);
+		return chooseAllyAI.ChooseAllyCard (Hand, standardDeck);
 	}
 	
 	
@@ -54,24 +53,7 @@ public class CpuPlayer : Player
 		return false;
 	}
 	
-	
-	public Card SelectCardToPlay(CardList cardsOnBoard)
-	{
-		// AI développer
-		// Pour l'instant joue la première carte disponnible
-		// TODO delegate to AI
-		foreach (Card card in Hand)
-		{
-			if (CanPlayCard (card, cardsOnBoard))
-			{
-				return card;
-			}
-		}
-		Debug.LogError("Aucune carte ne peut être jouée par le cpu");
-		return null; // ne doit pas arriver là
-	}
-	
-
+		
 	public Poignee DecidePoigneeToShow()
 	{
 		// TODO delegate to AI
@@ -92,5 +74,22 @@ public class CpuPlayer : Player
 			int nCards = GetNCardPoignee(CurrentPoignee, nPlayers);
 		}
 		return cardsToShow;
+	}
+	
+	
+	public Card SelectCardToPlay(CardList cardsOnBoard)
+	{
+		// AI développer
+		// Pour l'instant joue la première carte disponnible
+		// TODO delegate to AI
+		foreach (Card card in Hand)
+		{
+			if (CanPlayCard (card, cardsOnBoard))
+			{
+				return card;
+			}
+		}
+		Debug.LogError("Aucune carte ne peut être jouée par le cpu");
+		return null; // ne doit pas arriver là
 	}
 }

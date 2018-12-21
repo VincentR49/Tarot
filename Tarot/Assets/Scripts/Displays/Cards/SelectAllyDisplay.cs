@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static RulesConstants;
 
 // Gère l'affichage du choix de l'allié pour le jeu à 5 joueurs
 public class SelectAllyDisplay : MonoBehaviour
@@ -43,7 +44,7 @@ public class SelectAllyDisplay : MonoBehaviour
     private void GenerateCards()
     {
         Clean();
-        CardRank minRank = Taker.GetMinRankCallable();
+        CardRank minRank = GetMinRankCallable(Taker.Hand);
         CardRank rank = CardRank.Roi;
         while (rank >= minRank)
         {

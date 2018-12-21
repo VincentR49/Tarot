@@ -59,4 +59,23 @@ public static class RulesConstants
 		}
 		return Poignee.None;
 	}
+	
+	
+	public static CardRank GetMinRankCallable(CardList hand)
+	{
+		CardRank rank = CardRank.Roi;
+		while (rank >= CardRank.Valet)
+		{
+			Card heart = hand.GetCard (CardType.Heart, rank);
+			Card diamond = hand.GetCard (CardType.Diamond, rank);
+			Card spade = handGetCard (CardType.Spade, rank);
+			Card club = hand.GetCard (CardType.Club, rank);
+			if (heart == null || diamond == null || spade == null || club == null)
+			{
+				break;
+			}		
+			rank--;
+		}
+		return (CardRank) rank;
+	}
 }

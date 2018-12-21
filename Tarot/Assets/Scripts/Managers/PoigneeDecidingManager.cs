@@ -15,7 +15,7 @@ public class PoigneeDecidingManager : ProcessManager
 	
 	private int NPlayer => players.Count;
 	private float answerTimer = 0f;
-	private int playerChecked = -1;
+	private int playerChecked = 0;
 	private Player currentPlayer;
 	private bool firstPoigneeShown = false;
 
@@ -52,7 +52,7 @@ public class PoigneeDecidingManager : ProcessManager
 		humanPlayerPoignee.Value = Poignee.NotDecided;
 		scoringData.poignee1 = Poignee.NotDecided;
         scoringData.poignee2 = Poignee.NotDecided;
-		playerChecked = -1;
+		playerChecked = 0;
 		currentPlayer = null;
 		firstPoigneeShown = false;
 		GoToNextPlayer();
@@ -61,6 +61,10 @@ public class PoigneeDecidingManager : ProcessManager
 	
 	private void GoToNextPlayer()
 	{
+		if (playerChecked == NPlayer)
+		{
+			FinishProcess();
+		}
 		if (currentPlayer == null)
 		{
 			currentPlayer = players.Items[0];
@@ -74,10 +78,6 @@ public class PoigneeDecidingManager : ProcessManager
 		currentPlayer.SetPoignee (Poignee.NotDecided);
 		answerTimer = 0f;
 		playerChecked += 1;
-		if (playerChecked == NPlayer)
-		{
-			FinishProcess();
-		}
 	}
 	
 
